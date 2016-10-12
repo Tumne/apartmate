@@ -1,0 +1,14 @@
+a(href='#', data-ng-click='showOptions = ! showOptions' )
+  #listPlaceSelectionBox
+    #icon
+    div.listCaptionSC I WANT TO
+    div.listCaptionLC LIST 
+    div.listCaptionSC MY PLACE
+p
+#optionButtons(data-ng-show='showOptions')
+  a(href='#', data-ng-click='addProperty()')
+    #longButton
+      | An entire property
+  a(href='#', data-ng-click='addBedroom()')
+    #longButton
+      | Bedroom in a shared propert

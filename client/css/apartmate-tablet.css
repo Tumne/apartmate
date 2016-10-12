@@ -1,0 +1,247 @@
+/* tablet landscape (ipad) */
+@media only screen and (max-width : 1024px) {
+  .navbar-adjust {
+    width: 606px !important;
+  }
+  .navbar{
+    width:100%;
+  }
+  .leaflet-height{
+    height:600px;
+  }
+  .socialProofLogos{
+    height:70px;
+  }
+
+  .navbar-custom{
+    width: 59%;
+  }
+
+  .leftSideWithLine, .leftSideWithLine .col-sm-8{
+    margin-left:0;
+  }
+
+  .rightSideWithLine{
+    margin-left: 0;
+  }
+  .forgot{
+    margin-left:0;
+  }
+  .createAccountJustify{
+    margin-left: 145px;
+  }
+
+  .offset-listColumn{
+    margin-left:10px;
+    width:670px;
+  }
+  .listingSideBar{
+    width: 100%;
+    float:right;
+  }
+  .propertyMap{
+    width: 650px;
+  }
+  .offset-listingSideBar{
+    float: right;
+  }
+  .imgThumbFrame{
+    width:100px;
+  }
+
+  .imageThumbGallery{
+    max-width: 646px
+  }
+  .emailAdjust{
+    padding-top: 14px;
+    padding-bottom: 10px;
+    background-position: top 17px left 26%;
+  }
+
+  .propertyProfileFrame{
+    font-size: 12px;
+    width: 120px;
+    margin-left:-5px;
+    margin-top:5px;
+  }
+
+  .propertyPercentageBorder{
+    width:50px;
+    height: 50px;
+    top: 220px;
+    right: 10px;
+  }
+  .percentageRoommate {
+    top: 275px;
+    right: 20px;
+  }
+
+  .propertyPercentageBorder h4 {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  .imgContainerRoommate{
+    height: 275px;
+  }
+
+  .profilePictureBox h3 {
+    font-size: 20px;
+  }
+  .imgFrame {
+    border: 3px solid #dbe2e2;
+  }
+  .featuredProperty {
+    border: 3px solid #6ae2d3;
+  }
+
+  .blog .status {
+    padding: 0 80px;
+  }
+
+  .centerHeader a {
+    padding: 0 20px;
+  }
+  .right-column {
+    position: relative;
+    top:0;
+    right:0;
+  }
+  .left-column {
+    padding-left: 100px;
+  }
+}
+
+/* tablet portrait (ipad) */
+@media only screen and (max-width : 768px) {
+  .navbar-adjust {
+    width: 533px !important;
+  }
+  #socialProof{
+    padding: 25px 0;
+  }
+  .navbar{
+    width:768px;
+  }
+  .socialProofLogos{
+    height:100px;
+  }
+  .leaflet-frame{
+    width:100%;
+  }
+  .leaflet-height{
+    height:275px;
+  }
+  .scrollit{
+    margin-top:295px;
+    height:575px;
+    overflow:auto;
+    float:none;
+  }
+  .advice li{
+    margin:30px 0;
+  }
+  .form-fb{
+    padding-top:0;
+    padding-left:10px;
+  }
+  .leftSideWithLine{
+    padding-bottom:0;
+    background: none;
+  }
+  .createAccount p{
+    padding-right:10px;
+  }
+  .forgot, .leftSideWithLine, .leftSideWithLine .col-sm-8{
+    margin-left:46px;
+  }
+  .rightSideWithLine{
+    margin-left:93px;
+  }
+  .createAccountJustify{
+    margin-left: 130px;
+  }
+  .btn-headerPrimary{
+    width: inherit;
+  }
+  .offset-listColumn{
+    margin-left: 10px;
+    width: 500px;
+  }
+  .propertyImg{
+    padding:0;
+  }
+  .propertyImage, .propertyImg img{
+    width: 477px;
+    height: 339px;
+  }
+  .propertyMap{
+    width:477px;
+  }
+  .propertyDetailMap{
+    width:407px !important;
+  }
+  .offset-listingSideBar{
+    float: right;
+  }
+  .emailButton, .favoriteButton{
+    padding: 18px 20px 10px 20px;
+  }
+
+  .emailButton{
+    background-position: top 22px left 26%;
+  }
+
+  .navbar-custom{
+    width: 507px;
+  }
+  .left-column{
+    padding: 0 80px;
+    padding-right: 30px;
+  }
+  .right-column {
+    right: 0;
+  }
+
+  .propertyPercentageBorder {
+    top: 215px;
+    right: 15px;
+    width:60px;
+    height:60px;
+    font-size:18px;
+  }
+  .propertyPercentageBorder h4{
+    margin-top:17.5px;
+  }
+
+  .propertyProfileFrame {
+    font-size: 14px;
+    width: 180px;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .large-screen{
+    display: none;
+  }
+  .mobile-screen {
+    display: inherit;
+  }
+  .titleAndTags .col-md-2 {
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+  }
+  .titleAndTags .tagTitle {
+    font-size: 13px;
+  }
+
+  .amenities {
+    margin-top: 20px;
+  }
+
+  .howItWorksMessage p {
+    text-align: center;
+  }
+  .blog .status {
+    padding: 0 112px;
+  }
+}

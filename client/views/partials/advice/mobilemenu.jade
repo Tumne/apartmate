@@ -1,0 +1,21 @@
+.row.subtitle.fixed-top
+    .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+          .row.font-white.advice-sub-menu
+            .col-xs-2.col-xs-offset-3.col-sm-2.col-sm-offset-3(ui-sref-active="active")
+              a(ng-click="resetRentersIndex()") Renters
+            .col-xs-2.col-sm-2(ui-sref-active="active")
+              a(ng-click="resetRoommatesIndex()") Roommates
+            .col-xs-2.col-sm-2(ui-sref-active="active")
+              a(ng-click="resetLandlordsIndex()") Landlords
+.backdrop(ng-show="backdrop" ng-click="closeBackdrop()")
+ul#menu.collapse.in
+  li(ng-repeat="article in articlesRenters" ng-show="adviceCategory == 'renters'")
+    a(ui-sref="public.nav.advice.renters.article({slug: articlesRenters[$index].slug})" ng-click="changeIndex($index)" ng-bind-html='renderHtml(article.title)') 
+  li(ng-repeat="article in articlesRoommates" ng-show="adviceCategory == 'roommates'")
+    a(ui-sref="public.nav.advice.roommates.article({slug: articlesRoommates[$index].slug})" ng-click="changeIndex($index)" ng-bind-html='renderHtml(article.title)') 
+  li(ng-repeat="article in articlesLandlords" ng-show="adviceCategory == 'landlords'")
+    a(ui-sref="public.nav.advice.landlords.article({slug: articlesLandlords[$index].slug})" ng-click="changeIndex($index)" ng-bind-html='renderHtml(article.title)')
+
+div(ng-class="{'fixed-ui-view': backdrop}")
+  ui-view

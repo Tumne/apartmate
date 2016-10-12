@@ -1,0 +1,12 @@
+.row.subtitle.fixed-top
+    .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+          .row.font-white.advice-sub-menu
+            .col-xs-2.col-xs-offset-3.col-sm-2.col-sm-offset-3(ui-sref-active="active")
+              a(ui-sref="public.nav.advice.renters.article({slug: articlesRenters[0].slug})" ng-click="resetRentersIndex()" data-toggle='collapse' data-target='#demo1') Renters
+            .col-xs-2.col-sm-2(ui-sref-active="active")
+              a(ui-sref="public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})" ng-click="resetRoommatesIndex()") Roommates
+            .col-xs-2.col-sm-2(ui-sref-active="active")
+              a(ui-sref="public.nav.advice.landlords.article({slug: articlesLandlords[0].slug})" ng-click="resetLandlordsIndex()") Landlords
+
+ui-view

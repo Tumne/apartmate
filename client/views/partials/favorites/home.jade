@@ -1,0 +1,30 @@
+.row.searchRow
+    .col-md-12.no-padding
+      .container.browseFav
+          .row
+              .hidden-xs.col-md-6.fixed.leaflet-frame
+                leaflet.leaflet-height(defaults='defaults', center='toronto', tiles="tiles", markers="markers", width='100%')
+                .listingIcon(ng-style="{{ listingIconProperty }}")
+              .col-xs-6.col-md-6.scrollit.no-padding-left.favorite
+                
+                .col-sm-12.col-md-12.npCol.npColSm
+                  h1.pageHeader.formHeaderColor Favourites
+                alert(ng-repeat="alert in alerts", type="{{alert.type}}", close="closeAlert($index)") 
+                  | {{alert.msg}}
+                  //- .masonry.js-masonry.pointer(data-masonry-options='{ "columnWidth": 316px, "itemSelector": ".item" }')
+                .col-sm-4.col-md-6.item(ng-repeat='property in properties', ng-mouseover="changeMarkerOn(property)", ng-mouseout="changeMarkerOff(property)")
+                  .heart 
+                    img(src='{{ "/img/listing/heart_on.png"  }}', ng-mouseover='heartIcon="/img/listing/heart_on.png"', ng-mouseout='heartIcon="/img/listing/heart.png"', ng-click="removeFavorite(property)" )
+                  .imgFrame.pointer.no-margin(ng-click="onViewPropertySelect(property)")
+                    .imgContainer
+                      img(ng-src='{{ property.src }}', width='316px', height='200px', ng-click="onViewPropertySelect(property)")
+                    .propertyPriceBg
+                    .propertyPrice
+                      .sign $
+                      h3 {{ property.price }} 
+
+                    .propertyTitle {{ property.description | characters:36 :false}}
+                    .propertyStat {{ property.bedroom }} - {{ property.bathroom }} - {{ property.daysAgo }} days ago 
+
+
+    

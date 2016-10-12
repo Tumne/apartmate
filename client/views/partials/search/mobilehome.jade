@@ -1,0 +1,178 @@
+nav.navbar.navbar-filter.landscape
+      .navbar-header
+        .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Entire'}" ng-click="onPropertyFilterSelect('Entire')")
+          .imgPiece.imageEntirePlace
+          p Apartment
+        .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Shared'}" ng-click="onPropertyFilterSelect('Shared')")
+          .imgPiece.imageSharedPlace 
+          p Room
+        .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Apartmate'}" ng-click="onPropertyFilterSelect('Apartmate')")
+          .imgPiece.imageRoommate 
+          p Roommate
+        a.navbar-propertyFilter(href='#') 
+      .navbar-header.navbar-left(ng-show="filterParameters.propertyType != 'Apartmate'")
+        form(role='form', class='form-filter')
+          .form-group
+            label(for='priceRange') Price range
+            slider(floor='100', ceiling='3000', class='priceSlider', ng-model-low='priceRange.minPrice', ng-model-high='priceRange.maxPrice', ng-click="onPriceFilterSelect()" translate='currencyFormatting')
+            .sliderCaptions
+              .min $ {{ priceRange.minPrice }}
+              .max $ {{ priceRange.maxPrice }}
+          //- .form-group
+          //-   label(for='bedrooms') Bedrooms
+          //-   .btn-group-vertical(dropdown='', is-open='status.isopen')
+          //-     button.btn.btn-primary.dropdown-toggle.bedrooms(type='button', dropdown-toggle='', ng-disabled='disabled')
+          //-       | {{ selectedBedrooms }}
+          //-       span.caret
+          //-     ul.dropdown-menu-filter(role='menu')
+          //-       li
+          //-         a(href='#' ng-click="onBedroomFilterSelect('1')") 1
+          //-       li
+          //-         a(href='#' ng-click="onBedroomFilterSelect('2')") 2
+          //-       li
+          //-         a(href='#' ng-click="onBedroomFilterSelect('3')") 3
+          //-       li
+          //-         a(href='#' ng-click="onBedroomFilterSelect('4')") 4
+          //- .form-group
+          //-   label(for='basementApartment') Basement
+          //-   .btn-group-vertical(dropdown='')
+          //-     button.btn.btn-filter.dropdown-toggle.gender(type='button', dropdown-toggle='', ng-disabled='disabled')
+          //-       | {{ filterParameters.basementApartment == "Yes" ? "OK" : "No" }}
+          //-       span.caret
+          //-     ul.dropdown-menu-filter(role='menu')
+          //-       li
+          //-         a(href='#' ng-click="onBasementApartmentSelect('No')") No
+          //-       li
+          //-         a(href='#' ng-click="onBasementApartmentSelect('Yes')") OK
+          //- .form-group
+          //-   .moreFilterImage(ng-click="onMoreFilterSelect()")
+
+      .navbar-header.navbar-left(ng-show="filterParameters.propertyType == 'Apartmate'")
+        form(role='form', class='form-filter')
+          .form-group
+            label(for='priceRange') Budget
+            slider(floor='100', ceiling='3000', class='priceSlider', ng-model-low='priceRange.minPrice', ng-model-high='priceRange.maxPrice', ng-click="onBudgetFilterSelect()" translate='currencyFormatting')
+            .sliderCaptions
+              .min $ {{ priceRange.minPrice }}
+              .max $ {{ priceRange.maxPrice }}
+
+          //- .form-group
+          //-   label(for='age') Age Group
+          //-   .btn-group-vertical(dropdown='')
+          //-     button.btn.btn-primary.dropdown-toggle.age(type='button', dropdown-toggle='', ng-disabled='disabled')
+          //-       | {{ filterParameters.age }}
+          //-       span.caret
+          //-     ul.dropdown-menu(role='menu')
+          //-       li
+          //-         a(href='#' ng-click="onAgeGroupSelect('ALL')") ALL
+          //-       li
+          //-         a(href='#' ng-click="onAgeGroupSelect('18-22')") 18-22
+          //-       li
+          //-         a(href='#' ng-click="onAgeGroupSelect('23-28')") 23-28
+          //-       li
+          //-         a(href='#' ng-click="onAgeGroupSelect('28-33')") 28-33
+          //-       li
+          //-         a(href='#' ng-click="onAgeGroupSelect('33-38')") 33-38
+          //-       li
+          //-         a(href='#' ng-click="onAgeGroupSelect('38+')") 38+
+          //- .form-group
+          //-   label(for='gender') Gender
+          //-   .btn-group-vertical(dropdown='')
+          //-     button.btn.btn-primary.dropdown-toggle.gender(type='button', dropdown-toggle='', ng-disabled='disabled')
+          //-       | {{ filterParameters.gender }}
+          //-       span.caret
+          //-     ul.dropdown-menu-filter(role='menu')
+          //-       li
+          //-         a(href='#' ng-click="onGenderFilterSelect('ALL')") ALL
+          //-       li
+          //-         a(href='#' ng-click="onGenderFilterSelect('Male')") Male
+          //-       li
+          //-         a(href='#' ng-click="onGenderFilterSelect('Female')") Female
+//- .filter-modal(ng-show="checked")
+//-   .row
+//-     .col-md-offset-1.col-md-9
+//-       form.form-horizontal(role='form', class='moreFilters')
+//-         .form-group
+//-           .row
+//-             .col-sm-6
+//-               label.control-label(for='petFriendly') Pet friendly
+//-             .col-sm-6
+//-               .row
+//-                 .col-sm-6
+//-                   .checkbox.checkbox-primary
+//-                     input#dogs2OK(type='checkbox', checked='', ng-click="dogsFilterChanged()", data-ng-model='filterParameters.pets.dogs', name='dogs2OK')
+//-                     label(for='dogs2OK')
+//-                       .control-label-group Dogs
+//-                 .col-sm-6
+//-                   .checkbox.checkbox-primary
+//-                     input#catsOK(type='checkbox', checked='', ng-click="catsFilterChanged()", data-ng-model='filterParameters.pets.cats', name='catsOK')
+//-                     label(for='catsOK')
+//-                       .control-label-group Cats
+
+
+
+.mobileSearchRow
+  .row.mobileBrowse(ng-hide="filterParameters.propertyType == 'Apartmate'")
+    .col-sm-12.no-padding
+      .masonry.js-masonry.pointer(data-masonry-options='{ "columnWidth": 300px, "itemSelector": ".item" }')
+        .item(ng-repeat='property in propertiesGlobal', ng-click="onViewPropertySelect(property)")
+          .heart
+            img(src='{{ property.favoritedByThisUser == true && "/img/listing/heart_on_shadow.png" || heartIcon  }}', ng-mouseover='heartIcon="/img/listing/heart_on_shadow.png"', ng-mouseout='heartIcon="/img/listing/heart_shadow.png"', ng-click="toggleFavorite(property)" )
+          .propertyPercentageBorder(ng-show="property.propertyType == 'Shared' ")
+            h4 
+              span(ng-show="property.percent != 0") {{property.percent}}
+              span %
+
+          .imgFrame(ng-class="{'featuredProperty': property.fbBoosted && property.fbExpired}")
+            .box(ng-show="property.fbBoosted && property.fbExpired")
+              .ribbon
+                span Featured
+            .imgContainer(ng-click="onViewPropertySelect(property)")
+              img(ng-src='{{ property.propertythumb }}')
+            .propertyPriceBg
+            .propertyPrice
+              .sign $
+              h3 {{ property.rentAmount }} 
+            .propertyInfo
+            .propertyProfilePicture(ng-click="onViewPropertySelect(property)")
+              img(ng-src="{{ property.thumb != '' && property.thumb || '/img/profile/placeholder.png'  }}", width='100%', height='100%')
+            .propertyProfileFrame
+              .propertyProfileName
+                span(ng-show="property.name") {{property.name}},&nbsp;
+                span(ng-show="!property.name && property.ageGroup") Age:&nbsp;
+                | {{property.ageGroup || '&nbsp;'}}
+              .propertyProfileAge(ng-show="property.propertyType == 'Shared'") {{property.lifestyle || '&nbsp;'}}
+              .propertyProfileAge(ng-show="property.propertyType == 'Entire'") {{property.landlordType || '&nbsp;'}}
+              .propertyStat.no-padding
+                span(ng-show="property.bedrooms != 'Studio/Bachelor'") {{ property.bedrooms | limitTo: 1}} Bed 
+                span(ng-show="property.bedrooms == 'Studio/Bachelor'") Studio&nbsp;
+                span(ng-show="property.basementApartment") (Bsmt) 
+                | - Avail: {{ property.availabilityDate | date:'MMM d' }}
+          //- .imgContainer
+          //-   img(ng-src='{{ property.src }}', width='300px', height='193px')
+          //- .propertyPriceBg
+          //- .propertyPrice
+          //-   .sign $
+          //-   h3 {{ property.price }}
+          //-   .heart 
+          //-     img(src='{{ property.favoritedByThisUser == true && "/img/listing/heart_on.png" || heartIcon  }}', ng-mouseover='heartIcon="/img/listing/heart_on.png"', ng-mouseout='heartIcon="/img/listing/heart.png"', ng-click="toggleFavorite(property)" )
+          //- .propertyTitle {{ property.description | characters:36 :false}}
+          //- .propertyStat {{ property.bedroom }} - {{ property.bathroom }} - {{ property.daysAgo }} days ago 
+
+  .container.browse(ng-show="filterParameters.propertyType == 'Apartmate'")
+    .row.row-centered
+        .col-md-offset-1.col-md-10
+          .row.apartmateTop
+            //- .roommates.masonry.js-masonry(data-masonry-options='{ "columnWidth": 316px, "itemSelector": ".item" }')
+            .col-xs-6.col-sm-4.col-md-4.roommateItem.roommate(ng-repeat='roommate in apartmatesGlobal')
+              .propertyPercentageBorder.percentageRoommate
+                h4 
+                  span(ng-show="roommate.percent != 0") {{roommate.percent}}
+                  span %
+              .imgFrameRoommate( ng-click="onViewApartmateSelect(roommate)")
+                .imgContainerRoommate
+                  img(ng-src='{{ roommate.src }}', ng-click="onViewApartmateSelect(roommate)")
+                .propertyTitle.propertyFirst {{ roommate.firstName | characters:36 :false}}, {{ roommate.ageGroup }}
+                .propertyGenderAge {{ roommate.lifestyle || '&nbsp;' }}
+
+    

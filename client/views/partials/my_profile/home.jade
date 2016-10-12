@@ -1,0 +1,114 @@
+.apartmateContainer
+    .row 
+        .col-xs-12.col-sm-12.col-md-12.no-padding
+            .spacer30
+            .spacer30
+            .row.subtitle
+                .col-xs-12.col-sm-12.col-md-12
+                    .breadCrumbTrail
+                        span(ng-show="myApartmate.apartmateListingCreated") Room Wanted: 
+                            b {{myApartmate.activeProfile ? 'Activated' : 'Deactivated' }}
+                        .backButton.edit(ng-click="onEditProfileSelect()") 
+                            i.fa.fa-pencil
+                            span Edit  
+                        .backButton.edit(ng-click="toggleActivateProfileSelect()" ng-show="myApartmate.apartmateListingCreated") 
+                            div(ng-hide='myApartmate.activeProfile')
+                                i.fa.fa-plus-circle
+                                span Activate
+                            div(ng-show='myApartmate.activeProfile')
+                                i.fa.fa-minus-circle
+                                span Deactivate               
+            .spacer30
+            .spacer30
+            .spacer30
+            .row
+                .col-xs-12.col-sm-12.col-md-offset-2.col-md-8
+                    .profileContainer
+                        .row
+                            .col-xs-12.col-sm-4.col-md-4.profileLeftCol
+                                .row.profilePictureBox
+                                    .col-xs-12.col-md-12.propertyProfileImage.profileResize.roommatePadding
+                                      img(ng-src="{{ myApartmate.src }}", width='100%', height='100%')
+                                      h3.align-left(ng-show="myApartmate.firstName != '' && myApartmate.ageGroup != '' ") {{ myApartmate.firstName }}, {{myApartmate.ageGroup}}
+                                      h4.align-left(ng-show="myApartmate.lifestyle != '' ") {{myApartmate.lifestyle}}
+                                .spacer30
+                                .row.verifiedHeader
+                                    col-xs-12.col-md-12
+                                        h3 ID Verification
+                                .row.verifiedPanel
+                                    .col-xs-12.col-md-12(ng-show="myApartmate.facebookVerified")
+                                        .row.emailVerified
+                                            .col-xs-12.col-md-2.npCol.verifiedIcon
+                                                img(ng-src="/img/profile/verified.png")
+                                            .col-xs-12.col-md-10.npCol.verifiedNote
+                                                h4 Facebook
+                                                p Verified
+                                    //- .col-xs-12.col-md-12(ng-show="myApartmate.linkedInVerified")
+                                        .row.emailVerified(ng-show="myApartmate.linkedInVerified")
+                                            .col-xs-12.col-md-2.npCol.verifiedIcon
+                                                img(ng-src="/img/profile/verified.png")
+                                            .col-xs-12.col-md-10.npCol.verifiedNote
+                                                h4 LinkedIn
+                                                p Verified
+                                    .col-xs-12.col-md-12(ng-hide="myApartmate.linkedInVerified || myApartmate.facebookVerified")
+                                        .row.emailVerified
+                                            .col-xs-12.col-md-10.npCol.verifiedNote
+                                                //- h4 LinkedIn/Facebook
+                                                h4 Facebook
+                                                p Not Verified
+                            .col-xs-12.col-sm-8.col-md-8.profileRightCol
+                                .row.propertyDescHeader
+                                    col-sm-12.col-md-12
+                                        h3 Description
+                                .row.propertyDescPanel
+                                    .col-sm-12.col-md-12
+                                        p {{ myApartmate.personalDescription }}
+                                .spacer30
+                                .row.propertyContactHeader
+                                    .col-sm-12.col-md-12
+                                        h3 Contact
+                                .row.propertyContactPanel
+                                    .col-sm-12.col-md-12(ng-show="{{ myApartmate.emailAddress != '' }} ")
+                                        h4 {{ myApartmate.emailAddress }}
+                                        p Email
+                                .spacer30
+                                .row.propertyListingHeader(ng-show="myApartmate.propertyListing.length > 0")
+                                    .col-sm-12.col-md-12
+                                        h3 Listings
+                                .row.propertyContactPanel(ng-show="myApartmate.propertyListing.length > 0")
+                                    .col-sm-6.col-md-6.propertyBorderPadding(ng-repeat="propertyListing in myApartmate.propertyListing", ng-click="goToMyListing(propertyListing.propertyId)")
+                                        .propertyBorder
+                                            .propertyPublished {{propertyListing.published ? 'Published' : 'Not published' }}                                            
+                                            .imgContainer
+                                                img(ng-src="{{propertyListing.addedImages[0].url}}" width="100%")
+                                            .propertyPrice
+                                                .sign $
+                                                h3 {{propertyListing.rentAmount}}
+                                            .propertyTitle {{propertyListing.title}}
+                                            .propertyStat.propertyPadding {{propertyListing.bathrooms}} - {{propertyListing.bedrooms}}
+                                                span(ng-show="propertyListing.daysAgo != 1 && propertyListing.daysAgo !=0") - {{ propertyListing.daysAgo }}
+                                                span(ng-show="propertyListing.daysAgo == 1") - Yesterday
+                                                span(ng-show="propertyListing.daysAgo == 0") - Today
+
+
+                                    
+
+
+
+
+            .footer
+                .row.row-centered 
+                    .col-xs-11.col-sm-11.col-md-11.col-centered 
+                        .socialIcons
+                            .twitter(ng-click="socialClick('twitter')")
+                            .fb(ng-click="socialClick('fb')")
+                            a.mail(href="mailto:info@apartmate.ca" target="_blank")
+                .row.termsPrivacy.row-centered 
+                    .col-xs-11.col-sm-11.col-md-11.col-centered 
+                        .logoSmall
+                            img(ng-src='/img/logo_color_sm.png')
+                            p 
+                                | 
+                                a(href='/tos') Terms & Conditions
+                                a(href='/privacy') Privacy Policy 
+                                | &copy; 2015 Apartmate Inc.

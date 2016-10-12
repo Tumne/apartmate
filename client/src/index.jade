@@ -1,0 +1,382 @@
+doctype html
+html(lang='en', ng-app='angular-client-side-auth')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content="width=device-width, initial-scale=1, maximum-scale=1")
+        meta(name='description', content='{{ seo.description }}')  
+        meta(name='keywords', content='Toronto Roommate matching, Toronto Free roommate search, Find a roommate, Cheap roommate service in Toronto, Roommate search, Roommate service, Roommate')    
+        meta(name='fragment', content='!')
+        meta(name="robots")
+        //- Comment out base href for localhost
+        base(href='/')
+
+        script(type='text/javascript').
+            window.prerenderReady = false;
+        //- meta(property='fb:admins', content='602780706')
+        meta(property='fb:app_id', content='364164630431820')
+        meta(property="og:url" content="{{fbURL}}")
+        meta(property='og:image:type', content='image/png')
+        meta(property='og:image:width', content='200')
+        meta(property='og:image:height', content='200')
+        meta(property="og:image" content="{{fbIMG}}")
+        meta(property="og:title" content="{{fbTitle}}")
+        meta(property="og:description" content="{{fbDesc}}")
+        title(ng-bind="seo.title") Apartmate
+
+        link(rel="image_src" type="image/jpeg" href="http://www.apartmate.ca/img/apartmate-logo-fb.png")
+        link(rel='shortcut icon', type='image/ico', href='favicon.ico')
+
+        // Fonts
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700', type='text/css')
+        link(rel='stylesheet', href='/fonts/torontosubwayregular.css', charset='utf-8')        
+        link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+
+        // vendor css 
+        //- vendor:css
+        //- built css files will go here...
+        //- endinject
+
+        // app css
+        //- inject:css
+        //- built css files will go here...
+        //- endinject       
+
+        
+
+        // This is needed because Facebook login redirects add #_=_ at the end of the URL
+        script(type="text/javascript").
+            if (window.location.href.indexOf('#_=_') > 0) {
+                window.location = window.location.href.replace(/#.*/, '');
+            }
+
+        
+    body(data-ng-cloak flow-prevent-drop flow-drag-enter="dropClass='drag-over'" flow-drag-leave="dropClass=''" style)
+                                    
+        div(ui-view)
+
+        // vendor js
+        //- vendor:js
+        //- built js files will go here...
+        //- endinject
+        
+        script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js')
+
+        // app js
+        //- inject:js
+        //- built js files will go here...
+        //- endinject 
+
+
+
+        script(type="text/ng-template", id="loginModal")
+            include partials/loginModal
+
+        script(type="text/ng-template", id="confirmModal")
+            include partials/confirmModal
+
+        script(type="text/ng-template", id="signupModal")
+            include partials/signupModal
+
+        script(type="text/ng-template", id="filterModal")
+            include partials/filterModal
+
+        script(type="text/ng-template", id="questionsModal")
+            include partials/questionsModal
+
+        script(type="text/ng-template", id="initialModal")
+            include partials/initialModal
+
+        // Partial views... Load up front to make transitions smoother
+        script(type="text/ng-template", id="404")
+            include partials/404
+        script(type="text/ng-template", id="admin")
+            include partials/admin
+        script(type="text/ng-template", id="home")
+            include partials/home
+        script(type="text/ng-template", id="nav")
+            include partials/nav
+        script(type="text/ng-template", id="mobilenav")
+            include partials/mobilenav
+        script(type="text/ng-template", id="tos")
+            include partials/tos
+        script(type="text/ng-template", id="privacy")
+            include partials/privacy
+        script(type="text/ng-template", id="forgot")
+            include partials/forgot
+        script(type="text/ng-template", id="reset")
+            include partials/reset
+        script(type="text/ng-template", id="events")
+            include partials/events       
+        script(type="text/ng-template", id="about")
+            include partials/about/menu
+        script(type="text/ng-template", id="about/main")
+            include partials/about/main
+
+        script(type="text/ng-template", id="advice/menu")
+            include partials/advice/menu
+            
+        script(type="text/ng-template", id="advice/mobilemenu")
+            include partials/advice/mobilemenu
+        script(type="text/ng-template", id="advice/renters/menu")
+            include partials/advice/renters/menu
+        script(type="text/ng-template", id="advice/renters/article")
+            include partials/advice/renters/article
+        script(type="text/ng-template", id="advice/renters/mobilemenu")
+            include partials/advice/renters/mobilemenu
+        script(type="text/ng-template", id="advice/renters/mobilearticle")
+            include partials/advice/renters/mobilearticle
+
+        script(type="text/ng-template", id="advice/roommates/menu")
+            include partials/advice/roommates/menu
+        script(type="text/ng-template", id="advice/roommates/article")
+            include partials/advice/roommates/article
+        script(type="text/ng-template", id="advice/roommates/mobilemenu")
+            include partials/advice/roommates/mobilemenu
+        script(type="text/ng-template", id="advice/roommates/mobilearticle")
+            include partials/advice/roommates/mobilearticle
+
+        script(type="text/ng-template", id="advice/landlords/menu")
+            include partials/advice/landlords/menu
+        script(type="text/ng-template", id="advice/landlords/article")
+            include partials/advice/landlords/article
+        script(type="text/ng-template", id="advice/landlords/mobilemenu")
+            include partials/advice/landlords/mobilemenu
+        script(type="text/ng-template", id="advice/landlords/mobilearticle")
+            include partials/advice/landlords/mobilearticle
+
+        script(type="text/ng-template", id="login")
+            include partials/login
+        script(type="text/ng-template", id="private/layout")
+            include partials/private/layout
+        script(type="text/ng-template", id="private/home")
+            include partials/private/home
+        script(type="text/ng-template", id="private/nested")
+            include partials/private/nested
+        script(type="text/ng-template", id="private/nestedAdmin")
+            include partials/private/nestedAdmin
+        script(type="text/ng-template", id="signup")
+            include partials/signup
+        script(type="text/ng-template", id="addProperty/layout")
+            include partials/addProperty/layout
+        script(type="text/ng-template", id="addProperty/home")
+            include partials/addProperty/home
+        script(type="text/ng-template", id="part2/layout")
+            include partials/part2/layout
+        script(type="text/ng-template", id="part2/home")
+            include partials/part2/home
+        script(type="text/ng-template", id="part3/layout")
+            include partials/part3/layout
+        script(type="text/ng-template", id="part3/home")
+            include partials/part3/home
+
+        script(type="text/ng-template", id="editProperty/layout")
+            include partials/editProperty/layout
+        script(type="text/ng-template", id="editProperty/home")
+            include partials/editProperty/home
+        script(type="text/ng-template", id="edit_part2/layout")
+            include partials/edit_part2/layout
+        script(type="text/ng-template", id="edit_part2/home")
+            include partials/edit_part2/home
+        script(type="text/ng-template", id="edit_part3/layout")
+            include partials/edit_part3/layout
+        script(type="text/ng-template", id="edit_part3/home")
+            include partials/edit_part3/home
+
+        script(type="text/ng-template", id="shared_part1/layout")
+            include partials/shared_part1/layout
+        script(type="text/ng-template", id="shared_part1/home")
+            include partials/shared_part1/home
+        script(type="text/ng-template", id="shared_part2/layout")
+            include partials/shared_part2/layout
+        script(type="text/ng-template", id="shared_part2/home")
+            include partials/shared_part2/home
+        script(type="text/ng-template", id="shared_part3/layout")
+            include partials/shared_part3/layout
+        script(type="text/ng-template", id="shared_part3/home")
+            include partials/shared_part3/home
+
+
+        script(type="text/ng-template", id="edit_shared_part1/layout")
+            include partials/edit_shared_part1/layout
+        script(type="text/ng-template", id="edit_shared_part1/home")
+            include partials/edit_shared_part1/home
+        script(type="text/ng-template", id="edit_shared_part2/layout")
+            include partials/edit_shared_part2/layout
+        script(type="text/ng-template", id="edit_shared_part2/home")
+            include partials/edit_shared_part2/home
+        script(type="text/ng-template", id="edit_shared_part3/layout")
+            include partials/edit_shared_part3/layout
+        script(type="text/ng-template", id="edit_shared_part3/home")
+            include partials/edit_shared_part3/home
+
+
+        script(type="text/ng-template", id="roommateProfile_part1/layout")
+            include partials/roommateProfile_part1/layout
+        script(type="text/ng-template", id="roommateProfile_part1/home")
+            include partials/roommateProfile_part1/home
+        script(type="text/ng-template", id="roommateProfile_part2/layout")
+            include partials/roommateProfile_part2/layout
+        script(type="text/ng-template", id="roommateProfile_part2/home")
+            include partials/roommateProfile_part2/home
+
+        script(type="text/ng-template", id="sharedSearch_part1/layout")
+            include partials/sharedSearch_part1/layout
+        script(type="text/ng-template", id="sharedSearch_part1/home")
+            include partials/sharedSearch_part1/home
+        script(type="text/ng-template", id="sharedSearch_part2/layout")
+            include partials/sharedSearch_part2/layout
+        script(type="text/ng-template", id="sharedSearch_part2/home")
+            include partials/sharedSearch_part2/home
+        
+        script(type="text/ng-template", id="search/layout")
+            include partials/search/layout
+        script(type="text/ng-template", id="search/home")
+            include partials/search/home
+
+        script(type="text/ng-template", id="search/mobilelayout")
+            include partials/search/mobilelayout
+        script(type="text/ng-template", id="search/mobilehome")
+            include partials/search/mobilehome
+
+        script(type="text/ng-template", id="favorites/layout")
+            include partials/favorites/layout
+        script(type="text/ng-template", id="favorites/home")
+            include partials/favorites/home
+
+        script(type="text/ng-template", id="favorites/mobilelayout")
+            include partials/favorites/mobilelayout
+        script(type="text/ng-template", id="favorites/mobilehome")
+            include partials/favorites/mobilehome
+            
+        script(type="text/ng-template", id="favorite_property/layout")
+            include partials/favorite_property/layout
+        script(type="text/ng-template", id="favorite_property/home")
+            include partials/favorite_property/home
+
+        script(type="text/ng-template", id="listings/layout")
+            include partials/listings/layout
+        script(type="text/ng-template", id="listings/home")
+            include partials/listings/home
+
+        script(type="text/ng-template", id="listings/mobilelayout")
+            include partials/listings/mobilelayout
+        script(type="text/ng-template", id="listings/mobilehome")
+            include partials/listings/mobilehome
+
+        script(type="text/ng-template", id="my_profile/layout")
+            include partials/my_profile/layout
+        script(type="text/ng-template", id="my_profile/home")
+            include partials/my_profile/home
+
+        script(type="text/ng-template", id="property/layout")
+            include partials/property/layout
+        script(type="text/ng-template", id="property/home")
+            include partials/property/home
+
+        script(type="text/ng-template", id="property/mobilelayout")
+            include partials/property/mobilelayout
+        script(type="text/ng-template", id="property/mobilehome")
+            include partials/property/mobilehome
+
+        script(type="text/ng-template", id="property_listing/layout")
+            include partials/property_listing/layout
+        script(type="text/ng-template", id="property_listing/home")
+            include partials/property_listing/home
+
+        script(type="text/ng-template", id="property_listing/mobilelayout")
+            include partials/property_listing/mobilelayout
+        script(type="text/ng-template", id="property_listing/mobilehome")
+            include partials/property_listing/mobilehome
+
+        script(type="text/ng-template", id="browse_apartmates/layout")
+            include partials/browse_apartmates/layout
+        script(type="text/ng-template", id="browse_apartmates/home")
+            include partials/browse_apartmates/home
+
+        script(type="text/ng-template", id="roommate/layout")
+            include partials/roommate/layout
+        script(type="text/ng-template", id="roommate/home")
+            include partials/roommate/home
+
+        script(type="text/ng-template", id="edit_roommate/layout")
+            include partials/edit_roommate/layout
+        script(type="text/ng-template", id="edit_roommate/home")
+            include partials/edit_roommate/home
+
+        script(type="text/ng-template", id="edit_roommate_part2/layout")
+            include partials/edit_roommate_part2/layout
+        script(type="text/ng-template", id="edit_roommate_part2/home")
+            include partials/edit_roommate_part2/home
+
+        script(type="text/ng-template", id="offering/layout")
+            include partials/offering/layout
+        script(type="text/ng-template", id="offering/home")
+            include partials/offering/home
+        script(type="text/ng-template", id="offering/nested")
+            include partials/offering/nested
+        script(type="text/ng-template", id="offering/nestedAdmin")
+            include partials/offering/nestedAdmin
+
+        script(type="text/ng-template", id="blog")
+            include partials/blog/bloglist
+        script(type="text/ng-template", id="blogpost")
+            include partials/blog/blogpost
+
+        script(type="text/ng-template", id="boostModal")
+            include partials/boostModal
+        script(type="text/ng-template", id="createdQuestionsModal")
+            include partials/createdQuestionsModal
+
+        script.
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-54502630-1', 'auto');
+            ga('send', 'pageview');
+            
+        script.
+              window.fbAsyncInit = function() {
+              FB.init({
+              appId      : '364164630431820',
+              xfbml      : true,
+              status     : true,
+              version    : 'v2.4'
+              });
+              };
+              (function(d, s, id){
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) {return;}
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+
+        script.
+              window.twttr = (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+              if (d.getElementById(id)) return t;
+              js = d.createElement(s);
+              js.id = id;
+              js.src = "https://platform.twitter.com/widgets.js";
+              fjs.parentNode.insertBefore(js, fjs);
+              t._e = [];
+              t.ready = function(f) {
+              t._e.push(f);
+              };
+              return t;
+              }(document, "script", "twitter-wjs"));
+
+        script(type='text/javascript').
+              $(document).ready(function () {
+              $(document).click(function (event) {
+              var clickover = $(event.target);
+              var _opened = $("#navigationbar").hasClass("in");
+              if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+              $("button.navbar-toggle").click();
+              }
+              });
+              });
+
+        script(type='text/javascript').
+              $(document).ready(function () {
+              window.prerenderReady = true;
+              });   

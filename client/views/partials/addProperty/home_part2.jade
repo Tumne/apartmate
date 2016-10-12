@@ -1,0 +1,251 @@
+.spacer30
+.spacer30
+.spacer30
+h1 Add Property view
+.spacer30
+.row
+  .col-md-10.col-lg-offset-1
+    form.form-horizontal(ng-submit='addWholePropertyListingPart2()', name='listingForm', role='form')
+      .form-group
+        label.control-label.col-sm-3(for='propertyType') I'm advertising a(n)
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled' tooltip="Apartment in a house refers to a self-contained rental unit within a detatched house. \n\nLow-rise refers to a building less than 5 storys tall. \n\nHigh-rise refers to a building 5 storeys or greater. \n\nTownhouse refers to individual houses placed side by side, where one or two walls are shared between neighbouring homes. \n\nHouse refers to a single detatched house. \n\nLoft refers to an open space converted to residential use; the bedroom is raised from the living area."  tooltip-trigger="focus" tooltip-placement="right")
+              | {{ property.propertyTypeSelected }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onPropertyTypeSelect('Low-rise apartment or condo')") Low-rise apartment or condo
+              li
+                a(href='#' ng-click="onPropertyTypeSelect('High-rise apartment or condo')") High-rise apartment or condo
+              li
+                a(href='#' ng-click="onPropertyTypeSelect('Apartment in a house')") Apartment in a house
+              li
+                a(href='#' ng-click="onPropertyTypeSelect('Townhouse')") Townhouse
+              li
+                a(href='#' ng-click="onPropertyTypeSelect('House')") House
+              li
+                a(href='#' ng-click="onPropertyTypeSelect('Loft')") Loft
+      .form-group
+        label.control-label.col-sm-3(for='basementApartment') Is it a basement apartment?
+        .col-sm-8
+          .btn-group(dropdown='', is-open='status.isopen')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ property.isBasementApartment }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onBasementApartmentSelect('No')") No
+              li
+                a(href='#' ng-click="onBasementApartmentSelect('Yes')") Yes
+      .form-group
+        label.control-label.col-sm-3(for='bedrooms') It has
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ property.selectedBedrooms }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onBedroomSelect('0 bedrooms (Studio)')") 0 bedrooms (Studio)
+              li
+                a(href='#' ng-click="onBedroomSelect('1 bedroom')") 1 bedroom
+              li
+                a(href='#' ng-click="onBedroomSelect('2 bedrooms')") 2 bedrooms
+              li
+                a(href='#' ng-click="onBedroomSelect('3 bedrooms')") 3 bedrooms
+              li
+                a(href='#' ng-click="onBedroomSelect('4 bedrooms')") 4 bedroom
+              li
+                a(href='#' ng-click="onBedroomSelect('5 bedrooms')") 5 bedrooms
+              li
+                a(href='#' ng-click="onBedroomSelect('6+ bedrooms')") 6+ bedrooms
+      .form-group
+        label.control-label.col-sm-3(for='bathrooms') and
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', 
+            dropdown-toggle='', 
+            data-toggle="dropdown" 
+            tooltip="Half bathrooms are those with sinks and toilets, but no bath or shower." tooltip-trigger="focus" tooltip-placement="right")
+              | {{ property.selectedBathrooms }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onBathroomSelect('1 bathroom')") 1 bathroom
+              li
+                a(href='#' ng-click="onBathroomSelect('1.5 bathrooms')") 1.5 bathrooms
+              li
+                a(href='#' ng-click="onBathroomSelect('2 bathrooms')") 2 bathrooms
+              li
+                a(href='#' ng-click="onBathroomSelect('2.5 bathrooms')") 2.5 bathrooms
+              li
+                a(href='#' ng-click="onBathroomSelect('3 bathrooms')") 3 bathrooms
+      .form-group
+        label.control-label.col-sm-3(for='streetAddress') The address is
+        .col-sm-8
+          input.form-control(type='text', data-ng-model='property.streetAddress', placeholder='Street address', name='streetAddress', required='required' tooltip="This information will be used to map your property. It will not be displayed to users." tooltip-trigger="focus" tooltip-placement="right" )
+      .form-group
+        label.control-label.col-sm-3(for='availablityDate') Available
+        .col-sm-8
+          p.input-group
+            input.form-control(type='text', datepicker-popup='{{format}}', ng-model='property.dt', is-open='opened', min-date='minDate', max-date='"2015-06-22"', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', ng-required='true', close-text='Close' )
+            span.input-group-btn
+              button.btn.btn-default(type='button', ng-click='open($event)')
+                i.glyphicon.glyphicon-calendar
+      .form-group
+        label.control-label.col-sm-3(for='leaseTerm') Lease term
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', 
+            dropdown-toggle='', 
+            data-toggle="dropdown" 
+            tooltip="Long-term indicates 1 year or longer. Short-term indicates up to a year. Sublets are temporary arrangements in which the subletter's name is not on the contract." tooltip-trigger="focus" tooltip-placement="right")
+              | {{ property.selectedLeaseTerm }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onLeaseTermSelect('Long term lease')") Long term lease
+              li
+                a(href='#' ng-click="onLeaseTermSelect('Short term lease')") Short term lease
+              li
+                a(href='#' ng-click="onLeaseTermSelect('Sublet')") Sublet 
+      .form-group
+        label.control-label.col-sm-3(for='rentAmount') The rent is
+        .col-sm-8
+          input.form-control(type='text', data-ng-model='property.rentAmount', placeholder='1000', name='rentAmount', required='required')
+      .form-group
+        label.control-label.col-sm-3(for='utiltiesIncluded') Utilites included in rent 
+        .col-sm-8
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.utilities.electricity', name='electricityIncluded')
+            label.control-label-group.col-sm-8(for='electricyIncluded') Electricity
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.utilities.water', name='waterIncluded')
+            label.control-label-group.col-sm-8(for='waterIncluded') Water
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.utilities.heating', name='heatingIncluded')
+            label.control-label-group.col-sm-8(for='heatingIncluded') Heating
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.utilities.cable', name='cableIncluded')
+            label.control-label-group.col-sm-8(for='cableIncluded') Cable
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.utilities.internet', name='internetIncluded')
+            label.control-label-group.col-sm-8(for='internetIncluded') Internet
+      .form-group
+        label.control-label.col-sm-3(for='pets') Are pets welcome?
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', 
+            dropdown-toggle='', 
+            data-toggle="dropdown")
+              | {{ property.selectedPets }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onPetsSelect('No')") No
+              li
+                a(href='#' ng-click="onPetsSelect('Yes')") Yes
+              li
+                a(href='#' ng-click="onPetsSelect('Cats only')") Cats only
+              li
+                a(href='#' ng-click="onPetsSelect('Dogs only')") Dogs only
+      .form-group
+        label.control-label.col-sm-3(for='utiltiesIncluded') Features
+        .col-sm-3
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.streetParking', name='feature_streetParking')
+            label.checkbox.col-sm-8(for='feature_streetParking') Street parking
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.offStreetParking', name='feature_offStreetParking')
+            label.checkbox.col-sm-8(for='feature_offStreetParking') Off-street parking
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.laundryInBuilding', name='feature_laundryInBuilding')
+            label.checkbox.col-sm-8(for='feature_laundryInBuilding') Laundry in building
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.laundryInUnit', name='feature_laundryInUnit')
+            label.checkbox.col-sm-8(for='feature_laundryInUnit') Laundry in Unit
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.ac', name='feature_ac')
+            label.checkbox.col-sm-8(for='feature_ac') Air conditioning
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.bikeStorage', name='feature_bikeStorage')
+            label.checkbox.col-sm-8(for='feature_bikeStorage') Bike storage
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.balcony', name='feature_balcony')
+            label.checkbox.col-sm-8(for='feature_balcony') Balcony/Patio
+        .col-sm-3
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.furnished', name='feature_furnished')
+            label.checkbox.col-sm-8(for='feature_furnished') Furnished
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.bigWindows', name='feature_bigWindows')
+            label.checkbox.col-sm-8(for='feature_bigWindows') Big windows
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.bigClosets', name='feature_bigClosets')
+            label.checkbox.col-sm-8(for='feature_bigClosets') Big closets
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.counterSpace', name='feature_counterSpace')
+            label.checkbox.col-sm-8(for='feature_counterSpace') Lots of counter space
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.storageSpace', name='feature_storageSpace')
+            label.checkbox.col-sm-8(for='feature_storageSpace') Storage space
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.dishwasher', name='feature_dishwasher')
+            label.checkbox.col-sm-8(for='feature_dishwasher') Dishwasher
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.yard', name='feature_yard')
+            label.checkbox.col-sm-8(for='feature_yard') Yard or garden
+        .col-sm-3
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.gasStove', name='feature_gasStove')
+            label.checkbox.col-sm-8(for='feature_gasStove') Gas stove
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.concierge', name='feature_concierge')
+            label.checkbox.col-sm-8(for='feature_concierge') Concierge
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.gym', name='feature_gym')
+            label.checkbox.col-sm-8(for='feature_gym') On-site gym
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.elevator', name='feature_elevator')
+            label.checkbox.col-sm-8(for='feature_elevator') Elevator
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.zoning', name='feature_zoning')
+            label.checkbox.col-sm-8(for='feature_zoning') Work/live zoning
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.woodFloors', name='feature_woodFloors')
+            label.checkbox.col-sm-8(for='feature_ac') Wood floors
+          .row
+            .col-sm-1
+              input.form-control(type='checkbox', data-ng-model='property.features.disabledAccess', name='feature_disabledAccess')
+            label.checkbox.col-sm-8(for='feature_disabledAccess') Disabled access
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button.btn.btn-default(type='submit', data-ng-disabled='listingForm.$invalid') Post listing
+hr
+

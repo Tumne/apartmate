@@ -1,0 +1,17 @@
+.row.mobileBrowse
+  .col-sm-12
+    .masonry.js-masonry.pointer(data-masonry-options='{ "columnWidth": 300px, "itemSelector": ".item" }')
+      .item(ng-repeat='property in properties', ng-click="onViewPropertySelect(property)")
+        .imgContainer
+          img(ng-src='{{ property.src }}', width='300px', height='193px')
+        .propertyPriceBg
+        .propertyPrice
+          .sign $
+            h3 {{ property.price }} 
+          .heart 
+            img(src='{{ property.favoritedByThisUser == true && "/img/listing/heart_on.png" || heartIcon  }}', ng-mouseover='heartIcon="/img/listing/heart_on.png"', ng-mouseout='heartIcon="/img/listing/heart.png"', ng-click="toggleFavorite(property)" )
+        .propertyTitle {{ property.description | characters:36 :false}}
+        .propertyStat {{ property.bedroom }} - {{ property.bathroom }} - {{ property.daysAgo }} days ago 
+
+
+    

@@ -1,0 +1,32 @@
+.modal-header.questionsHeaderBg
+  h4.questionsHeader Answer 5 questions to calculate your best matches
+  h5 {{qIndex + 1}} of {{questions.length}}
+.modal-body.modal-questions
+  h3.text-align-left.question-modal {{questions[qIndex].question}}
+  form(name='questions-form', ng-submit="submitQuestion()")
+    div(ng-repeat="option in questions[qIndex].options")
+      label
+        input(type='radio', name='mode', ng-model='$parent.result.answer' ng-value='option._id')
+        | &nbsp;&nbsp;{{option.name}}
+      br
+    h5 Answers you'll accept from your roommate
+    div(ng-repeat="option in questions[qIndex].options")
+      label
+        input(type='checkbox', name='mode', ng-model="option.selected" ng-click="clickAcceptable(option._id, $event)")
+        | &nbsp;&nbsp;{{option.name}}
+      br
+    h5 Importance
+    .row.no-padding
+      .importance(ng-class="{active: result.importance == 0}" ng-click="clickImportance(0)")
+      .importance(ng-class="{active: result.importance == 1}" ng-click="clickImportance(1)")
+      .importance(ng-class="{active: result.importance == 2}" ng-click="clickImportance(2)")
+    .row.no-padding
+      .importance-text A little
+      .importance-text Somewhat
+      .importance-text Very
+    .row.buttons
+      button.btn.btn-headerPrimary(type='submit', ng-disabled="result.answer == null || result.acceptable.length == 0 || result.importance == null") Answer 
+      //- button.btn.btn-default(ng-disabled="true") Cancel 
+
+.modal-footer
+  

@@ -1,0 +1,30 @@
+.modal-header
+      h3.modal-title Create your free account
+.modal-body
+  .row
+    .col-sm-6.col-md-6.col-offset-1.leftSideWithLine
+      form.form-horizontal(ng-submit="signup()", name="loginForm", role="form")
+        .form-group
+          .col-sm-10.col-md-12
+              input.form-control.login(type="text", data-ng-model="emailAddress", placeholder="Email", name="emailAddress", required, autofocus)
+        .form-group
+          .col-sm-10.col-md-12
+              input.form-control.login(type="password", data-ng-model="password", placeholder="Password", name="password", required)
+        .form-group
+          .col-md-12
+              button.btn.btn-default.login-btn(type="submit", data-ng-disabled="loginForm.$invalid") Create account
+        .form-group
+          .col-md-4.forgot
+
+          .col-md-7.createAccount
+            p Already have an account? Login here
+    .col-sm-6.col-md-2.col-offset-3
+      form.form-fb
+        .form-group
+          .col-md-12.facebook
+              button.btn.btn-default.loginFB-btn(type="submit", data-ng-click="loginOauth('facebook')") 
+              br
+              p We'll never post without your permission
+
+.modal-footer
+  p By joining Apartmate, you agree to our Terms of Use and Privacy Policy.

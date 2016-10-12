@@ -1,0 +1,71 @@
+.navContainer
+  nav.navbar.navbar-filter
+    .container-fluid
+      .navbar-header
+          .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Entire'}" ng-click="onPropertyFilterSelect('Entire')")
+            .imgPiece.imageEntirePlace
+            p Entire place
+          .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Shared'}" ng-click="onPropertyFilterSelect('Shared')")
+            .imgPiece.imageSharedPlace 
+            p Shared place
+          .button_class.activeButton(ng-click="onPropertyFilterSelect('Apartmate')")
+            .imgPiece.imageRoommate 
+            p Roommate
+        //- a.navbar-propertyFilter(href='#') 
+        //-   img(ng-src="{{ filterParameters.propertyType == 'Entire' && '/img/button_entirePlace_on.png' || img_entirePlace }}", ng-mouseover="img_entirePlace='/img/button_entirePlace_on.png'", ng-mouseout="img_entirePlace='/img/button_entirePlace.png'", ng-click="onPropertyFilterSelect('Entire')")
+        //- a.navbar-propertyFilter(href='#') 
+        //-   img(ng-src="{{ filterParameters.propertyType == 'Shared' && '/img/button_sharedPlace_on.png' || img_sharedPlace }}", ng-mouseover="img_sharedPlace='/img/button_sharedPlace_on.png'", ng-mouseout="img_sharedPlace='/img/button_sharedPlace.png'", ng-click="onPropertyFilterSelect('Shared')")
+        //- a.navbar-propertyFilter(href='#') 
+        //-   img(ng-src="{{ filterParameters.propertyType == 'Apartmate' && '/img/button_apartmate_on.png' || img_apartmate }}", ng-mouseover="img_apartmate='/img/button_apartmate_on.png'", ng-mouseout="img_apartmate='/img/button_apartmate_on.png'", ng-click="onPropertyFilterSelect('Apartmate')")
+      .navbar-header.navbar-left
+        form(role='form', class='form-filter')
+          .form-group
+            label(for='priceRange') Budget
+            slider(floor='100', ceiling='3000', class='priceSlider', ng-model-low='priceRange.minPrice', ng-model-high='priceRange.maxPrice', ng-click="onPriceFilterSelect()" translate='currencyFormatting')
+            .sliderCaptions
+              .min $ {{ priceRange.minPrice }}
+              .max $ {{ priceRange.maxPrice }}
+
+          .form-group
+            label(for='age') Age Group
+            .btn-group-vertical(dropdown='')
+              button.btn.btn-primary.dropdown-toggle.age(type='button', dropdown-toggle='', ng-disabled='disabled')
+                | {{ filterParameters.age }}
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li
+                  a(href='#' ng-click="onAgeGroupSelect('18-22')") 18-22
+                li
+                  a(href='#' ng-click="onAgeGroupSelect('23-28')") 23-28
+                li
+                  a(href='#' ng-click="onAgeGroupSelect('28-33')") 28-33
+                li
+                  a(href='#' ng-click="onAgeGroupSelect('33-38')") 33-38
+                li
+                  a(href='#' ng-click="onAgeGroupSelect('38+')") 38+
+          .form-group
+            label(for='gender') Gender
+            .btn-group-vertical(dropdown='')
+              button.btn.btn-primary.dropdown-toggle.gender(type='button', dropdown-toggle='', ng-disabled='disabled')
+                | {{ filterParameters.gender }}
+                span.caret
+              ul.dropdown-menu-filter(role='menu')
+                li
+                  a(href='#' ng-click="onGenderFilterSelect('All')") All
+                li
+                  a(href='#' ng-click="onGenderFilterSelect('Male')") Male
+                li
+                  a(href='#' ng-click="onGenderFilterSelect('Female')") Female
+
+.container.browse
+    .row.row-centered
+        .col-md-offset-1.col-md-10.col-centered
+          .roommates.masonry.js-masonry(reload-on-show data-masonry-options='{ "columnWidth": 316px, "itemSelector": ".item" }')
+            .roommateItem.roommate(ng-repeat='roommate in apartmates')
+              .imgContainer
+                img(ng-src='{{ roommate.src }}', width='316px', height='200px', ng-click="onViewApartmateSelect(roommate)")
+              .propertyTitle {{ roommate.firstName | characters:36 :false}}
+              .propertyStat(ng-show="roommate.daysAgo != 1 && roommate.daysAgo !=0" ) {{ roommate.gender }} - {{ roommate.ageGroup }} years old - {{ roommate.daysAgo }} days ago
+              .propertyStat(ng-show="roommate.daysAgo == 1" ) {{ roommate.gender }} - {{ roommate.ageGroup }} years old - Yesterday
+              .propertyStat(ng-show="roommate.daysAgo == 0" ) {{ roommate.gender }} - {{ roommate.ageGroup }} years old - Today
+    

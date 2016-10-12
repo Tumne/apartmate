@@ -1,0 +1,96 @@
+#desktopNav
+  nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+          .navbar-header
+            a.navbar-brand(href='/') 
+              .background-logo
+            .search-frame(ng-show="false")
+              .fa.fa-search
+              input.form-control.search-control(type='text', placeholder='', name='search', required='required')
+          ul.nav.navbar-nav.navbar-right.navbar-custom(ng-class="{'navbar-adjust': user.emailAddress != ''}")
+              li(data-access-level='accessLevels.user', active-nav)
+                  a(ui-sref='public.nav.search') Search
+              li(data-access-level='accessLevels.user', active-nav)
+                  a(ui-sref='public.nav.events') Events
+              //- li(data-access-level='accessLevels.user', active-nav)
+              //-     a(href='/about') About
+              li(data-access-level='accessLevels.user', activ-nav)
+                  a(ui-sref='public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})' ng-click="resetRoommatesIndex()") Advice
+              li(data-access-level='accessLevels.user', activ-nav)
+                  a(ui-sref='public.nav.about.blog') Blog
+              .btn-group.header-btn-group(dropdown='', is-open='', data-access-level='accessLevels.user')
+                  button.btn.btn-headerPrimary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+                    | Post for FREE
+                    span.caret
+                  ul.dropdown-menu.userDropdownMenu2(role='menu')
+                      li
+                          a(href='' ng-click="addSharedPlace()") Room Offered
+                      li
+                          a(href='' ng-click="addEntirePlace()") Apartment Offered
+                      li.divider(role='separator' ng-show="!user.apartmateListingCreated")
+                      li(ng-show="!user.apartmateListingCreated")
+                          a(href='' ng-click="addRoommateProfile()") Room Wanted
+
+              li(data-access-level='accessLevels.anon', active-nav)
+                  a(ui-sref='public.nav.search') Search
+
+              li(data-access-level='accessLevels.anon', active-nav)
+                  a(ui-sref='public.nav.events') Events
+
+              //- li(data-access-level='accessLevels.anon', active-nav)
+              //-     a(href='/about') About
+              li(data-access-level='accessLevels.anon', active-nav)
+                  a(ui-sref='public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})' ng-click="resetRoommatesIndex()") Advice
+              li(data-access-level='accessLevels.anon', activ-nav)
+                  a(ui-sref='public.nav.about.blog') Blog
+              li(data-access-level='accessLevels.anon', active-nav)
+                  a.pointer(ng-click='openLogin("lg", "created")' ) Log in
+
+              li(data-access-level='accessLevels.anon', active-nav)
+                  a.pointer(ng-click='openLogin("lg", "new")') Sign up
+
+              .btn-group.header-btn-group(dropdown='', is-open='', data-access-level='accessLevels.anon')
+      
+      
+                  button.btn.btn-headerPrimary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+                    .large-screen Post for FREE
+                      span.caret
+                    .mobile-screen Post
+                      span.caret
+                  ul.dropdown-menu.userDropdownMenu2(role='menu')
+                      li
+                          a(href='' ng-click="addSharedPlace()") Room Offered
+                      li
+                          a(href='' ng-click="addEntirePlace()") Apartment Offered
+                      li.divider(role='separator' ng-show="!user.apartmateListingCreated")
+                      li(ng-show="!user.apartmateListingCreated")
+                          a(href='' ng-click="addRoommateProfile()") Room Wanted
+              
+              div#userInfo.pull-userMenu(data-access-level='accessLevels.user')
+                  span.dropdown(dropdown on-toggle="toggled(open)")
+                      a.dropdown-toggle.userMenu(dropdown-toggle)
+                          img.profileCircle(ng-src='{{user.src}}', width='44px', height='44px', src='/img/profile/placeholder.png') 
+                          p {{ user.username }} 
+                              i.fa.fa-chevron-down.padding-left
+
+                      ul.dropdown-menu.userDropdownMenu
+                          //- li(ng-show="apartmateListingCreated")
+                          li(ng-show="user.profileCreated")
+                              //- a(href="", data-ng-click="myRoommateProfile()")
+                              a(href="/my_profile")
+                                  | My Profile
+                          li
+                              a(href="/listings")
+                                  | My Listings
+                          li
+                              //- a(href="", data-ng-click="viewFavourites()")
+                              a(href="/favorites")
+                                  | Favourites
+                          li
+                              a.pointer(ng-click="createQuestion()")
+                                  | Create Questions
+                          li
+                              a(href="", data-ng-click="logout()")
+                                  | Log out
+
+  div(ui-view)

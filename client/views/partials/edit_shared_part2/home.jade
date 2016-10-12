@@ -1,0 +1,96 @@
+.spacer30
+.spacer30
+.row.subtitle
+    .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+          .backButton 
+            a(href='/listings') 
+                i.fa.fa-angle-left 
+                span Back to my listings
+          //- TODO: Hack
+          //- .backButton(ng-click="onBackButtonSelect()")
+            i.fa.fa-angle-left 
+            span Back to preview
+.spacer30
+.spacer30
+.spacer30
+.row.hidden-sm.hidden-xs
+  .col-md-offset-2.col-md-1
+    .circle
+      .h1.formHeader 1
+  .col-sm-2
+    .horizontalLine
+  .col-sm-1
+    .circle
+      .h1.formHeader.grey 2
+  .col-sm-2
+    .horizontalLine
+  .col-sm-1
+    .greyCircle
+      .h1.formHeader.grey 3
+
+.spacer30
+.row
+  .col-sm-12.col-md-11.npColSm
+    h1.formHeader.formHeaderColor Photos and description 
+.spacer30.hidden-sm.hidden-xs
+.row
+  .col-sm-12.col-md-10.col-lg-offset-1.npColSm.mobileAddEdit
+    alert(ng-repeat="alert in alerts", type="{{alert.type}}", close="closeAlert($index)") 
+    | {{alert.msg}}
+    div.gallery-box.ng-scope(ng-repeat='file in existingImages')
+      div.thumbnail
+        img(ng-src='{{ file }}')
+      div.btn-group
+        a.btn.btn-xs.btn-danger(ng-click='removeExistingPropertyPictures(file)')
+          | Remove
+.row
+  .col-sm-12.col-md-10.col-lg-offset-1.npColSm
+    .row(data-flow-init='{target: "/properties/api/upload", testChunks:false, propertyId: $root.property._id }', data-flow-files-submitted='$flow.upload()', data-flow-file-success='$file.msg = $message')
+      .col-md-12
+        .row
+          .col-sm-6.last
+            .progress(ng-show='$flow.isUploading()')
+              .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 45%')
+                span.sr-only Uploading..
+        .row
+          .col-sm-12.col-md-8.col-md-offset-2
+            div.gallery-box.ng-scope(ng-repeat='file in $flow.files')
+              div.thumbnail(ng-show='$flow.files.length')
+                img(flow-img='file')
+              div.btn-group
+                a.btn.btn-xs.btn-danger(ng-click='deletePropertyPictures(file)')
+                  | Remove
+        .spacer30.hidden-sm.hidden-xs
+        .row.row-centered
+          .col-sm-12.col-md-8.col-md-offset-3
+            .panel.panel-success(data-flow-drop='', data-flow-drop-enabled="!$flow.isUploading()", data-flow-drag-enter='class="panel panel-primary"', data-flow-drag-leave='class="panel panel-success"', ng-class='class')
+              .panel-body.hidden-sm.hidden-xs(ng-class="{'panel-body-disabled': $flow.isUploading() == true}")
+                .h3.hidden-sm.hidden-xs Drag images here {{ }}
+                p.hidden-sm.hidden-xs OR
+                .row
+                  .col-sm-12
+                    span.btn.btn-default.upload(data-flow-btn='', data-ng-disabled="$flow.isUploading()")
+                      | Upload Photos
+        .row
+          .col-sm-12.hidden-md.hidden-lg
+            span.btn.btn-default.upload(data-flow-btn='')
+              | Upload Photos
+      hr
+      .row
+        .col-md-12.npColSm
+          form.form-horizontal(ng-submit='updateSharedPropertyPart2ById()', name='descriptionForm', role='form')
+            .form-group
+              label.control-label.col-sm-3(for='title') Title
+                span.manditory *            
+              .col-sm-8.npColSm
+                input.form-control.longMobileForm-control.margin-left(type='text', data-ng-model='property.title', placeholder='Enter posting title', name='title', required='required', maxlength='70')
+            .form-group
+              label.control-label.col-sm-3(for='description') Description
+                span.manditory *            
+              .col-sm-8.npColSm
+                textarea.form-control.longMobileForm-control(type='textarea', data-ng-model='property.description', placeholder='What makes this place wonderful?', name='description', required='required')
+            .form-group
+              .col-sm-offset-3.col-sm-5
+                button.btn.btn-form.longMobileForm-submit(type='submit', data-ng-disabled='descriptionForm.$invalid || ($flow.files.length == 0 && existingImages.length == 0) || $flow.isUploading()') Next
+hr

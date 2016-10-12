@@ -1,0 +1,125 @@
+holder(ng-switch='account')
+  alert(ng-repeat="alert in alerts", type="{{ alert.type }}", close="closeAlert($index)") 
+    .alerts(ng-show="alert.msg && !customAlert")
+      | {{ alert.msg }}
+    .alerts(ng-show="alerts.length > 0 && customAlert")
+      | Sorry, we don't recognize that email address. Please try again or
+      a(ui-sref="." ng-click="openSignUp()") &nbsp; create an account
+  .forgotPasswordHolder(ng-switch-when="forgot")
+    .modal-header
+          .multiply(ng-click="cancel()")
+          h3.modal-title Forgot Password
+        .modal-body
+          .row  
+            .resetPasswordForm
+              form.form-horizontal(ng-submit="resetMyPassword()", name="forgotPasswordForm", role="form")
+                .form-group
+                  .col-sm-10.col-md-12
+                      input.form-control.login.center-control(type="text", data-ng-model="$parent.emailAddress", placeholder="Email", name="emailAddress", required, autofocus)
+                .form-group
+                  .col-md-12
+                      button.btn.btn-default.login-btn.center-control(type="submit", data-ng-disabled="forgotPasswordForm.$invalid") Reset password
+          .modal-footer
+            p
+
+  .loginHolder(ng-switch-when="created")
+    .modal-header
+          .multiply(ng-click="cancel()")
+          h3.modal-title Login
+        .modal-body
+          .row  
+            .col-sm-12.col-md-6.col-offset-1.leftSideWithLine
+              form.form-horizontal(ng-submit="login()", name="loginForm", role="form")
+                .form-group
+                  .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                      input.form-control.login(type="text", data-ng-model="$parent.emailAddress", placeholder="Email", name="emailAddress", required, autofocus)
+                .form-group
+                  .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                      input.form-control.login(type="password", data-ng-model="$parent.password", placeholder="Password", name="password", required)
+                .form-group
+                  .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                      button.btn.btn-default.login-btn(type="submit", data-ng-disabled="loginForm.$invalid") Log in
+                .form-group
+                  .col-xs-8.col-sm-4.col-sm-offset-2.col-md-5.col-md-offset-0.forgot
+                    p
+                      a(ui-sref="." ng-click="forgotPassword()")  Forgot password? 
+                  .col-xs-4.col-sm-4.col-md-7.createAccount
+                    p 
+                      a(ui-sref="." ng-click="createAccount()") Sign Up
+            .col-sm-8.col-sm-offset-2.col-md-2.col-offset-3.col-md-offset-0.rightSideWithLine
+              form.form-fb
+                .form-group
+                  .col-md-12.facebook.npColSm
+                      button.btn.btn-default.loginFB-btn(type="submit", data-ng-click="loginOauth('facebook')")
+                      br
+                      p We'll never post without your permission
+        .modal-footer
+          p 
+            | By joining Apartmate, you agree to our  
+            a(href='/tos', target='_blank') Terms of Use
+            a(href='')  and 
+            a(href='/privacy', target='_blank') Privacy Policy.
+  .signupHolder(ng-switch-when="new")
+      .modal-header
+        .multiply(ng-click="cancel()")
+        h3.modal-title Create your free account
+        //- h4 Let us match you when you post a listing or profile
+        h4.modal-subtitle  Find your perfect roommate match
+
+      .modal-body.modal-format
+        .row
+          .col-sm-12.col-md-6.col-offset-1.leftSideWithLine.leftSide-format
+            form.form-horizontal(ng-submit="signup()", name="signupForm", role="form")
+              .form-group
+                .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                    input.form-control.login(type="text", data-ng-model="$parent.emailAddress", placeholder="Email", name="emailAddress", required, autofocus)
+              .form-group
+                .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                    input.form-control.login(type="password", data-ng-model="$parent.password", placeholder="Password", name="password", required)
+              .form-group
+                .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                  label.input-font-style.pointer
+                    input(type='checkbox', name='mode', ng-model="emailRecieve" ng-click="clickEmailRecieve()")
+                    | &nbsp;&nbsp;I'd like to receive discounts and updates
+              .form-group
+                .col-sm-8.col-sm-offset-2.col-md-12.col-md-offset-0
+                    button.btn.btn-default.login-btn(type="submit", data-ng-disabled="signupForm.$invalid") Create account
+              .form-group
+                .col-xs-0.col-md-4.forgot
+
+                .col-xs-12.col-sm-6.col-sm-offset-3.col-md-7.col-md-offset-0.createAccount.createAccountJustify
+                  p.loginLink 
+                    a(ui-sref="." ng-click="existingAccount()") Already have an account?  
+              .alert.alert-danger(ng-show="signupForm.$invalid && signupForm.$dirty && (signupForm.password.minlength > 0)")
+                strong Please correct the following errors:
+                ul
+                  li(ng-show="signupForm.emailAddress.$error.required") Please fill in your email. 
+                  li(ng-show="signupForm.emailAddress.$error.minlength") You do need a valid email address. We promise we will not spam. 
+                  li(ng-show="signupForm.emailAddress.$error.maxlength") Email has to be at most 60 characters long
+                  li(ng-show="signupForm.password.$error.required") Please create a password
+                  li(ng-show="signupForm.password.$error.minlength") Password must be at least 5 characters long
+                  li(ng-show="signupForm.password.$error.maxlength") Password must be at most 60 characters long
+          .col-sm-8.col-sm-offset-2.col-md-2.col-md-offset-0.rightSideWithLine
+            form.form-fb
+              .form-group
+                .col-sm-12.facebook.npColSm
+                    button.btn.btn-default.loginFB-btn(type="submit", data-ng-click="loginOauth('facebook')") 
+                    br
+                    p We'll never post without your permission
+      .modal-footer
+        p 
+          | By joining Apartmate, you agree to our  
+          a(href='/tos', target='_blank') Terms of Use
+          a(href='')  and 
+          a(href='/privacy', target='_blank') Privacy Policy.
+  .verifiedHolder(ng-switch-when="verified")
+      .modal-header
+          .multiply(ng-click="cancel()")
+          h3.modal-title Please check your email
+          h4 To finish activating your account, click on the link in the email we just sent to {{verifyEmail}}
+      .modal-body
+        .row
+          .col-xs.12
+            .envelopeCheckmark
+      .modal-footer
+          //- h4 Didn’t receive our email?

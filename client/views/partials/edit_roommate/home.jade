@@ -1,0 +1,89 @@
+.spacer30
+.spacer30
+.row.subtitle
+  .col-xs-12.col-sm-12.col-md-12
+    .breadCrumbTrail
+      .backButton 
+        i.fa.fa-angle-left 
+        a(href='/my_profile') 
+          span Back to My Roommate Profile 
+      //- .backButton.edit
+      //-   a(href='/edit_roommate_part2') 
+      //-     span Next Page
+      //-       i.fa.fa-angle-right.padding-left   
+.spacer30
+.spacer30
+.spacer30
+.row.hidden-sm.hidden-xs
+  .col-md-offset-4.col-md-1
+    .circle
+      .h1.formHeader 1
+  .col-md-2
+    .horizontalLine
+  .col-md-1
+    .greyCircle
+      .h1.formHeader.grey 2
+
+.spacer30
+.row
+  //- .col-sm-12.col-md-11.npColSm
+  h1.formHeader.formHeaderColor Update Roommate Profile
+.spacer30
+.row
+  .col-sm-10.col-sm-offset-1.npColSm
+    form.form-horizontal(ng-submit='updateApartmateListingPart1()', name='listingForm', role='form')
+      .form-group
+        label.control-label.col-sm-3(for='firstName') First name
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', data-ng-model='apartmate.firstName', placeholder='', name='firstName', required='required')
+      .form-group
+        label.control-label.col-sm-3(for='gender') Gender
+        .col-sm-8.npColSm
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ apartmate.gender }}
+              span.caret
+            ul.dropdown-menu.npColSm(role='menu')
+              li
+                a(ui-sref='.' ng-click="onGenderSelect('Male')") Male
+              li
+                a(ui-sref='.' ng-click="onGenderSelect('Female')") Female
+      .form-group
+        label.control-label.col-sm-3(for='ageGroup') Age
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', ng-pattern="onlyNumbers" data-ng-model='apartmate.selectedAgeGroup', maxlength="2" placeholder='', name='ageGroup' required='required')
+      .form-group
+        label.control-label.col-sm-3(for='availablityDate') Date Available
+          span.manditory *
+        .col-sm-8.npColSm
+          .input-group
+            input.form-control.longMobileForm-control(type='text', datepicker-popup='{{format}}', placeholder="Select...", ng-model='apartmate.availablityDate', is-open='opened', min-date='minDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', close-text='Close', ng-click='open($event)', required='required')
+      .form-group
+        label.control-label.col-sm-3(for='maxRent') Maximum Rent per month
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', ng-pattern="onlyNumbers" data-ng-model='apartmate.maxRent', placeholder='', maxlength="4", name='maxRent' required='required')  
+      .form-group
+        label.control-label.col-sm-3(for='lifestyle') Occupation
+          span.manditory *
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', data-ng-model='apartmate.selectedLifestyle', placeholder='', name='lifestyle', required='required')
+      .form-group
+        label.control-label.col-sm-3(for='landlordEmail') Email
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='email', data-ng-model='apartmate.emailAddress', placeholder='', name='emailAddress', editable=false, ng-disabled='true')
+      //- .form-group
+        label.control-label.col-sm-3(for='landlordPhone') Phone
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', ng-pattern="onlyNumbers" data-ng-model='apartmate.phoneNumber', placeholder='', name='phone')
+      //- .form-group
+        label.control-label.col-sm-3(for='linkedInVerification') LinkedIn
+        .col-sm-8.npColSm(ng-show="!apartmate.linkedInVerified")
+          a(href='#' ng-click="verifyLinkedIn()") Connect to verify
+        .col-sm-8.npColSm(ng-show="apartmate.linkedInVerified")
+          img(ng-src="/img/profile/verified.png")
+      .form-group
+        .col-sm-offset-3.col-sm-7
+          p
+          button.btn.btn-form(type='submit', data-ng-disabled='listingForm.$invalid') Next
+hr
+

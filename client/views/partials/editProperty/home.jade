@@ -1,0 +1,330 @@
+.spacer30
+.spacer30
+.row.subtitle
+    .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+            .backButton(ng-click="onBackButtonSelect()")
+              i.fa.fa-angle-left 
+              span Back to preview                
+.spacer30
+.spacer30
+.spacer30
+.row.hidden-sm.hidden-xs
+  .col-md-offset-2.col-md-1
+    .circle
+      .h1.formHeader 1
+  .col-md-2
+    .horizontalLine
+  .col-md-1
+    .greyCircle
+      .h1.formHeader.grey 2
+  .col-md-2
+    .horizontalLine
+  .col-md-1
+    .greyCircle
+      .h1.formHeader.grey 3
+
+.spacer30
+.row
+  .col-sm-12.col-md-11.npColSm
+    h1.formHeader.formHeaderColor List an Apartment
+.spacer30
+.row
+  .col-sm-11.col-md-10.col-sm-offset-1.npColSm.mobileAddEdit
+    form.form-horizontal(ng-submit='updateWholePropertyListingPart1()', name='listingForm', role='form')
+      .form-group
+        label.control-label.col-sm-3(for='streetAddress') Street address
+          span.manditory *
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', data-ng-model='property.streetAddress', placeholder='e.g. 127 E. Street', name='streetAddress', required='required')
+      .form-group
+        label.control-label.col-sm-3(for='unitNumber') Unit number (optional)
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', data-ng-model='property.unitNumber', placeholder='e.g. #1007', name='unitNumber')
+      .form-group
+        label.control-label.col-sm-3(for='postalCode') Postal code
+          span.manditory *
+        .col-sm-8.npColSm
+          .row
+            .col-sm-12.npCol
+              input.form-control.longMobileForm-control(type='text', data-ng-model='property.postalCode', placeholder='e.g. A5B 6C7', name='postalCode', required='required')
+          .row
+            .col-sm-12.npCol
+              p All address information will be kept confidential.
+      .form-group
+        label.control-label.col-sm-3(for='rentAmount') Rent per month
+          span.manditory *
+        .col-sm-8.npColSm
+          input.form-control.longMobileForm-control(type='text', data-ng-model='property.rentAmount', placeholder='e.g. 900', ng-pattern="onlyNumbers" name='rentAmount', required='required')
+      .form-group
+        label.control-label.col-sm-3(for='availablityDate') Date Available
+          span.manditory *
+        .col-sm-8.npColSm
+          .input-group
+            input.form-control.longMobileForm-control(type='text', datepicker-popup='{{format}}', ng-model='property.dt', is-open='opened', min-date='minDate', max-date='"2015-06-22"', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', close-text='Close', ng-click='open($event)')
+      .form-group
+        label.control-label.col-sm-3(for='leaseTerm') Lease term
+          span.manditory *
+        .col-sm-8.npColSm
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ property.selectedLeaseTerm }}
+              span.caret
+            ul.dropdown-menu.npColSm(role='menu')
+              li
+                a(ui-sref='.' ng-click="onLeaseTermSelect('One year')") One year
+              li
+                a(ui-sref='.' ng-click="onLeaseTermSelect('Monthly')") Monthly
+              li
+                a(ui-sref='.' ng-click="onLeaseTermSelect('Sublet')") Sublet 
+      
+
+      .form-group
+        label.control-label.col-sm-3(for='basementApartment') Basement apartment
+          span.manditory *
+        .col-sm-8.npColSm
+          .btn-group(dropdown='', is-open='status.isopen')
+            button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ property.isBasementApartment }}
+              span.caret
+            ul.dropdown-menu.npColSm(role='menu')
+              li
+                a(ui-sref='.' ng-click="onBasementApartmentSelect('No')") No
+              li
+                a(ui-sref='.' ng-click="onBasementApartmentSelect('Yes')") Yes
+      .form-group
+        label.control-label.col-sm-3(for='bedrooms') Bedrooms
+          span.manditory *
+        .col-sm-8.npColSm
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ property.selectedBedrooms }}
+              span.caret
+            ul.dropdown-menu.npColSm(role='menu')
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('Studio/Bachelor')") Studio/Bachelor
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('1 bedroom')") 1 bedroom
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('2 bedrooms')") 2 bedrooms
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('3 bedrooms')") 3 bedrooms
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('4 bedrooms')") 4 bedroom
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('5 bedrooms')") 5 bedrooms
+              li
+                a(ui-sref='.' ng-click="onBedroomSelect('6+ bedrooms')") 6+ bedrooms
+      .form-group
+        label.control-label.col-sm-3(for='bathrooms') Bathrooms
+          span.manditory *
+        .col-sm-8.npColSm.npColSm
+          .row
+            .col-sm-12.npCol
+              .btn-group(dropdown='')
+                button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', dropdown-toggle='', ng-disabled='disabled')
+                  | {{ property.selectedBathrooms }}
+                  span.caret
+                ul.dropdown-menu.npColSm(role='menu')
+                  li
+                    a(ui-sref='.' ng-click="onBathroomSelect('1 bathroom')") 1 bathroom
+                  li
+                    a(ui-sref='.' ng-click="onBathroomSelect('1.5 bathrooms')") 1.5 bathrooms
+                  li
+                    a(ui-sref='.' ng-click="onBathroomSelect('2 bathrooms')") 2 bathrooms
+                  li
+                    a(ui-sref='.' ng-click="onBathroomSelect('2.5 bathrooms')") 2.5 bathrooms
+                  li
+                    a(ui-sref='.' ng-click="onBathroomSelect('3+ bathrooms')") 3+ bathrooms
+          .row
+            .col-sm-12.npCol
+              p Half bathrooms contain only a toilet and sink. 
+      
+      .form-group
+        label.control-label.col-sm-3(for='utiltiesIncluded') Included utilites 
+        .col-sm-8.checkBoxesCol
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#electricyIncluded(type='checkbox', checked='', data-ng-model='property.utilities.electricity', name='electricityIncluded')
+                label(for='electricyIncluded')
+                  .control-label-group Electricity
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#waterIncluded(type='checkbox', checked='', data-ng-model='property.utilities.water', name='waterIncluded')
+                label(for='waterIncluded')
+                  .control-label-group Water
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#heatingIncluded(type='checkbox', checked='', data-ng-model='property.utilities.heating', name='heatingIncluded')
+                label(for='heatingIncluded')
+                  .control-label-group Heating
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#cableIncluded(type='checkbox', checked='', data-ng-model='property.utilities.cable', name='cableIncluded')
+                label(for='cableIncluded')
+                  .control-label-group Cable
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#internetIncluded(type='checkbox', checked='', data-ng-model='property.utilities.internet', name='internetIncluded')
+                label(for='internetIncluded')
+                  .control-label-group Internet
+      .form-group
+        label.control-label.col-sm-3(for='pets') Pet friendly
+        .col-sm-8.npColSm
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ property.selectedPets }}
+              span.caret
+            ul.dropdown-menu.npColSm(role='menu')
+              li
+                a(ui-sref='.' ng-click="onPetsSelect('Yes')") Yes
+              li
+                a(ui-sref='.' ng-click="onPetsSelect('No')") No
+              li
+                a(ui-sref='.' ng-click="onPetsSelect('Cats only')") Cats only
+              li
+                a(ui-sref='.' ng-click="onPetsSelect('Dogs only')") Dogs only
+      .form-group
+        label.control-label.col-sm-3(for='featuresIncluded') Features
+        .col-sm-3.checkBoxesCol
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_streetParking(type='checkbox', checked='', data-ng-model='property.features.streetParking', name='feature_streetParking')
+                label(for='feature_streetParking')
+                  .control-label-group Street parking
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_offStreetParking(type='checkbox', checked='', data-ng-model='property.features.offStreetParking', name='feature_offStreetParking')
+                label(for='feature_offStreetParking')
+                  .control-label-group Off-street parking
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_laundryInBuilding(type='checkbox', checked='', data-ng-model='property.features.laundryInBuilding', name='feature_laundryInBuilding')
+                label(for='feature_laundryInBuilding')
+                  .control-label-group Laundry in building
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_laundryInUnit(type='checkbox', checked='', data-ng-model='property.features.laundryInUnit', name='feature_laundryInUnit')
+                label(for='feature_laundryInUnit')
+                  .control-label-group Laundry in Unit
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_ac(type='checkbox', checked='', data-ng-model='property.features.airConditioning', name='feature_ac')
+                label(for='feature_ac')
+                  .control-label-group Air conditioning
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_bikeStorage(type='checkbox', checked='', data-ng-model='property.features.bikeStorage', name='feature_bikeStorage')
+                label(for='feature_bikeStorage')
+                  .control-label-group Bike storage
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_balcony(type='checkbox', checked='', data-ng-model='property.features.balcony', name='feature_balcony')
+                label(for='feature_balcony')
+                  .control-label-group Balcony/Patio
+        .col-sm-3.checkBoxesCol
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_furnished(type='checkbox', checked='', data-ng-model='property.features.furnished', name='feature_furnished')
+                label(for='feature_furnished')
+                  .control-label-group Furnished
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_bigWindows(type='checkbox', checked='', data-ng-model='property.features.bigWindows', name='feature_bigWindows')
+                label(for='feature_bigWindows')
+                  .control-label-group Big windows
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_bigClosets(type='checkbox', checked='', data-ng-model='property.features.bigClosets', name='feature_bigClosets')
+                label(for='feature_bigClosets')
+                  .control-label-group Big closets
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_counterSpace(type='checkbox', checked='', data-ng-model='property.features.counterSpace', name='feature_counterSpace')
+                label(for='feature_counterSpace')
+                  .control-label-group Lots of counter space
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_storageSpace(type='checkbox', checked='', data-ng-model='property.features.storageSpace', name='feature_storageSpace')
+                label(for='feature_storageSpace')
+                  .control-label-group Storage space
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_dishwasher(type='checkbox', checked='', data-ng-model='property.features.dishwasher', name='feature_dishwasher')
+                label(for='feature_dishwasher')
+                  .control-label-group Dishwasher
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_yard(type='checkbox', checked='', data-ng-model='property.features.yard', name='feature_yard')
+                label(for='feature_yard')
+                  .control-label-group Yard or garden
+        .col-sm-3.checkBoxesCol
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_gasStove(type='checkbox', checked='', data-ng-model='property.features.gasStove', name='feature_gasStove')
+                label(for='feature_gasStove')
+                  .control-label-group Gas stove
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_concierge(type='checkbox', checked='', data-ng-model='property.features.concierge', name='feature_concierge')
+                label(for='feature_concierge')
+                  .control-label-group Concierge
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_gym(type='checkbox', checked='', data-ng-model='property.features.gym', name='feature_gym')
+                label(for='feature_gym')
+                  .control-label-group On-site gym
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_elevator(type='checkbox', checked='', data-ng-model='property.features.elevator', name='feature_elevator')
+                label(for='feature_elevator')
+                  .control-label-group Elevator
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_zoning(type='checkbox', checked='', data-ng-model='property.features.zoning', name='feature_zoning')
+                label(for='feature_zoning')
+                  .control-label-group Work/live zoning
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_woodFloors(type='checkbox', checked='', data-ng-model='property.features.woodFloors', name='feature_woodFloors')
+                label(for='feature_woodFloors')
+                  .control-label-group Wood floors
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_disabledAccess(type='checkbox', checked='', data-ng-model='property.features.disabledAccess', name='feature_disabledAccess')
+                label(for='feature_disabledAccess')
+                  .control-label-group Disabled access
+      .form-group
+        .col-sm-offset-3.col-sm-7
+          p
+          //- button.btn.btn-form(type='submit', data-ng-disabled='listingForm.$invalid') Next
+          button.btn.btn-form(type='submit') Next
+
+hr
+

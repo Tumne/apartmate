@@ -1,0 +1,28 @@
+.spacer30
+.spacer30
+.spacer30
+.spacer30
+.row.advice
+  .col-xs-9.col-md-8.no-padding
+    div
+      ui-view(autoscroll='false')
+      //- h1 {{articlesRenters[indexRenters].title}}
+      //- div(ng-bind-html='renderHtml(articlesRenters[indexRenters].content)')
+
+  .col-xs-3.col-sm-3.col-md-3.right-column
+    //- ul
+    //-   li 
+    //-     a(ui-sref="public.nav.advice.renters.article1") What you need to apply for a rental apartment in Canada
+    //-   li 
+    //-     a(ui-sref="public.nav.advice.renters.article2") What is a landlord allowed to ask for
+    //-   li 
+    //-     a(ui-sref="public.nav.advice.renters.article3") Moving in together
+    //-   li 
+    //-     a(ui-sref="public.nav.advice.renters.article4") Renting with pets
+    //-   li
+    //-     a(ui-sref="public.nav.advice.renters.article5") Use our How to rent in Canada infographic
+
+    ul
+      li(ng-repeat="article in articlesRenters")
+        //- a(ui-sref="public.nav.advice.renters.article({slug:})") {{article.title}}
+        a(ui-sref="public.nav.advice.renters.article({slug: articlesRenters[$index].slug})" ng-click="changeIndex($index)" ng-bind-html='renderHtml(article.title)')

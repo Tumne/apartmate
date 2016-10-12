@@ -1,0 +1,21 @@
+.spacer30
+.spacer30
+.row.subtitle
+  .col-xs-12.col-sm-12.col-md-12.about-portrait
+    .breadCrumbTrail
+      .row
+        .col-xs-2.col-md-4
+          .backButton(ng-show="showBackButton") 
+            i.fa.fa-angle-left 
+            a(ui-sref='public.nav.about.blog' ng-click="showBackButton = false")
+              span Back
+        .col-xs-8.col-md-4.centerHeader
+          a(ui-sref="public.nav.about.blog" ng-click="showBackButton = false") Blog
+          a(ui-sref="public.nav.about.main" ng-click="showBackButton = false") About
+          //- a FAQ
+          //- a Contact
+          a(ui-sref='public.nav.about.tos' ng-click="showBackButton = false") Terms
+          a(ui-sref='public.nav.about.privacy' ng-click="showBackButton = false") Privacy
+      
+ui-view
+        

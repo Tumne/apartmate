@@ -1,0 +1,41 @@
+.skyline
+  .row
+    .col-md-8.col-md-offset-2
+      h1 There's no place like home
+      h3 We believe that happiness begins at home. Where you live and who you live with affects your health, your relationships and your work. Our mission is to make it easy and fun to find people and places you love coming home to and tenants you can trust. 
+.row.row-centered
+  .col-md-6.col-centered.about
+    h1 Founders
+.row.row-centered.bio
+  .col-md-7.col-centered
+    .row
+      .col-md-4
+        .circlePic.sarah 
+      .col-md-8
+        h3 Sarah Bermingham
+        h5 Sarah’s passion for Apartmate is driven by a belief that housing is one of the most important influences on health and wellbeing in every person’s life. Inspired by her struggle to find a roommate in Toronto after many years abroad, Apartmate began as a series of monthly roommate mixers to connect compatible strangers in real life. 
+.spacer30
+.spacer30
+.spacer30
+.footer.custom-footer      
+  .row.termsPrivacy.row-centered 
+    .col-xs-11.col-sm-11.col-md-11.col-centered 
+        //- img(ng-src='/img/logo_color_sm.png')
+        p 
+          a(ui-sref='public.nav.about.main') About
+          a(ui-sref='public.nav.about.blog') Blog
+          //- a(href='/faq') FAQ
+          //- a(href='/contact') Contact
+          a(ui-sref='public.nav.about.tos') Terms
+          a(ui-sref='public.nav.about.privacy') Privacy 
+        .socialIcons
+          .twitter(ng-click="socialClick('twitter')")
+          .fb(ng-click="socialClick('fb')")
+          a.mail(href="mailto:info@apartmate.ca" target="_blank")
+        br
+        .logo_color_sm
+        p 20 Camden Street, Toronto, M5V 1V1 
+        p info@apartmate.ca
+        br
+        
+        p &copy; 2015 Apartmate Inc.

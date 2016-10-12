@@ -1,0 +1,239 @@
+.profileContainer {
+  xbackground-color: #ff3333;
+  font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+.propertyProfilePicture{
+    width: 80px;
+    height: 80px;
+    padding:10px;
+    float: left;
+    cursor:pointer;
+  }
+
+  .propertyProfilePicture img {
+    border-radius: 40px;
+  }
+
+  .propertyProfileName {
+    margin-top: 10px;
+  }
+
+  .profileLeftCol {
+    xbackground-color: #777777;
+  }
+  
+  .profileResize{
+    padding:0 !important;
+  }
+
+  /* Profile Image & Stats */
+    .profilePictureBox {
+      background-color: #fdfdfd;
+      border: 1px solid #e8e8e8;
+      width: 100%;
+    }
+
+    .profileName {
+      padding-left: 22px;
+      padding-bottom: 10px;
+    }
+    .profileName h3 {
+      color: #232626;
+    }
+
+    .profileImage {
+      margin:0px;
+      padding:0px;
+      width: 242px;
+      max-height: 242px;
+      overflow: hidden;
+    }
+
+    .profileCircle{
+      -webkit-border-radius: 22px;
+      -moz-border-radius: 22px;
+      border-radius: 22px;
+    }
+
+    .npCol {
+      margin:0px;
+      padding:0px;
+    }
+    .profileStats {
+      padding:20px;
+    }
+
+    .profileStats p {
+      padding-top: 4px;
+      color: #919595;
+    }
+
+
+  /* Description */
+
+    .propertyDescHeader {
+      background-color: #fff;
+      min-height: 60px;
+      color: #47c2d6;
+      border: 1px solid #e8e8e8;
+      border-bottom: none;
+    }
+
+    .propertyDescHeader h3 {
+      color: #47c2d6;
+      font-size: 1.3em;
+      padding-left: 10px;
+    }
+
+    .propertyDescPanel {
+      background-color: #fdfdfd;
+      border: 1px solid #e8e8e8;
+      padding: 10px;
+    }
+
+    .propertyDescPanel p {
+      line-height: 1.8em;
+      font-weight: 400;
+      overflow-wrap:break-word;
+      font-size: 1em;
+    }
+
+  /* Contact */
+  
+  .propertyProfileFrame{
+    width: 180px;
+    height: 80px;
+    float: left;
+  }
+
+  .propertyPercentageBorder{
+    position:absolute;
+    background:white;
+    top: 215px;
+    right: 15px;
+    width:60px;
+    height:60px;
+    border: 2px solid #E8E8E8;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index:10;
+  }
+  .propertyPercentageBorder h4{
+    margin-top:17.5px;
+    text-align: center;
+  }
+
+  .propertyPercentageBorder h4 span{
+    color:#323434;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    /*font-weight: 500;*/
+    font-weight: 200;
+  }
+
+    .propertyContactHeader, .propertyListingHeader {
+      background-color: #fff;
+      min-height: 60px;
+      color: #47c2d6;
+      border: 1px solid #e8e8e8;
+      border-bottom: none;
+    }
+
+    .propertyContactHeader h3, .propertyListingHeader h3 {
+      color: #47c2d6;
+      font-size: 1.3em;
+      padding-left: 10px;
+    }
+
+    .propertyContactPanel {
+      background-color: #fdfdfd;
+      border: 1px solid #e8e8e8;
+      padding: 10px;
+      font-weight: 100;
+    }
+
+    .propertyContactPanel h4 {
+      color: #393d3d;
+      line-height: 0.2em;
+      font-size: 1.1em;
+      padding-top: 10px;
+    }
+
+    .propertyContactPanel p {
+      color: #747878;
+      font-size: 0.9em;
+    }
+
+    .propertyBorder{
+      padding:0;
+      border: 1px solid #dbe2e2;
+      cursor: pointer;
+    }
+
+    .propertyBorder h4, .propertyBorder p {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .propertyPadding{
+      padding-bottom: 10px;
+    }
+
+    .propertyBorderPadding{
+      padding-left: 5px;
+      padding-right: 5px;
+      
+    }
+
+    /* Verified Panel */
+
+    .verifiedHeader {
+      background-color: #fff;
+      min-height: 60px;
+      color: #47c2d6;
+      border: 1px solid #e8e8e8;
+      border-bottom: none;
+      width: 100%;
+    }
+
+    .verifiedHeader h3 {
+      color: #47c2d6;
+      font-size: 1.3em;
+      padding-left: 10px;
+    }
+
+    .verifiedPanel {
+      background-color: #fdfdfd;
+      border: 1px solid #e8e8e8;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .verifiedPanel h4 {
+      color: #393d3d;
+      line-height: 0.2em;
+      font-size: 1.1em;
+      padding-top: 10px;
+    }
+
+    .verifiedPanel p {
+      color: #747878;
+      font-size: 0.9em;
+    }
+
+    .verifiedNote {
+      padding-left: 10px;
+      color: #393d3d;
+    }
+
+    .unverifiedNote {
+      padding-left: 10px;
+      color: #393d3d;
+    }
+
+    .verifiedIcon {
+      padding-top:15px;
+    }

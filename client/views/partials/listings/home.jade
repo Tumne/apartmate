@@ -1,0 +1,36 @@
+.row.searchRow
+    .col-md-12.no-padding
+      .container.browseFav
+          .row
+              .col-md-6.fixed.leaflet-frame
+                leaflet.leaflet-height(defaults='defaults', center='toronto', tiles="tiles", markers="markers", width='100%')
+                .listingIcon(ng-style="{{ listingIconProperty }}")
+              .col-md-6.scrollit.no-padding-left
+
+                .col-sm-12.col-md-12.npCol.npColSm
+                  h1.pageHeader.formHeaderColor My Listings
+                alert(ng-repeat="alert in alerts", type="{{alert.type}}", close="closeAlert($index)") 
+                  | {{alert.msg}}
+                  //- .masonry.js-masonry.pointer(data-masonry-options='{ "columnWidth": 316px, "itemSelector": ".item" }')
+              
+                .col-sm-4.col-md-6.item(ng-repeat='property in myProperties', ng-mouseover="changeMarkerOn(property, $index)", ng-mouseout="changeMarkerOff(property, $index)")
+                    .propertyPublished {{property.property.published ? 'Published' : 'Not published' }}
+                    .hoverButtons
+                      button.btn.btn-default.btn-sm.quickEdit(ng-show="property.test" ng-click="onEditPropertySelect(property)")
+                        i.fa.fa-pencil
+                      button.btn.btn-danger.btn-sm.btn-deactivate.quickDeactivate(ng-show="property.test" ng-click="onDeactivatePropertySelect(property)")
+                        i.fa.fa-trash-o
+                    .imgFrame.pointer.no-margin(ng-click="onViewPropertySelect(property)")
+
+                      .imgContainer
+                        img(ng-src='{{ property.src }}', width='316px', height='200px', ng-click="onViewPropertySelect(property)")
+                      .propertyPriceBgEdit
+                      .propertyPrice
+                        .sign $
+                        h3 {{ property.price }} 
+                      .propertyTitle {{ property.title | characters:70 :false}}
+                      .propertyStat {{ property.bedrooms }} - {{property.bathrooms}}
+                        span(ng-show="property.property.published && property.daysAgo != 1 && property.daysAgo !=0") - {{ property.daysAgo}}
+                        span(ng-show="property.property.published && property.daysAgo == 1") - Yesterday
+                        span(ng-show="property.property.published && property.daysAgo == 0") - Today
+    

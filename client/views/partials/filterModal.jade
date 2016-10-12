@@ -1,0 +1,125 @@
+
+.modal-body
+  .row
+    .col-xs-12.col-sm-8.col-md-6.mobilePropertyFilters
+      .propertyNavBar
+        a.navbar-propertyFilter(ui-sref=".") 
+          img(ng-src="{{ filterParameters.propertyType == 'Entire' && '/img/button_entirePlace_on.png' || img_entirePlace }}", ng-mouseover="img_entirePlace='/img/button_entirePlace_on.png'", ng-mouseout="img_entirePlace='/img/button_entirePlace.png'", ng-click="onPropertyFilterSelect('Entire')")
+        a.navbar-propertyFilter(ui-sref=".") 
+          img(ng-src="{{ filterParameters.propertyType == 'Shared' && '/img/button_sharedPlace_on.png' || img_sharedPlace }}", ng-mouseover="img_sharedPlace='/img/button_sharedPlace_on.png'", ng-mouseout="img_sharedPlace='/img/button_sharedPlace.png'", ng-click="onPropertyFilterSelect('Shared')")
+        a.navbar-propertyFilter(ui-sref=".") 
+            img(ng-src="{{ img_apartmate }}", ng-class="{'activeButton': filterParameters.propertyType == 'Apartmate'}" ng-click="onPropertyFilterSelect('Apartmate')")
+  .row
+    .col-xs-12.col-sm-8.col-md-6
+      form(role='form', class='mobileForm-filter')
+        .form-group
+          label(for="neighbourhoods") Neighbourhood
+  .row
+    .col-xs-12.col-sm-8.col-md-6.mobileDropdown
+      .btn-group(dropdown='', is-open='')
+        button.btn.btn-primary.dropdown-toggle.mobile-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+          | {{ neighbourhoodGroup }}
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('1', 'Downtown')") Downtown
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('2', 'Midtown')") Midtown
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('3', 'North York')") North York 
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('4', 'West End')") West End
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('5', 'East End')") East End 
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('6', 'Etobicoke')") Etobicoke
+          li
+            a(ui-sref="." ng-click="onNeighbourhoodGroupSelect('7', 'Scarborough')") Scarborough 
+
+  .row
+    .col-xs-12.col-sm-8.col-md-6  
+      form(role='form', class='mobileForm-filter')
+        .form-group
+          label(for="bedrooms") Bedrooms  
+
+  .row
+    .col-xs-12.col-sm-8.col-md-6.mobileDropdown
+      .btn-group(dropdown='', is-open='')
+        button.btn.btn-primary.dropdown-toggle.mobile-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+          | {{ filterParameters.bedrooms }}
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('ALL')") ALL
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('Studio/Bachelor')") Studio/Bachelor
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('1')") 1
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('2')") 2
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('3')") 3
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('4')") 4
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('5')") 5
+          li
+            a(ui-sref="." ng-click="onBedroomFilterSelect('6')") 6
+
+
+  .row
+    .col-xs-12.col-sm-8.col-md-6  
+      form(role='form', class='mobileForm-filter')
+        .form-group
+          label(for="bathrooms") Bathrooms  
+
+  .row
+    .col-xs-12.col-sm-8.col-md-6.mobileDropdown
+      .btn-group(dropdown='', is-open='')
+        button.btn.btn-primary.dropdown-toggle.mobile-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+          | {{ filterParameters.bathrooms }}
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(ui-sref="." ng-click="onBathroomFilterSelect('ALL')") ALL
+          li
+            a(ui-sref="." ng-click="onBathroomFilterSelect('1')") 1
+          li
+            a(ui-sref="." ng-click="onBathroomFilterSelect('1.5')") 1.5
+          li
+            a(ui-sref="." ng-click="onBathroomFilterSelect('2')") 2
+          li
+            a(ui-sref="." ng-click="onBathroomFilterSelect('2.5')") 2.5
+          li
+            a(ui-sref="." ng-click="onBathroomFilterSelect('3')") 3
+
+  .row
+    .col-xs-6.col-sm-6.col-md-4
+      form(role='form', class='mobileForm-filter')
+        .form-group
+          label(for='minPriceRange') Min. Price
+
+    .col-xs-6.col-sm-6.col-md-4
+      form(role='form', class='mobileForm-filter')
+        .form-group
+          label(for='maxPriceRange') Max. Price
+  .row
+    .col-xs-6.col-sm-6.col-md-4.mobilePriceInputLeftCol
+      input.form-control.mobilePriceInput(type='text', data-ng-model='filterParameters.price.minPrice', name='minPriceRange', required='required')
+
+    .col-xs-6.col-sm-6.col-md-4.mobilePriceInputRightCol
+      input.form-control.mobilePriceInput(type='text', data-ng-model='filterParameters.price.maxPrice', name='minPriceRange', required='required')
+
+  .row
+    .col-xs-12.col-sm-8.col-md-6
+      form(role='form', class='mobileForm-filter')
+        .form-group
+          .col-xs-5.col-sm-4.col-md-3.mobileFilterButtonCol
+            button.btn.btn-default.applyFilter-btn(type="submit" ng-click='ok()') Apply filters
+          .col-xs-5.col-sm-4.col-md-3.mobileFilterButtonCol
+            button.btn.btn-default.cancelFilter-btn(type="cancel", ng-click='cancel()') Cancel
+
+.modal-footer
+  .row
+    .col-xs-6.col-sm-6.col-md-4
+      p 

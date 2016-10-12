@@ -1,0 +1,21 @@
+.spacer30
+.spacer30
+.spacer30
+.spacer30
+.row.advice
+  .col-xs-9.col-sm-9.col-md-8.no-padding
+    div
+      ui-view(autoscroll='false')
+      //- h1 {{articlesLandlords[indexLandlords].title}}
+      //- div(ng-bind-html='renderHtml(articlesLandlords[indexLandlords].content)')
+
+  .col-xs-3.col-sm-3.col-md-3.right-column
+    //- ul
+    //-   li
+    //-     a(ui-sref="public.nav.advice.landlords.article1") Types of lease agreements
+    //-   li
+    //-     a(ui-sref="public.nav.advice.landlords.article2") How to Write Great Rental Listings
+  
+    ul
+      li(ng-repeat="article in articlesLandlords")
+        a(ui-sref="public.nav.advice.landlords.article({slug: articlesLandlords[$index].slug})" ng-click="changeIndex($index)" ng-bind-html='renderHtml(article.title)')

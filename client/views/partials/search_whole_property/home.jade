@@ -1,0 +1,190 @@
+.spacer30
+.row
+  .col-sm-12
+    h1.formHeader.formHeaderColor Search for an entire property    
+.spacer30
+p
+form.form-horizontal(ng-submit='addWholePropertyListingPart1()', name='listingForm', role='form')
+  .form-group
+    label.control-label.col-sm-3(for='bedrooms') Bedrooms
+    .col-sm-8
+      .btn-group(dropdown='')
+        button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+          | {{ property.selectedBedrooms }}
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(href='#' ng-click="onBedroomSelect('0 bedrooms (Studio)')") 0 bedrooms (Studio)
+          li
+            a(href='#' ng-click="onBedroomSelect('1 bedroom')") 1 bedroom
+          li
+            a(href='#' ng-click="onBedroomSelect('2 bedrooms')") 2 bedrooms
+          li
+            a(href='#' ng-click="onBedroomSelect('3 bedrooms')") 3 bedrooms
+          li
+            a(href='#' ng-click="onBedroomSelect('4 bedrooms')") 4 bedroom
+          li
+            a(href='#' ng-click="onBedroomSelect('5 bedrooms')") 5 bedrooms
+          li
+            a(href='#' ng-click="onBedroomSelect('6+ bedrooms')") 6+ bedrooms
+  .form-group
+    label.control-label.col-sm-3(for='rentAmount') Rent
+    .col-sm-8
+      input.form-control(type='text', data-ng-model='property.rentAmount', placeholder='1000', name='rentAmount', required='required')
+  .form-group
+    label.control-label.col-sm-3(for='propertyType') Building types
+    .col-sm-8
+      .btn-group(dropdown='')
+        button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled' tooltip="Apartment in a house refers to a self-contained rental unit within a detatched house. \n\nLow-rise refers to a building less than 5 storys tall. \n\nHigh-rise refers to a building 5 storeys or greater. \n\nTownhouse refers to individual houses placed side by side, where one or two walls are shared between neighbouring homes. \n\nHouse refers to a single detatched house. \n\nLoft refers to an open space converted to residential use; the bedroom is raised from the living area."  tooltip-trigger="focus" tooltip-placement="right")
+          | {{ property.propertyTypeSelected }}
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(href='#' ng-click="onPropertyTypeSelect('Low-rise apartment or condo')") Low-rise apartment or condo
+          li
+            a(href='#' ng-click="onPropertyTypeSelect('High-rise apartment or condo')") High-rise apartment or condo
+          li
+            a(href='#' ng-click="onPropertyTypeSelect('Apartment in a house')") Apartment in a house
+          li
+            a(href='#' ng-click="onPropertyTypeSelect('Townhouse')") Townhouse
+          li
+            a(href='#' ng-click="onPropertyTypeSelect('House')") House
+          li
+            a(href='#' ng-click="onPropertyTypeSelect('Loft')") Loft
+  .form-group
+    label.control-label.col-sm-3(for='utiltiesIncluded') Features
+    .col-sm-3
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_streetParking(type='checkbox', checked='', data-ng-model='property.features.streetParking', name='feature_streetParking')
+            label(for='feature_streetParking')
+              .control-label-group Street parking
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_offStreetParking(type='checkbox', checked='', data-ng-model='property.features.offStreetParking', name='feature_offStreetParking')
+            label(for='feature_offStreetParking')
+              .control-label-group Off-street parking
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_laundryInBuilding(type='checkbox', checked='', data-ng-model='property.features.laundryInBuilding', name='feature_laundryInBuilding')
+            label(for='feature_laundryInBuilding')
+              .control-label-group Laundry in building
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_laundryInUnit(type='checkbox', checked='', data-ng-model='property.features.laundryInUnit', name='feature_laundryInUnit')
+            label(for='feature_laundryInUnit')
+              .control-label-group Laundry in Unit
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_ac(type='checkbox', checked='', data-ng-model='property.features.ac', name='feature_ac')
+            label(for='feature_ac')
+              .control-label-group Air conditioning
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_bikeStorage(type='checkbox', checked='', data-ng-model='property.features.bikeStorage', name='feature_bikeStorage')
+            label(for='feature_bikeStorage')
+              .control-label-group Bike storage
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_balcony(type='checkbox', checked='', data-ng-model='property.features.balcony', name='feature_balcony')
+            label(for='feature_balcony')
+              .control-label-group Balcony/Patio
+    .col-sm-3
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_furnished(type='checkbox', checked='', data-ng-model='property.features.furnished', name='feature_furnished')
+            label(for='feature_furnished')
+              .control-label-group Furnished
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_bigWindows(type='checkbox', checked='', data-ng-model='property.features.bigWindows', name='feature_bigWindows')
+            label(for='feature_bigWindows')
+              .control-label-group Big windows
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_bigClosets(type='checkbox', checked='', data-ng-model='property.features.bigClosets', name='feature_bigClosets')
+            label(for='feature_bigClosets')
+              .control-label-group Big closets
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_counterSpace(type='checkbox', checked='', data-ng-model='property.features.counterSpace', name='feature_counterSpace')
+            label(for='feature_counterSpace')
+              .control-label-group Lots of counter space
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_storageSpace(type='checkbox', checked='', data-ng-model='property.features.storageSpace', name='feature_storageSpace')
+            label(for='feature_storageSpace')
+              .control-label-group Storage space
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_dishwasher(type='checkbox', checked='', data-ng-model='property.features.dishwasher', name='feature_dishwasher')
+            label(for='feature_dishwasher')
+              .control-label-group Dishwasher
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_yard(type='checkbox', checked='', data-ng-model='property.features.yard', name='feature_yard')
+            label(for='feature_yard')
+              .control-label-group Yard or garden
+    .col-sm-3
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_gasStove(type='checkbox', checked='', data-ng-model='property.features.gasStove', name='feature_gasStove')
+            label(for='feature_gasStove')
+              .control-label-group Gas stove
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_concierge(type='checkbox', checked='', data-ng-model='property.features.concierge', name='feature_concierge')
+            label(for='feature_concierge')
+              .control-label-group Concierge
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_gym(type='checkbox', checked='', data-ng-model='property.features.gym', name='feature_gym')
+            label(for='feature_gym')
+              .control-label-group On-site gym
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_elevator(type='checkbox', checked='', data-ng-model='property.features.elevator', name='feature_elevator')
+            label(for='feature_elevator')
+              .control-label-group Elevator
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_zoning(type='checkbox', checked='', data-ng-model='property.features.zoning', name='feature_zoning')
+            label(for='feature_zoning')
+              .control-label-group Work/live zoning
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_woodFloors(type='checkbox', checked='', data-ng-model='property.features.woodFloors', name='feature_woodFloors')
+            label(for='feature_woodFloors')
+              .control-label-group Wood floors
+      .row
+        .col-sm-12
+          .checkbox.checkbox-primary
+            input#feature_disabledAccess(type='checkbox', checked='', data-ng-model='property.features.disabledAccess', name='feature_disabledAccess')
+            label(for='feature_disabledAccess')
+              .control-label-group Disabled access
+  .form-group
+    .col-sm-offset-3.col-sm-7
+      p
+      button.btn.btn-form(type='submit', data-ng-disabled='listingForm.$invalid') Post listing
+hr
+

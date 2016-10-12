@@ -1,0 +1,229 @@
+.row.subtitle.fixed-top
+    .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+          //- .backButton 
+              a(href='/listings') 
+                  i.fa.fa-angle-left 
+                  span Back to my listings
+
+.spacer30
+.spacer30
+.spacer30
+.spacer30
+
+ui-view
+.row.advice
+  .col-md-3.col-md-offset-2.left-column
+    ul 
+      li Roommate Guide
+      ul
+        li(ng-click="switchArticle('article1')" ng-class="{activeTitle: advicePanel == 'article1'}")  Conversations for Potential Roommates
+        li(ng-click="switchArticle('article2')" ng-class="{activeTitle: advicePanel == 'article2'}")  Types of lease agreements 
+        li(ng-click="switchArticle('article3')" ng-class="{activeTitle: advicePanel == 'article3'}")  Resolving Conflicts
+        li(ng-click="switchArticle('article4')" ng-class="{activeTitle: advicePanel == 'article4'}")  What you need to apply for a rental apartment in Canada
+        li(ng-click="switchArticle('article5')" ng-class="{activeTitle: advicePanel == 'article5'}")  Basement Apartments
+
+  .col-md-5.right-column
+    div.article1(ng-show="advicePanel == 'article1'")
+      h1 Conversations for Potential Roommates
+      br
+      p When it comes to finding someone to live with, you can never have too much information. Whether you met online or through friends, and even if you’ve known one another forever, it’s important to talk about your expectations.
+      p Be honest with yourself about who you are and what you want. Remember that you can’t be all things to all people. Everyone is a little bit nuts in their own special way. The key to finding the right roommate is to determine if your unique kinds of crazy are compatible. In our experience, opposites do not often attract.
+      p Below are key topics to work into a conversation with potential roommates. For a more direct approach, check out our Roommate Questionnaire.
+      br
+      h4 Relationship
+      p First, take time to decide what you want out of your relationship with your new roommate.  If you’re new to the city maybe you’d like to find a friend who will join you for dinner and introduce you to their social circle. Or maybe you’re already established and looking for someone to split the bills with while living parallel lives. Whatever you’re looking for, be upfront early in your search to make sure you’re on the same page.
+      br
+      h4 Lifestyle
+      p There’s more to having compatible lifestyles than working out whether you’re an early bird or a night owl. Although sleeping habits matter, so do work schedules, food preferences, allergies, smoking and drug use, pets, entertainment and hobbies. You don’t have to have the same tastes but you do need to know what you’re getting yourself into.
+      br
+      h4 Cleanliness
+      p Most people will say they’re ‘clean’, but few people mean exactly the same thing by it. Some think sweeping every single day is normal. Others are satisfied with a quick vacuum every couple of months. Some tolerate piles of dirty dishes in the kitchen while simultaneously maintaining a spotless bathroom. Before agreeing to anything, make sure you're speaking the same language on this one.
+      br
+      h4 Responsibility
+      p Protect yourself against unpleasant surprises by asking tough but tactful questions about finances. Watch their body language to get a sense of whether they might be uncomfortable talking about money or unsure about their financial future. You need to establish that they’re in a position to make a financial commitment and make good on your shared responsibilities.
+      br
+      h4 Guests
+      p This one is often overlooked at the interview stage but is a common cause of tension once you’re living together. Make sure to ask about their entertaining preferences, house guests, and significant others. If you like to bring the party home, make sure they do too. If either of you plan to have guests, discuss how long they're welcome to stay. Establish how many nights of the week it’s reasonable for significant others to sleep over. Even if neither of you are in a relationship at the moment, you might be in the future. You’ll thank yourself later.
+      br
+      h4 Conflict resolution
+      p It is natural and inevitable that you will face both interpersonal and practical challenges while living together. Whether it’s dealing with obnoxious house guests (see above), rodent infestations or just generally getting on each other’s nerves, someone’s approach to conflict resolution in the past is pretty predictive of how they will behave in future. Ask a few questions about past experiences rather than hypothetical future scenarios to get a sense of how they behave under pressure.
+      br
+      h4 References
+      p Once you've narrowed down your options to a few potential roommates, ask if you can check out their Facebook, Twitter or LinkedIn accounts to get a better idea of your compatibility. Approach this as a mutual reference check by suggesting that they do the same for you.  Not only will you get a better idea of who they hang out with and what they get up to, but you’ll also be able to cross-check information you've been given about their school or work life. Another good way to test a potential match is to invite them to hang out with you and your friends for an evening. Hopefully, they’ll return the favour and you’ll get to meet theirs. Their pals will be spending time in your space; make sure you like theirs and they like yours. 
+      br
+      h4 Attraction
+      p Last but not least, do you find yourself attracted this person in a way that might not be purely platonic? If so, you’re probably better to ask them out on a date than ask when you can sign the lease. 
+      br
+      p If you have any suggestions for this list, use the feedback form and let us know! We’d love to hear from you!
+      br
+      br
+      br
+      p.backToTop(ng-click="backToTop()")
+        i.fa.fa-chevron-up 
+        span Back to Top
+    div(ng-show="advicePanel == 'article2'")
+      h1 Types of lease agreements 
+      br
+      p 
+        | The 
+        a(href='http://www.ontario.ca/laws/statute/06r17#_ga=1.216480145.629655631.1434307597', target="_blank") Ontario Residential Tenancies Act 
+        | lays down the law for renting houses and apartments. However, the Act does not cover obligations between roommates, nor does it apply to situations where a tenant lives with the landlord (defined as sharing a kitchen and bathroom). 
+      p When it comes to living with roommates, your rights and responsibilities vary depending on how your legal relationship to the landlord is characterized. Agreements typically fall into one of three types: joint tenants, occupants, and tenants in common.
+      br
+      h5 1. Joint tenants: You all signed the same lease and are all listed as tenants. 
+      p Most leases contain a clause stating that tenants are ‘jointly and severally liable’ for any debts arising from the lease. In other words, the landlord has the right to enforce rental obligations against all (joint) or any one (several) of the tenants named in the lease.  If one tenant fails to pay rent, the others can’t excuse themselves by saying that they paid their portion. The landlord will hold the remaining tenant(s) responsible, regardless of whatever agreement they have between themselves.
+      p A grey area arises when a joint tenant decides to leave before the fixed lease term is up.  Technically, the joint tenants entered into the lease together and agreed to be bound to each other for this period of time. When a tenant leaves early are they liable to pay rent for the remainder of the lease? Is it their responsibility to find a replacement or is that the job of the remaining tenant? How choosey can the remaining tenant be about who moves in? These are all important points to clarify in your roommate agreement when you move in together. 
+      p The law does not expect joint tenants to be bound to each other forever. Once the fixed term of your lease expires and continues on a month to month basis, joint tenants can give notice to the landlord to terminate the tenancy. If the remaining tenants wish to remain in the property, it’s up to them to enter into a new contract with the landlord. If they don’t and a new roommate moves in who is not listed on the lease, see situation #2. 
+      br
+      h5 2. Occupant/roommate: Only one of you signed as the tenant with the landlord.  Everyone else is a roommate or listed as an occupant on the lease. 
+      p If you are the tenant named on the lease, you are entirely and solely responsible for meeting all obligations towards the landlord.  This includes rent, damages, and keeping the place clean. Regardless of what your roommates get up to, you cannot legally excuse yourself from it. Even with the most strictly worded roommate agreement the only person liable to the landlord is the named tenant. 
+      p On the flip side, just as the law does not impose any obligations on roommates not named on the lease, it also does not grant them any rights. If you’re a roommate who is not named on the lease you should be aware that the law does not actually recognize your right to live in the unit.  The named tenant can require you to move out at any time.  This is true regardless of whether you have a written agreement. 
+      br
+      h5 3. Tenants in common: You each signed a separate lease regarding a particular room in the house.  
+      p You are considered ‘tenants in common’ if you each have a separate tenancy agreement with the landlord. In this situation each roommate is only liable for their portion of the rent and not the global amount of rent that the landlord expects for the whole unit. Tenants in common are not legally responsible for each other’s behavior; if one of you moves out the others are not responsible for the shortfall. 
+      p 
+        | In the eyes of the law these are essentially informal rooming houses that are often unlicensed and sometimes just kind of happen without any clear direction or intention.  Sometimes a group of friends rent a house and the landlord deals with each person individually, receives rent from them individually, and assigns rooms individually.  As tenants move in and out, new leases are assigned with or without input from the other tenants. The advantage of this arrangement is that it offers some 
+        a(href='http://www.theglobeandmail.com/globe-investor/personal-finance/household-finances/can-signing-a-roommate-agreement-protect-your-finances-if-things-go-sour/article12278203/', target="_blank") financial protection
+        | . The disadvantage is that you might not have much say in who you live with. 
+      br
+      br
+      br
+      p.backToTop(ng-click="backToTop()")
+        i.fa.fa-chevron-up 
+        span Back to Top
+
+    div(ng-show="advicePanel == 'article3'")
+      h1 Resolving conflicts
+      br
+      p Living with others isn’t always easy. Even the smallest things can quickly add up. No matter how great your roommate, occasional conflicts are inevitable. Although some say you need to pick your battles, we say everyone loses when you approach conflict as a game to be won. You don’t have to choose between suffering in silence or speaking up and ruining the relationship. There is a third option; it is possible to speak up and build the relationship. 
+      p There are people who have spent their lives studying how to achieve this. And luckily for you, living with roommates will give you plenty of time to practice some of the tips outlined below. 
+      p Many of the points in this post were inspired by a book called ‘Crucial Conversations’ by Kerry Patterson and colleagues; it’s worth checking out if you want to learn more.
+      br
+      h4 1. Check yourself 
+      p Conflicts begin when you attribute a motive to someone’s behavior. In other words, you make up a story to explain why they’ve acted a certain way. Usually, these attributions fall into one of two categories: personal and situational. For example, when your roommate leaves their dishes in the sink, you may tell yourself it’s because they’re a) a lazy slob or b) under a tight deadline at work. 
+      p The assumptions you make about someone’s motivations colour your emotional response to their actions. You’re more likely to feel sympathetic if you perceive that their behavior has been caused by something that is beyond their control. If you perceive their actions to be intentional, you’ll probably feel angry. And when you get angry, you might want to get even. 
+      p Before you start taping passive-aggressive notes with bitter little smiley faces all over the house, consider that you might be committing what psychologists call an ‘attribution error’.  This means that people have a tendency to blame other people’s bad behavior on their character flaws, but attribute negative actions of their own to their situation. Understanding that you are each approaching the same problem with different perspectives is an important first step. 
+      br
+      h4 2. Determine your objectives and find a mutual purpose
+      p Before you start a conversation, ask yourself: What do you want for yourself? What do you want for your roommate? What do you want for the relationship? And what do you not want? Clarify these objectives using a contrasting statement. For example, ‘I want to talk about our guest policy but I don’t want to sound negative about you spending time with the person you love’. 
+      p Next, step outside the ‘what’ of the situation and ask yourself ‘why’. If your only reason for approaching your roommate is to make them see things your way, you’ll come across as critical and selfish. You need to find a way to establish a mutual purpose by identifying an objective that is more meaningful or rewarding than what divides you. For example, ‘I want this to be a home that we both feel comfortable hanging out in and inviting our friends back to’. 
+      br
+      h4 3. Start talking
+      p Once you’re ready to start a dialogue, begin by stating your objectives using your contrasting statement and introducing a mutual purpose. Your goal is to demonstrate that you respect them and have their best interests at heart. This will allow you to join forces to search for a solution that serves everyone.
+      p Pay close attention to how they react to your approach. In most people, negative reactions take the form of silence or anger. If they seem uncomfortable with the direction the conversation is taking, apologize and try again later. You both need to be on board for this to be productive. 
+      p If they express willingness to enter into this conversation, start with the facts. Describe what you have observed, removing all judgment. Then explain what have concluded from these facts. Talk tentatively and explain the story as a story; don’t disguise it as fact. 
+      p Encourage them to tell their story. The most straightforward way to do this is to simply ask your roommate to share their point of view. If this doesn’t work, you can use a technique called mirroring. As the name suggests, you can play the role of a mirror by describing what you see; this is most useful when your roommate says one thing but their body language suggests something else. 
+      br
+      h4 4. Convert ideas to action
+      p Remember that dialogue is not decision making. Once everyone understands each other, you need to decide what to do next. When one person is in a clear position of authority (e.g. a boss), the responsibility for this choice is obvious.  But in other cases (e.g. roommates), you need to jointly agree on a decision making process. 
+      p There are four common ways of making decisions: command, consult, vote, and consensus. Each requires increasing degrees of involvement. Command decisions work best when external factors mean that it’s not our job to decide what to do but how to do it (e.g. paying the rent on time). Consulting is a process where the decision makers invite others to influence them before making a choice; this can be a good way to gain ideas and support without making things too complicated. Voting is a good option when you are trying to choose between many good options.Consensus means that you keep talking until everyone honestly agrees to one decision; this should be used when the issues are complex or high-stakes and when everyone must support the final choice. 
+      p Once a decision has been made, turn it into an action by determining who does what by when. Assign a name to every responsibility, make deliverables crystal clear, and set a follow-up time. Write it down. And if anyone slips up, hold them accountable by entering (carefully, confidently and compassionately!) into another conversation. 
+      br
+      h4 5. The tough cases
+      p Sometimes, things just aren’t working out. No matter how many times you try to reach a mutual understanding, your roommate is uninterested or incapable of doing so. There are times when moving on is the best thing for everyone. You’re not a failure or a bad person for it. There are lots of great people and places to live and Apartmate is here to help you find them! 
+      br
+      br
+      br
+      p.backToTop(ng-click="backToTop()")
+        i.fa.fa-chevron-up 
+        span Back to Top
+
+    div(ng-show="advicePanel == 'article4'")
+      h1 What you need to apply for a rental apartment in Canada  
+      br
+      p Before you start searching, you need to get your paperwork together. Landlords and property managers want to verify that you are who you say you are, that you’ll take care of the place, and that you’ll pay your rent on time. As a recent arrival, you’ll face a few additional challenges to collect all this evidence.  
+      p Follow the steps below to get organized. Then make several copies of each of documents and put one copy of each document in an envelope with your name on it. Bring an envelope to each viewing. When you find an apartment you like, you'll be ready to apply right away. If you don't, you might miss out.
+      br
+      h5 1. Bank account
+      p Before beginning your apartment hunt you need to set up an account with a Canadian bank. All of the major banks have accounts specifically designed for people who are new to Canada and anyone can open an account provided they can provide two pieces of identification, such as a passport, employee card with a photograph, driver’s license, certificate of Canadian citizenship or naturalization, or permanent resident card. It’s also possible to present only one piece of identification if your identity can be confirmed by a client in good standing with the bank or by an individual of good standing in the community where the bank is located. You can open an account even if you don’t have a job or any money to deposit. 
+      br
+      h5 2. Deposit
+      p To rent an apartment in Toronto, you’ll need to provide first and last month’s rent. Most landlords will require a deposit in the form of a personal or certified cheque. 
+      p A cheque (or ‘check’ in American English) is a piece of paper that orders a bank to pay a specific amount of money from a person's account to the person in whose name the cheque has been issued. North America is one of the only regions in the world where paper cheques are still widely used. A certified cheque is similar to a personal cheque, except the bank has verified that there is enough money in the account to pay it. The bank then sets this money aside until the cheque is cashed or cancelled. Therefore, a certified cheque cannot "bounce" and its liquidity is similar to cash. 
+      br
+      h5 3. Credit check
+      p Most landlords require a credit report which contains your credit score. A credit score is a number that illustrates how consistently you’ve paid bills and debt in the past. Landlords use credit scores as indicators of financial health and to determine the risk you represent compared with other renters. 
+      p 
+        | Unfortunately, Canadian credit agencies (Equifax and TransUnion) only consider Canadian debts, such as credit cards, mortgages, phone bills, and car loans. To prove your credit-worthiness if you are new to the country, 
+        b 
+          i ask your bank at home for a solvency certificate. 
+        | This is an official letter that states that your assets (i.e. your bank balance) are greater than your liabilities (i.e. your debts). Each bank will require different documents and may charge a small fee, but this letter will be very valuable for your Canadian apartment hunt. 
+      br
+      h5 4. References
+      p When landlords ask for your references, they are asking for the names and contact details of past landlords.  They usually require about three references. Good landlords will call your references to verify the information you have given them. They will also have to verify that the references you have provided are valid. 
+      p Verifying the identity of foreign references is challenging and dealing with different time zones or language barriers may put you at an additional disadvantage. Simplify this process by providing them with Canadian references in addition to those from back home. Your employer, colleagues, professors, immigration lawyers, or even the bank manager who helped you open your account could all do this for you. It’s a good idea to begin building relationships with people who might be able to act as references as soon as you arrive in Canada. 
+      br
+      h5 5. Letter of employment / income 
+      p 
+        | In addition to a credit check and references from people who can vouch for your character, you will need a letter to prove that you’re employed or otherwise financially viable. An example employment letter template can be found 
+        a(href='http://apartments.about.com/od/apartmenthunting/a/sampleemploylet.htm', target="_blank")  here. 
+        | If you are a student you may also need to provide proof of funding. You can use the same letter provided to Canadian immigration services to secure your student visa.
+      br
+      br
+      br
+      p.backToTop(ng-click="backToTop()")
+        i.fa.fa-chevron-up 
+        span Back to Top
+
+    div(ng-show="advicePanel == 'article5'")
+      h1 Basement Apartments
+      br
+      p 
+        | Basement apartments are as Canadian as maple syrup and 
+        a(href='https://www.youtube.com/watch?v=eN2TL59FCQg', target="_blank")  Sarah Harmer songs
+        | . 
+      br
+      h5 Why do Canadian houses have basements?
+      p Soil contains water and Canada is a country of temperature extremes. In the winter the ground freezes and in the summer it thaws. The depth at which groundwater freezes is called the frost line.  
+      p If a building’s foundation moves up and down as the seasons change it will eventually crumble. To avoid movement, the foundation must be built below the frost line, which lies much deeper in colder climates than warmer climates. Basement walls are the foundation of a house. 
+      p Canadian basements are ‘finished’ to different degrees and used for many different things. They may serve as storage areas, kids' playrooms, or exercise rooms, for example. It’s also common for home owners to create basement apartments for extra income.
+      p If you’re from a sunny place, the thought of living underground might seem strange. But it’s not all doom and gloom. Basement apartments offer an affordable way to live in some of the city’s best neighbourhoods and may give you access to a garden. Especially if you want to live alone, they are a great option to avoid over stretching your budget. And some of them are really nice!
+      p Keep these things in mind when checking out basement apartments: 
+      br
+      h5 Heating
+      p Because warm air rises, basements are typically cooler than the rest of the house. Make sure to ask the landlord if you have control of the temperature and how it’s heated. The most common heating systems are warm-air, hot water, and electric. 
+      p Warm-air systems circulate hot air from the furnace throughout the house via ducts usually found in the basement ceiling. Look for air vents along the floor and in the ceiling; those that carry air all the way down to the floor are the warmest, while those that blow down from above are less warm. Hot water systems carry water from the boiler to radiators or baseboards around the house. Hot water is warm but slow to react and very drying. Both systems may be powered either by electricity, natural or propane gas, or oil. 
+      br
+      h5 Moisture &amp; mold
+      p Basement apartments are never as dry as those above ground. Concrete is porous and ground water has a way of seeping in. Plumbing leaks and poor ventilation can also cause problems. Look around to see if the current tenant is using a dehumidifier. Indoor humidity levels should ideally stay between 30 - 50%.
+      p Smell the apartment when you first walk in. If it smells musty, consider it a red flag. Mold is terrible for your health. Check to make sure there are exhaust fans in bathrooms and kitchens, and ensure the clothes dryer is exhausting moisture to the outside. Ceiling fans move air around the apartment, but they do not get rid of moisture.
+      br
+      h5 Flooring 
+      p Basement floors are made of concrete and concrete is cold (unless it’s heated - see above). Ideally, the floor of a finished basement is raised an inch or two above the concrete to provide a layer of insulation. Because most concrete floors slope to a drain, you might be able to spot a raised floor as it will be perfectly level and doesn’t feel as hard. It may be covered with laminate, carpet or tile. Laminate flooring that is separated from the concrete by a thin foam underlay, carpet that has been glued to concrete, or tiles that appear to have been laid directly over top of concrete are less ideal. Hardwood is an unusual choice for a basement and should be avoided as it is porous and collects moisture.
+      br 
+      h5 Upstairs neighbours
+      p 
+        | Some basements are sound proof as a bunker, others more like broom closets. It is always worth asking about &nbsp;
+        a(href='https://www.youtube.com/watch?v=4IRB0sxw-YU', target="_blank") who will be living above you
+        | . You will almost definitely hear them moving around. 
+      p 
+        | If your landlord lives upstairs, try to get a sense of how long they’ve been renting the place out and their experience with tenants. They may be &nbsp;
+        a(href='http://www.theglobeandmail.com/globe-investor/personal-finance/home-cents/thinking-of-renting-that-basement-suite-tips-for-first-time-landlords/article4374210/', target="_blank") new to this
+        | &nbsp; and unprepared for the work it takes to be a good landlord. It doesn’t have to be a deal-breaker, but it’s good to know what you’re getting yourself into. 
+      br 
+      h5 Security
+      p Basement doors and windows can be easy entry points for intruders. Solid hardwood doors with deadbolts are your best bet for secure doors. Bars made of iron or steel offer good protection for windows. They should be installed so they can be easily released from the inside in case of emergency. If there are no bars, ask what kind of glass the windows are made of. Ideally (but unlikely) they will be shatter-resistant and designed to hold together when broken. Small panes held in place by the trim are more easily popped out than big pieces that extend to the frame. Be mindful of windows concealed by bushes and doors that are poorly lit or located around the back of the house.
+      br 
+      h5 Emergency exits 
+      p Due to fire code regulations, basement apartments are required to have an emergency exit such as a second door or a window big enough to crawl through. In the unlikely event of an emergency these might come in handy. More importantly, their absence is a warning sign of the landlord’s legitimacy.    
+      br
+      br
+      br
+      p.backToTop(ng-click="backToTop()")
+        i.fa.fa-chevron-up 
+        span Back to Top
+    //- .bs-example
+    //-   #accordion.panel-group
+    //-     .panel.panel-default
+    //-       .panel-heading
+    //-         h4.panel-title
+    //-           a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne') Roommate Guide
+    //-       #collapseOne.panel-collapse.collapse.in
+    //-         .panel
+    //-           a(href='http://www.tutorialrepublic.com/html-tutorial/', target='_blank') Learn more.
+
+.spacer30
+.spacer30
+.spacer30
+      

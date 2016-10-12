@@ -1,0 +1,70 @@
+
+#events
+    #lightBlue.paddingTop60
+        .row 
+            .col-sm-offset-3.col-sm-6.col-md-offset-3.col-md-6.buttonContainer
+                .roommmateMessages
+                    h2 Roommate Mixers
+                    p Apartmate pub nights are for people who are looking for somewhere to live or someone to live with.
+                    p Meet lots of potential roommates in the time it would normally take to meet one in a relaxed, safe, social setting.
+                    span(ng-show="event.dateFuture")
+                      a.btn.btn-default.start-btn(ng-href='{{event.link}}', target='_blank') Tickets
+                      h3 {{event.date}}
+                      h3 {{event.time}}
+                      a(href='{{event.link}}', target='_blank') 
+                        h3 {{event.address}}
+                    span(ng-show="!event.dateFuture")
+                      h3 Next Roommate Mixer
+                      h3 To be announced soon!
+                    
+
+    #darkBlue
+        .row 
+            .col-sm-12.col-md-offset-3.col-md-6.buttonContainer
+                h2 How It Works
+        .row 
+            .col-xs-offset-2.col-xs-8.col-sm-offset-4.col-sm-4.col-md-offset-3.col-md-2.buttonContainer.howItWorksImg
+                    .stickerImage
+                    //- img(ng-src="/img/stickers.png")
+            .col-xs-12.col-sm-12.col-md-4
+                .howItWorksMessage
+                    p On arrival, those who are looking for a room receive a red sticker. Those who have a room to offer receive a blue sticker. 
+        .row 
+            .col-xs-offset-2.col-xs-8.col-sm-offset-4.col-sm-4.col-md-offset-3.col-md-2.buttonContainer.howItWorksImg
+                    .drinkImage
+                    //- img(ng-src="/img/drink.png")
+            .col-xs-12.col-sm-12.col-md-4
+                .howItWorksMessage
+                    p Then grab a drink, strike up a few conversations and see if there is someone you might like to live with.  
+        .row 
+            .col-sm-offset-3.col-sm-6.col-md-offset-3.col-md-6.buttonContainer
+              h3 Next Roommate Mixer
+              span(ng-show="event.dateFuture")
+                h4 {{event.date}}
+                a.btn.btn-default.start-btn(ng-href='{{event.link}}', target='_blank') Tickets
+              span(ng-show="!event.dateFuture")
+                h4 To be announced soon
+
+.footer.custom-footer
+  .row.termsPrivacy.row-centered 
+    .col-xs-11.col-sm-11.col-md-11.col-centered 
+      p 
+        a(ui-sref='public.nav.about.main') About
+        a(ui-sref='public.nav.about.blog') Blog
+        //- a(href='/faq') FAQ
+        //- a(href='/contact') Contact
+        a(ui-sref='public.nav.about.tos') Terms
+        a(ui-sref='public.nav.about.privacy') Privacy 
+      .socialIcons
+        .twitter(ng-click="socialClick('twitter')")
+        .fb(ng-click="socialClick('fb')")
+        a.mail(href="mailto:info@apartmate.ca" target="_blank")
+      br
+      .logo_color_sm
+      p 20 Camden Street, Toronto, M5V 1V1 
+      p info@apartmate.ca
+      br
+      
+      p &copy; 2015 Apartmate Inc.
+
+

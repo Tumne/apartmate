@@ -1,0 +1,37 @@
+[
+    {
+      "type": "object",
+      "required": [
+        "name",
+        "favorite"
+      ],
+      "helpvalue": "help value goes here",
+      "properties": {
+        "name": {
+          "title": "Full name",
+          "description": "Gimme yea name lad",
+          "type": "string",
+          "pattern": "^[^/]*$",
+          "minLength": 2,
+          "note": "Nothing here",
+          "validationMessage": "Real names promote trust within the comunity",
+          "feedback": "What does your mum call you?",
+          "helpvalue": "Help on this field"
+        },
+        "propertyType": {
+          "title": "I'm advertising a(n)",
+          "type": "string",
+          "enum": [
+            "Low-rise apartment or condo", 
+            "High-rise apartment or condo", 
+            "Apartment in a house",
+            "Townhouse",
+            "House",
+            "Loft",       
+            "NaN"
+          ],
+          "note": "Apartment in a house refers to a self-contained rental unit within a detatched house. \nLow-rise refers to a building less than 5 storys tall. \nHigh-rise refers to a building 5 storeys or greater. \nTownhouse refers to individual houses placed side by side, where one or two walls are shared between neighbouring homes. \nHouse refers to a single detatched house. \nLoft refers to an open space converted to residential use; the bedroom is raised from the living area."
+        }
+      }
+    }
+]

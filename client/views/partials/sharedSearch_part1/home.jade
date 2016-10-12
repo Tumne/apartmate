@@ -1,0 +1,266 @@
+.spacer30
+.spacer30
+.spacer30
+.row
+  .col-md-offset-4.col-sm-1
+    .circle
+      .h1.formHeader 1
+  .col-md-2
+    .horizontalLine
+  .col-md-1
+    .greyCircle
+      .h1.formHeader.grey 2
+
+.spacer30
+.row
+  .col-md-11
+    h1.formHeader.formHeaderColor I am looking for a shared property   
+.spacer30
+.row
+  .col-md-10.col-lg-offset-1  
+    form.form-horizontal(ng-submit='addSharedSearchProfilePart1()', name='listingForm', role='form')
+      .form-group
+        label.control-label.col-sm-3(for='numberOfSeekers') I am / we are
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ apartmate.selectedNumberOfSeekers }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onNumberOfSeekersSelect('1 person')") 1 person
+              li
+                a(href='#' ng-click="onNumberOfSeekersSelect('2 people')") 2 people
+              li
+                a(href='#' ng-click="onNumberOfSeekersSelect('3+ people')") 3+ people
+      .form-group
+        label.control-label.col-sm-3(for='groupType') We are
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+              | {{ apartmate.selectedGroupType }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onGroupTypeSelect('A couple')") A couple
+              li
+                a(href='#' ng-click="onGroupTypeSelect('Friends')") Friends
+      .form-group
+        label.control-label.col-sm-3(for='preferredBedrooms') Bedrooms
+        .col-sm-4
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#bedroom_one(type='checkbox', checked='', data-ng-model='apartmate.bedroomPreferences.one', name='bedroom_one')
+                label(for='bedroom_one')
+                  .control-label-group 1 bedroom
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#bedroom_two(type='checkbox', checked='', data-ng-model='apartmate.bedroomPreferences.two', name='bedroom_two')
+                label(for='bedroom_two')
+                  .control-label-group 2 bedrooms
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#bedroom_three(type='checkbox', checked='', data-ng-model='apartmate.bedroomPreferences.three', name='bedroom_three')
+                label(for='bedroom_three')
+                  .control-label-group 3 bedrooms
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#bedroom_four(type='checkbox', checked='', data-ng-model='apartmate.bedroomPreferences.four', name='bedroom_four')
+                label(for='bedroom_four')
+                  .control-label-group 4 bedrooms
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#bedroom_five(type='checkbox', checked='', data-ng-model='apartmate.bedroomPreferences.five', name='bedroom_five')
+                label(for='bedroom_five')
+                  .control-label-group 5 bedrooms
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#bedroom_six(type='checkbox', checked='', data-ng-model='apartmate.bedroomPreferences.six', name='bedroom_six')
+                label(for='bedroom_six')
+                  .control-label-group 6+ bedrooms
+      .form-group
+        label.control-label.col-sm-3(for='preferredBuildingType') Preferred building type
+        .col-sm-4
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#buildingType_lowRise(type='checkbox', checked='', data-ng-model='apartmate.buildingPreferences.lowRise', name='buildingType_lowRise')
+                label(for='buildingType_lowRise')
+                  .control-label-group Low-rise apartment or condo
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#buildingType_highRise(type='checkbox', checked='', data-ng-model='apartmate.buildingPreferences.highRise', name='buildingType_highRise')
+                label(for='buildingType_highRise')
+                  .control-label-group High-rise apartment or condo
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#buildingType_apartmentInHouse(type='checkbox', checked='', data-ng-model='apartmate.buildingPreferences.apartmentInHouse', name='buildingType_apartmentInHouse')
+                label(for='buildingType_apartmentInHouse')
+                  .control-label-group Apartment in a house
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#buildingType_townhouse(type='checkbox', checked='', data-ng-model='apartmate.buildingPreferences.townhouse', name='buildingType_townhouse')
+                label(for='buildingType_townhouse')
+                  .control-label-group Townhouse  
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#buildingType_house(type='checkbox', checked='', data-ng-model='apartmate.buildingPreferences.house', name='buildingType_house')
+                label(for='buildingType_house')
+                  .control-label-group House  
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#buildingType_loft(type='checkbox', checked='', data-ng-model='apartmate.buildingPreferences.loft', name='buildingType_loft')
+                label(for='buildingType_loft')
+                  .control-label-group Loft  
+      .form-group
+        label.control-label.col-sm-3(for='rentAmount') Rent
+        .col-sm-8
+          input.form-control(type='text', data-ng-model='apartmate.rentAmount', placeholder='1000', name='rentAmount', required='required' tooltip="Because the size and quality of rooms usually differs, you don't need to have exactly the same budget to make a good match. But it does indicate you're in a similar income range. We'll use this information as a rough guide in finding you a match."  tooltip-trigger="focus" tooltip-placement="right")
+      .form-group
+        label.control-label.col-sm-3(for='utiltiesIncluded') Features
+        .col-sm-3
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_streetParking(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.streetParking', name='feature_streetParking')
+                label(for='feature_streetParking')
+                  .control-label-group Street parking
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_offStreetParking(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.offStreetParking', name='feature_offStreetParking')
+                label(for='feature_offStreetParking')
+                  .control-label-group Off-street parking
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_laundryInBuilding(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.laundryInBuilding', name='feature_laundryInBuilding')
+                label(for='feature_laundryInBuilding')
+                  .control-label-group Laundry in building
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_laundryInUnit(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.laundryInUnit', name='feature_laundryInUnit')
+                label(for='feature_laundryInUnit')
+                  .control-label-group Laundry in Unit
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_ac(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.ac', name='feature_ac')
+                label(for='feature_ac')
+                  .control-label-group Air conditioning
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_bikeStorage(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.bikeStorage', name='feature_bikeStorage')
+                label(for='feature_bikeStorage')
+                  .control-label-group Bike storage
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_balcony(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.balcony', name='feature_balcony')
+                label(for='feature_balcony')
+                  .control-label-group Balcony/Patio
+        .col-sm-3
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_furnished(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.furnished', name='feature_furnished')
+                label(for='feature_furnished')
+                  .control-label-group Furnished
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_bigWindows(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.bigWindows', name='feature_bigWindows')
+                label(for='feature_bigWindows')
+                  .control-label-group Big windows
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_bigClosets(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.bigClosets', name='feature_bigClosets')
+                label(for='feature_bigClosets')
+                  .control-label-group Big closets
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_counterSpace(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.counterSpace', name='feature_counterSpace')
+                label(for='feature_counterSpace')
+                  .control-label-group Lots of counter space
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_storageSpace(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.storageSpace', name='feature_storageSpace')
+                label(for='feature_storageSpace')
+                  .control-label-group Storage space
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_dishwasher(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.dishwasher', name='feature_dishwasher')
+                label(for='feature_dishwasher')
+                  .control-label-group Dishwasher
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_yard(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.yard', name='feature_yard')
+                label(for='feature_yard')
+                  .control-label-group Yard or garden
+        .col-sm-3
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_gasStove(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.gasStove', name='feature_gasStove')
+                label(for='feature_gasStove')
+                  .control-label-group Gas stove
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_concierge(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.concierge', name='feature_concierge')
+                label(for='feature_concierge')
+                  .control-label-group Concierge
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_gym(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.gym', name='feature_gym')
+                label(for='feature_gym')
+                  .control-label-group On-site gym
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_elevator(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.elevator', name='feature_elevator')
+                label(for='feature_elevator')
+                  .control-label-group Elevator
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_zoning(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.zoning', name='feature_zoning')
+                label(for='feature_zoning')
+                  .control-label-group Work/live zoning
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_woodFloors(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.woodFloors', name='feature_woodFloors')
+                label(for='feature_woodFloors')
+                  .control-label-group Wood floors
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#feature_disabledAccess(type='checkbox', checked='', data-ng-model='apartmate.preferredFeatures.disabledAccess', name='feature_disabledAccess')
+                label(for='feature_disabledAccess')
+                  .control-label-group Disabled access
+      .form-group
+        .col-sm-offset-3.col-sm-7
+          p
+          button.btn.btn-form(type='submit', data-ng-disabled='listingForm.$invalid') Post listing
+hr
+

@@ -1,0 +1,21 @@
+.modal-header
+  .multiply(ng-click="cancel()")
+  h3.modal-title Create a Question
+.modal-body.create-question-modal
+  h4 What would you ask potential roommates? Create a question and up to four answers and we’ll include it in our match quiz!
+  form.form-horizontal(name="loginForm", role="form" class="ng-invalid ng-invalid-required" )
+
+  form(name='myForm' role="form")
+    h4.custom-title Question
+    input.form-control(name='question', type='text', ng-model='createdQuestion.question', placeholder="e.g. How often do you wash dishes?", required)
+    h4.custom-title Multiple choice answers (minimum two)
+    input.form-control(name='option1', type='text', ng-model='createdQuestion.option1', placeholder="", required)
+    input.form-control(name='option2', type='text', ng-model='createdQuestion.option2', placeholder="", required)
+    input.form-control(name='option3', type='text', ng-model='createdQuestion.option3', placeholder="" ng-disabled="!createdQuestion.option1 || !createdQuestion.option2")
+    input.form-control(name='option4', type='text', ng-model='createdQuestion.option4', placeholder="" ng-disabled="!createdQuestion.option3")
+    .row.buttons
+      button.btn.btn-headerPrimary(type="submit" ng-disabled='myForm.$invalid' ng-click="addQuestion()") Submit
+      button.btn.btn-headerPrimary.btn-grey(type='submit' ng-click="cancel()") Cancel
+
+
+.modal-footer

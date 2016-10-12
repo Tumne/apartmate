@@ -1,0 +1,42 @@
+h1 Register
+form.form-horizontal(ng-submit="signup()", name="signupForm", role="form")
+    .form-group
+        label.control-label.col-sm-2(for="emailAddress") Email
+        .col-sm-10
+            input.form-control(type="text", data-ng-model="emailAddress", placeholder="Email ", name="emailAddress", required, data-ng-minlength="1", data-ng-maxlength="60", autofocus)
+    .form-group
+        label.control-label.col-sm-2(for="password") Password
+        .col-sm-10
+            input.form-control(type="password", data-ng-model="password", placeholder="Password", name="password", required, data-ng-minlength="5", data-ng-maxlength="60")
+    .form-group
+        .radio.radio-inline
+            label
+                input(type="radio", name="role", data-ng-model="role", id="adminRole", data-ng-value="userRoles.admin")
+                | Administrator
+        .radio.radio-inline
+            label
+                input(type="radio", name="role", data-ng-model="role", id="adminRole", data-ng-value="userRoles.user")
+                | Normal user
+    .form-group
+        .controls
+            button.btn(type="submit", data-ng-disabled="signupForm.$invalid") Create account
+
+    .alert.alert-danger(ng-show="signupForm.$invalid && signupForm.$dirty")
+        .col-sm-10
+            strong Please correct the following errors:
+            ul
+                li(ng-show="signupForm.emailAddress.$error.required") Please fill in your email. 
+                li(ng-show="signupForm.emailAddress.$error.minlength") You do need a valid email address. We promise we will not spam. 
+                li(ng-show="signupForm.emailAddress.$error.maxlength") Email has to be at most 60 characters long
+                li(ng-show="signupForm.password.$error.required") Please create a password
+                li(ng-show="signupForm.password.$error.minlength") Password must be at least 5 characters long
+                li(ng-show="signupForm.password.$error.maxlength") Password must be at most 60 characters long
+hr
+p ... or use one of them fancy social logins:
+.btn-group
+    a.btn.btn-default(href="", data-ng-click="loginOauth('facebook')")
+        i.fa.fa-facebook-square
+        |  Facebook
+    a.btn.btn-default(href="", data-ng-click="loginOauth('twitter')")
+        i.fa.fa-twitter
+        |  Twitter

@@ -1,0 +1,27 @@
+[{
+  "script"    : "server.js",
+  "name"      : "server",
+  "exec_mode" : "fork",
+  "env" : { 
+    "NODE_ENV" : "development",
+    "IS_DEV": "dev",
+    "PORT" : 8080,
+    "FACEBOOK_APP_ID": "364164630431820",
+    "FACEBOOK_APP_SECRET": "d62fb47af8bf52b035814e5c48e5e39a",
+    "FACEBOOK_CALLBACK_URL":"http://dev.apartmate.ca/auth/facebook/callback",
+    "TWITTER_CONSUMER_KEY": "zhHlTfOLwnvnPpsy8Wxx7CP91",
+    "TWITTER_CONSUMER_SECRET": "otM3xBpvH9rWbfBso54l9UdNLzGqOiMY2eSdnozus2cwYggegt",
+    "TWITTER_CALLBACK_URL": "http://localhost:8000/auth/twitter/callback"
+  },
+  "env_production" : {  // Used if --env production
+    "NODE_ENV" : "development",
+    "IS_DEV": "pro",
+    "PORT" : 8080,
+    "FACEBOOK_APP_ID": "364164630431820",
+    "FACEBOOK_APP_SECRET": "d62fb47af8bf52b035814e5c48e5e39a",
+    "FACEBOOK_CALLBACK_URL":"http://www.apartmate.ca/auth/facebook/callback",
+    "TWITTER_CONSUMER_KEY": "zhHlTfOLwnvnPpsy8Wxx7CP91",
+    "TWITTER_CONSUMER_SECRET": "otM3xBpvH9rWbfBso54l9UdNLzGqOiMY2eSdnozus2cwYggegt",
+    "TWITTER_CALLBACK_URL": "http://localhost:8000/auth/twitter/callback"
+  }
+}]

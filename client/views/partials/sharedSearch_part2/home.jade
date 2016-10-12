@@ -1,0 +1,131 @@
+.spacer30
+.spacer30
+.spacer30
+.row
+  .col-sm-offset-1.col-sm-1
+    .circle
+      .h1.formHeader 1
+  .col-sm-3
+    .horizontalLine
+  .col-sm-1
+    .circle
+      .h1.formHeader.grey 2
+
+.spacer30
+.row
+  .col-md-11
+    h1.formHeader.formHeaderColor Final details
+.spacer30
+.row
+  .col-md-10.col-lg-offset-1  
+    form.form-horizontal(ng-submit='updateAndFinishSharedSearchProfileById()', name='listingForm', role='form')
+      .form-group
+        label.control-label.col-sm-3(for='apartmateName') First name
+        .col-sm-8
+          input.form-control(type='text', data-ng-model='apartmate.displayName', placeholder='', name='apartmateName', required='required' tooltip="This will be displayed on your profile. " tooltip-trigger="focus" tooltip-placement="right")
+      .form-group
+        label.control-label.col-sm-3(for='ageGroup') Age
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled' tooltip="This will be displayed on your profile. "  tooltip-trigger="focus" tooltip-placement="right")
+              | {{ apartmate.selectedAgeGroup }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onAgeGroupSelect('18-22')") 18-22
+              li
+                a(href='#' ng-click="onAgeGroupSelect('23-28')") 23-28
+              li
+                a(href='#' ng-click="onAgeGroupSelect('28-33')") 28-33
+              li
+                a(href='#' ng-click="onAgeGroupSelect('33-38')") 33-38
+              li
+                a(href='#' ng-click="onAgeGroupSelect('38+')") 38+
+      .form-group
+        label.control-label.col-sm-3(for='gender') Gender
+        .col-sm-8
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#female(type='checkbox', checked='', data-ng-model='apartmate.gender.female', name='female')
+                label(for='female')
+                  .control-label-group Female
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#male(type='checkbox', checked='', data-ng-model='apartmate.gender.male', name='male')
+                label(for='male')
+                  .control-label-group Male
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#transgender(type='checkbox', checked='', data-ng-model='apartmate.gender.transgender', name='transgender')
+                label(for='transgender')
+                  .control-label-group Transgender
+      .form-group
+        label.control-label.col-sm-3(for='ageGroup') Lifestyle
+        .col-sm-8
+          .btn-group(dropdown='')
+            button.btn.btn-primary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled' tooltip="This will be displayed on your profile. "  tooltip-trigger="focus" tooltip-placement="right")
+              | {{ apartmate.selectedLifestyle }}
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#' ng-click="onLifestyleSelect('Student')") Student
+              li
+                a(href='#' ng-click="onLifestyleSelect('Professional')") Professional
+              li
+                a(href='#' ng-click="onLifestyleSelect('Retired')") Retired
+              li
+                a(href='#' ng-click="onLifestyleSelect('Other')") Other
+      .form-group
+        label.control-label.col-sm-3(for='personalDescription') Describe yourself and what you're looking for
+        .col-sm-8
+          input.form-control.textarea(type='textarea', rows='6', cols='70', data-ng-model='apartmate.personalDescription', placeholder='', name='personalDescription', tooltip="Not sure what to write? Check out our Guide to Writing Great Profiles." tooltip-trigger="focus" tooltip-placement="right")
+      .row(data-flow-init='{target: "/properties/upload", testChunks:false}', data-flow-files-submitted='$flow.upload()', data-flow-file-success='$file.msg = $message')
+        .col-sm-12
+          .row
+            .col-sm-6.last
+              .progress(ng-show='$flow.isUploading()')
+                .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 45%')
+                  span.sr-only Uploading..
+          .row
+            .col-sm-12
+              table.table.table-hover
+                thead
+                  tr
+                    th(style='width: 25px')
+                      span.glyphicon.glyphicon-file
+                    th(style='width: 150px') Size
+                    th(style='min-width: 200px') Name
+                tbody
+                  tr(data-ng-repeat='file in $flow.files')
+                    td
+                      span.glyphicon.glyphicon-file
+                    td {{file.size / 1024 | number:0}} KB
+                    td
+                      a(ng-href='/folders/folder/{{file.name}}') {{file.name}}
+          .row
+            .col-sm-12
+              span.btn.btn-default.upload(data-flow-btn='')
+                | Profile photo
+          .spacer30
+      .form-group
+        label.control-label.col-sm-3(for='contactPreferences') Contact
+        .col-sm-8
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#phonePreferred(type='checkbox', checked='', data-ng-model='apartmate.contactPreferences.phone', name='phonePreferred')
+                label(for='phonePreferred')
+                  .control-label-group By phone
+          .row
+            .col-sm-12
+              .checkbox.checkbox-primary
+                input#emailPreferred(type='checkbox', checked='', data-ng-model='apartmate.contactPreferences.email', name='emailPreferred')
+                label(for='emailPreferred')
+                  .control-label-group By email
+      .form-group
+        .col-sm-offset-3.col-sm-5
+          button.btn.btn-form(type='submit', data-ng-disabled='listingForm.$invalid') Finish
+hr

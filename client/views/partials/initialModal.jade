@@ -1,0 +1,24 @@
+.modal-header
+    .multiply(ng-click="cancel()")
+    h2.font-style {{initialModal ? 'Create a free listing to view your match percentage' : 'Create a free listing'}}
+.modal-body.select-listing
+  .row
+    .col-xs-4
+      a.apartment-offered(ng-click="apartmentOffered()")
+        .imageFixed
+        h3 APARTMENT
+        h3.lower FOR RENT
+    .col-xs-4
+      a.room-offered(ng-click="roomOffered()") 
+        .imageFixed
+        h3 ROOM
+        h3.lower FOR RENT
+    .col-xs-4
+      a.room-wanted(ng-click="roomWanted()")
+        .imageFixed
+        h3 ROOM
+        h3.lower WANTED
+.modal-footer
+    h2(ng-show="initialModal") &nbsp;
+    h2.font-style.pointer(ng-click="cancel()" ng-show="!initialModal") or start searching
+

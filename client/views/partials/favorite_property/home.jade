@@ -1,0 +1,103 @@
+.row 
+    .col-xs-12.col-sm-12.col-md-12.no-padding
+        .spacer30
+        .spacer30
+        .row.subtitle
+            .col-xs-12.col-sm-12.col-md-12
+                .breadCrumbTrail
+                    .backButton 
+                        i.fa.fa-angle-left 
+                        a(href='/favorites') 
+                            span Back to Favorites
+        .spacer30
+        .spacer30
+        .row
+            .col-xs-12.col-sm-12.col-md-offset-2.col-md-6.offset-listColumn
+                .listingColumn
+                    .listingTitle
+                                    h3 {{ property.title | characters:76 :false }}
+                    .row.imageGallery
+                        .col-md-12.propertyImg
+                            .propertyImage(ng-click="clickThrough()")
+                                img(ng-src="{{ selectedPropertyImage }}", width='646px', height='460px')
+                    .row.imageThumbGallery
+                        .col-lg-2.col-md-2.col-sm-6.col-xs-6(ng-repeat="image in property.allImages", ng-click='')
+                            .imageThumb(ng-click="changeSelectedImage(image)")
+                                img(ng-src='{{ image.url }}', width='95px', height='72px')
+
+                    .row.listingHeader
+                        .col-md-10
+                            .titleAndTags
+                                .row
+                                    .col-sm-2.col-md-2
+                                        .tagGroup
+                                            .tagImage
+                                                img(ng-src="/img/tagsIcon_bed.png") 
+                                            .tagTitle
+                                                |    {{ property.bedrooms }}
+                                    .col-sm-2.col-md-2
+                                        .tagGroup(ng-show="{{ property.bathrooms != '' }}")
+                                            .tagImage 
+                                                img(ng-src="/img/tagsIcon_bath.png")
+                                            .tagTitle
+                                                |   {{ property.bathrooms }}
+                                    .col-sm-2.col-md-2
+                                        .tagGroup(ng-show="{{ property.petsTag != null }}")
+                                            .tagImage 
+                                                img(ng-src="/img/tagsIcon_pets.png")
+                                            .tagTitle
+                                                |    {{ property.petsTag }}
+
+                    .row.propertyDescription
+                        .col-md-2.col-sm-12
+                            h4 Description
+                        .col-md-9.col-sm-12
+                            p {{ property.description }}
+
+                    .row.propertyMap
+                        .col-md-12.col-sm-12
+                            leaflet.propertyDetailMap(defaults='defaults', center='toronto', tiles="tiles", markers="markers", height='370px', width='580px')
+
+            .col-xs-12.col-sm-4.col-md-4.offset-listingSideBar
+                .listingSideBar
+                    h3 ${{ property.price }}
+                    p(ng-show="!property.property.published") This property is pending completion
+                    //- p Available {{ property.formattedAvailableDate }}
+                    p(ng-show="property.property.published && property.daysAgo != 1 && property.daysAgo !=0" ) Published {{ property.daysAgo }} days ago
+                    p(ng-show="property.property.published && property.daysAgo == 1" ) Published yesterday 
+                    p(ng-show="property.property.published && property.daysAgo == 0" ) Published today 
+
+                    //- p(ng-show="property.published") Published {{ property.daysAgo }} days ago. 
+                    .row.emailAndPhone
+                        .col-md-12.emailButton(ng-show="(property.email && property.email.length > 3 )", ng-click="onEmailClick()", ng-class="{ 'active': emailMessage != 'Email'} ")
+                            p {{ emailMessage }}
+                    .row.facebookShare
+                        .col-md-12(ng-click="fbShare()")
+                            span Share on 
+                                span.facebookFont facebook
+                .listingSideBar.ng-cloak(ng-show="property.addedProfileImages[0].url != '' && property.addedProfileImages")
+                    .row.propertyProfileImage(ng-click="goToMyProfile()")
+                        img(ng-src="{{ property.addedProfileImages[0].url }}", width='100%', height='100%')
+                        h3.align-left {{property.name}}, {{property.ageGroup}}
+                        h4.align-left {{property.lifestyle}}
+
+
+
+
+        .footer
+
+            .row.row-centered 
+                .col-xs-11.col-sm-11.col-md-11.col-centered 
+                    .socialIcons
+                        .twitter(ng-click="socialClick('twitter')")
+                        .fb(ng-click="socialClick('fb')")
+                        .mail(ng-click="onEmailApartmateClick()")
+            .row.termsPrivacy.row-centered 
+                .col-xs-11.col-sm-11.col-md-11.col-centered 
+                    .logoSmall
+                        img(ng-src='/img/logo_color_sm.png')
+                        p 
+                            | 
+                            a(href='/tos') Terms & Conditions
+                            a(href='/privacy') Privacy Policy 
+                            | &copy; 2015 Apartmate Inc.

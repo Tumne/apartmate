@@ -1,0 +1,432 @@
+//- .row.searchRow
+//-     .col-md-12
+//-       .navContainer
+//-         nav.navbar.navbar-filter
+//-               .navbar-header
+//-                 .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Entire'}" ng-click="onPropertyFilterSelect('Entire')")
+//-                   .imgPiece.imageEntirePlace
+//-                   p Apartment
+//-                 .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Shared'}" ng-click="onPropertyFilterSelect('Shared')")
+//-                   .imgPiece.imageSharedPlace 
+//-                   p Room
+//-                 .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Apartmate'}" ng-click="onPropertyFilterSelect('Apartmate')")
+//-                   .imgPiece.imageRoommate 
+//-                   p Roommate
+//-                 a.navbar-propertyFilter(href='#') 
+              
+
+.row.searchRow
+    .col-md-12.no-padding
+      //- .container.browse(ng-show="filterParameters.propertyType != 'Apartmate' ")
+      .container.browse
+          .row
+              .col-sm-12.col-md-6.no-padding
+                  .row.filter-fixed
+                    .col-md-12
+                      .navContainer
+                        nav.navbar
+                          //- .filter-div
+                          .col-md-3
+                            .filter-label Search type
+                          .col-md-9
+                            .navbar-header
+                              .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Entire'}" ng-click="onPropertyFilterSelect('Entire')")
+                                .imgPiece.imageEntirePlace
+                                p Apartment
+                              .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Shared'}" ng-click="onPropertyFilterSelect('Shared')")
+                                .imgPiece.imageSharedPlace 
+                                p Room
+                              .button_class(ng-class="{'activeButton': filterParameters.propertyType == 'Apartmate'}" ng-click="onPropertyFilterSelect('Apartmate')")
+                                .imgPiece.imageRoommate 
+                                p Roommate
+                              a.navbar-propertyFilter(href='#') 
+                      .border-bottom
+                  .row.scrollit-margin-top(ng-class="{'fullFilters': moreFilters || moreFiltersApartmate}")
+                    .sticky-anchor(ng-class="{'sticky-margin' : isScrolled, 'sticky-margin-apartmate': isScrolledApartmate}")
+                    .col-sm-12.no-padding.scrollit.sticky(ng-class="{'stick col-md-6' : isScrolled, 'stick-apartmate col-md-6' : isScrolledApartmate, 'showMoreFilters': filtersTop}")
+                      
+                      //- add filter
+                      .padding-5(ng-show="filterParameters.propertyType != 'Apartmate'")
+                          .row
+                            .col-md-3
+                              .filter-label Price Range
+                            .col-md-9
+                              .slider-div
+                                slider(floor='100', ceiling='3000', class='priceSlider', ng-model-low='priceRange.minPrice', ng-model-high='priceRange.maxPrice', ng-click="onPriceFilterSelect()" translate='currencyFormatting')
+                                .row.sliderCaptions
+                                  .min $ {{ priceRange.minPrice }}
+                                  .max $ {{ priceRange.maxPrice }} +
+                          .divider-custom
+                          .row
+                            .col-md-3
+                              .filter-label Available
+                            .col-md-9
+                              .navbar-header
+                                button.btn.btn-default.btn-grey
+                                  i.fa.fa-calendar
+                                //- input.calendar-input(type='text', name='sessionID', value="1 January 2015")
+                                input.calendar-input(type='text', datepicker-popup='dd-MMMM-yyyy', placeholder="Select...", ng-model='filterParameters.availabilityDate', is-open='opened', min-date='minDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', close-text='Close', ng-click='open($event)', ng-change='onDateFilterSelect(filterParameters.availabilityDate)' required='required')
+                          .divider-custom(ng-class='{"divider-custom-moreFilters": !moreFilters}')
+                          .row(ng-show='moreFilters')
+                            .col-md-3
+                              .filter-label Lease Term
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#lease_oneYear(type='checkbox', checked='', data-ng-model='filterParameters.lease.oneYear', name='feature_bigClosets')
+                                    label(for='lease_oneYear')
+                                      .control-label-group One Year
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#lease_monthly(type='checkbox', checked='', data-ng-model='filterParameters.lease.monthly', name='feature_bigClosets')
+                                    label(for='lease_monthly')
+                                      .control-label-group Monthly
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#lease_sublet(type='checkbox', checked='', data-ng-model='filterParameters.lease.sublet', name='feature_bigClosets')
+                                    label(for='lease_sublet')
+                                      .control-label-group Sublet
+                          .divider-custom(ng-show='moreFilters')
+                          .row(ng-show='moreFilters')
+                            .col-md-3
+                              .filter-label Pets
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#pets_cats(type='checkbox', checked='', data-ng-model='filterParameters.pets.cats', name='feature_bigClosets')
+                                    label(for='pets_cats')
+                                      .control-label-group Cats
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#pets_dogs(type='checkbox', checked='', data-ng-model='filterParameters.pets.dogs', name='feature_bigClosets')
+                                    label(for='pets_dogs')
+                                      .control-label-group Dogs
+                          .divider-custom(ng-show='moreFilters')
+                          .row(ng-show='moreFilters')
+                            .col-md-3
+                              .filter-label Size
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class
+                                  p Bedrooms &nbsp;
+                                    i.fa.fa-chevron-down
+                                .checkbox_class
+                                  p Bathrooms &nbsp;
+                                    i.fa.fa-chevron-down
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#filter_basements(type='checkbox', checked='', data-ng-model='filterParameters.basementApartment', name='feature_bigClosets')
+                                    label(for='filter_basements')
+                                      .control-label-group Basements
+                                a.navbar-propertyFilter(href='#')
+                          .divider-custom(ng-show='moreFilters')
+                          .row(ng-show='moreFilters')
+                            .col-md-3
+                              .filter-label Utilities
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#utilities_electricity(type='checkbox', checked='', data-ng-model='filterParameters.utilities.electricity', name='feature_bigClosets')
+                                    label(for='utilities_electricity')
+                                      .control-label-group Electricity
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#utilities_water(type='checkbox', checked='', data-ng-model='filterParameters.utilities.water', name='feature_bigClosets')
+                                    label(for='utilities_water')
+                                      .control-label-group Water
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#utilities_heating(type='checkbox', checked='', data-ng-model='filterParameters.utilities.heating', name='feature_bigClosets')
+                                    label(for='utilities_heating')
+                                      .control-label-group Heating
+                              .navbar-header.navbar-margin-top
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#utilities_cable(type='checkbox', checked='', data-ng-model='filterParameters.utilities.cable', name='feature_bigClosets')
+                                    label(for='utilities_cable')
+                                      .control-label-group Cable
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input#utilities_internet(type='checkbox', checked='', data-ng-model='filterParameters.utilities.internet', name='feature_bigClosets')
+                                    label(for='utilities_internet')
+                                      .control-label-group Internet
+                          .divider-custom(ng-show='moreFilters')
+                          .row(ng-show='moreFilters')
+                            .col-md-3
+                              .filter-label Features
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Street parking
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Furnished
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Gas stove
+                              .navbar-header.navbar-margin-top
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Off-street parking
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Big windows
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Concierge
+                              .navbar-header.navbar-margin-top
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Laundry in building
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Big closets
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group On-site gym
+                              .navbar-header.navbar-margin-top
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Laundry in Unit
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Lots of counter space
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Elevator
+                              .navbar-header.navbar-margin-top
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Air conditioning
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Storage space
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Work/live zoning
+                              .navbar-header.navbar-margin-top
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Bike storage
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Dishwasher
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Wood floors
+                              .navbar-header.navbar-margin-top
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Balcony/Patio
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Yard or garden
+                                  .checkbox_class
+                                    .checkbox.checkbox-primary.checkbox-custom
+                                      input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                      label(for='feature_bigClosets')
+                                        .control-label-group Accessible           
+                          .row.more-filters-margin(ng-show='moreFilters')
+                          .moreFilters(ng-show="!moreFilters")
+                            button.btn.btn-default(ng-click="showMoreFilters()") More Filters 
+                            .border-bottom
+                      .row.filter-buttons(ng-show='moreFilters')
+                        .border-bottom
+                        .filter-buttons-frame
+                          button.btn.btn-default(ng-click="showMoreFilters()") Cancel
+                          button.btn.btn-headerPrimary(ng-click="showMoreFilters()") Apply Filters
+                            
+                      .padding-5(ng-show="filterParameters.propertyType == 'Apartmate'")
+                          .row
+                            .col-md-3
+                              .filter-label Budget
+                            .col-md-9
+                              .slider-div
+                                slider(floor='0', ceiling='3000', class='priceSlider', ng-model-low='budgetRange.minPrice', ng-model-high='budgetRange.maxPrice', ng-click="onBudgetFilterSelect()" translate='currencyFormatting')
+                                .row.sliderCaptions
+                                  .min $ {{ budgetRange.minPrice }}
+                                  .max $ {{ budgetRange.maxPrice }} +
+                          .divider-custom
+                          .row
+                            .col-md-3
+                              .filter-label Available
+                            .col-md-9
+                              .navbar-header
+                                button.btn.btn-default.btn-grey
+                                  i.fa.fa-calendar
+                                input.calendar-input(type='text', datepicker-popup='dd-MMMM-yyyy', placeholder="Select...", ng-model='filterParameters.availabilityDateApartmate', is-open='opened', min-date='minDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', close-text='Close', ng-click='open($event)', ng-change='onDateFilterSelectApartmate(filterParameters.availabilityDateApartmate)', required='required')
+                          .divider-custom(ng-class='{"divider-custom-moreFilters": !moreFiltersApartmate}')
+                          .row(ng-show='moreFiltersApartmate')
+                            .col-md-3
+                              .filter-label Gender
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Women
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Men
+                                .checkbox_class
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Other
+                                a.navbar-propertyFilter(href='#')
+                          .divider-custom(ng-show='moreFiltersApartmate')
+                          .row(ng-show='moreFiltersApartmate')
+                            .col-md-3
+                              .filter-label Age Range
+                            .col-md-9
+                              .slider-div
+                                slider(floor='18', ceiling='60', class='priceSlider', ng-model-low='ageRange.minAge', ng-model-high='ageRange.maxAge', ng-click="onPriceFilterSelect()" translate='currencyFormatting')
+                                .row.sliderCaptions
+                                  .min $ {{ ageRange.minAge }}
+                                  .max $ {{ ageRange.maxAge }} +
+                          .divider-custom(ng-show='moreFiltersApartmate')
+                          .row(ng-show='moreFiltersApartmate')
+                            .col-md-3
+                              .filter-label Gender
+                            .col-md-9
+                              .navbar-header
+                                .checkbox_class.checkbox-twice-width
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group Couples Welcome
+                                .checkbox_class.checkbox-twice-width
+                                  .checkbox.checkbox-primary.checkbox-custom
+                                    input(type='checkbox', checked='', data-ng-model='test', name='feature_bigClosets')
+                                    label(for='feature_bigClosets')
+                                      .control-label-group LGBT Friendly
+                                a.navbar-propertyFilter(href='#')
+                          .moreFilters(ng-show="!moreFiltersApartmate")
+                            button.btn.btn-default(ng-click="showMoreFilters()") More Filters 
+                            .border-bottom
+                          .row.more-filters-margin(ng-show='moreFiltersApartmate')
+                          .row.filter-buttons(ng-show='moreFiltersApartmate')
+                            .border-bottom
+                            .filter-buttons-frame
+                              button.btn.btn-default(ng-click="applyFilters()") Cancel
+                              button.btn.btn-headerPrimary(ng-click="showMoreFilters()") Apply Filters
+
+                      //- .row.padding-5(ng-show="filterParameters.propertyType == 'Apartmate'")
+                          form(role='form', class='form-filter')
+                            .form-group
+                              label(for='priceRange') Budget
+                              slider(floor='100', ceiling='3000', class='priceSlider', ng-model-low='priceRange.minPrice', ng-model-high='priceRange.maxPrice', ng-click="onBudgetFilterSelect()" translate='currencyFormatting')
+                              .sliderCaptions
+                                .min $ {{ priceRange.minPrice }}
+                                .max $ {{ priceRange.maxPrice }}
+                      //- more filter menu
+                    
+                    .col-sm-12.no-padding.scrollit(ng-show="filterParameters.propertyType != 'Apartmate' && !moreFilters")
+                      alert(ng-repeat="alert in alerts", type="{{alert.type}}", close="closeAlert($index)") 
+                        | {{alert.msg}}
+                      .spacer5
+                      .col-sm-6.col-md-6.item(ng-repeat='property in propertiesGlobal | filter: {published: true}', ng-mouseover="changeMarkerOn(property)", ng-mouseout="changeMarkerOff(property)" )
+                        .heart
+                          img(src='{{ property.favoritedByThisUser == true && "/img/listing/heart_on_shadow.png" || heartIcon  }}', ng-mouseover='heartIcon="/img/listing/heart_on_shadow.png"', ng-mouseout='heartIcon="/img/listing/heart_shadow.png"', ng-click="toggleFavorite(property)" )
+                        .propertyPercentageBorder(ng-show="property.propertyType == 'Shared' " ng-click="openSignup('lg', 'new')")
+                          h4 
+                            span(ng-show="property.percent != 0 || property.questionsResults.length > 0") {{property.percent}}
+                            span %
+
+                        .imgFrame(ng-class="{'featuredProperty': property.fbBoosted && property.fbExpired}")
+                          .box(ng-show="property.fbBoosted && property.fbExpired")
+                            .ribbon
+                              span Featured
+                          .imgContainer(ng-click="onViewPropertySelect(property)")
+                            img(ng-src='{{ property.propertythumb != ""? property.propertythumb: "/img/listingDetail_image_placeholder.png"}}')
+                          .propertyPriceBg
+                          .propertyPrice
+                            .sign $
+                            h3 {{ property.rentAmount }} 
+                          .propertyInfo
+                          .propertyProfilePicture(ng-click="onViewPropertySelect(property)")
+                            img(ng-src="{{ property.thumb != '' && property.thumb || '/img/profile/placeholder.png' }}", width='100%', height='100%')
+                          .propertyProfileFrame
+                            .propertyProfileName
+                              span(ng-show="property.name") {{property.name}},&nbsp;
+                              span(ng-show="!property.name && property.ageGroup") Age:&nbsp;
+                              | {{property.ageGroup || '&nbsp;'}}
+                            .propertyProfileAge(ng-show="property.propertyType == 'Shared'") {{property.lifestyle || '&nbsp;'}}
+                            .propertyProfileAge(ng-show="property.propertyType == 'Entire'") {{property.landlordType || '&nbsp;'}}
+
+                            .propertyStat.no-padding
+                              span(ng-show="property.bedrooms != 'Studio/Bachelor'") {{ property.bedrooms | limitTo: 1}} Bed 
+                              span(ng-show="property.bedrooms == 'Studio/Bachelor'") Studio&nbsp;
+                              span(ng-show="property.basementApartment") (Bsmt) 
+                              |- Avail: {{ property.availabilityDate | date:'MMM d' }}
+                    
+                    .col-sm-12.no-padding.scrollit(ng-show="filterParameters.propertyType == 'Apartmate' && !moreFiltersApartmate")
+                      alert(ng-repeat="alert in alerts", type="{{alert.type}}", close="closeAlert($index)") 
+                        | {{alert.msg}}
+                      .spacer5
+                      .col-sm-6.col-md-6.item(ng-repeat='roommate in apartmatesGlobal')
+                        .propertyPercentageBorder.percentageRoommate(ng-click="openSignup('lg', 'new')")
+                          h4
+                            span(ng-show="roommate.percent != 0 || roommate.questionsResults.length > 0") {{roommate.percent}}
+                            span %
+                        .imgFrameRoommate( ng-click="onViewApartmateSelect(roommate)")
+                          .imgContainerRoommate
+                            img(ng-src='{{ roommate.src }}', ng-click="onViewApartmateSelect(roommate)")
+                          .propertyPrice
+                            .sign $
+                            h3 {{ roommate.maxRent }} 
+                          .propertyTitle.propertyFirst {{ roommate.firstName | characters:36 :false}}, {{ roommate.ageGroup }}
+                          .propertyLifestyle {{ roommate.lifestyle || '&nbsp;' }}
+                          .propertyGenderAge(ng-show="roommate.availabilityDate != null") Available: {{ roommate.availabilityDate | date:'MMM d'}}
+                          .propertyGenderAge(ng-show="roommate.availabilityDate == null") Available:
+
+              .col-sm-12.col-md-6.fixed.leaflet-frame.no-padding
+                leaflet.leaflet-height(defaults='defaults', center='toronto', tiles="tiles", markers="markers",  width='50%')
+                .listingIcon(ng-style="{{ listingIconProperty }}")

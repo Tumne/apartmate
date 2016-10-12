@@ -1,0 +1,109 @@
+.spacer30
+.spacer30
+.row.subtitle
+    .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+            //- .backButton 
+            //-     a(href='/search') 
+            //-         i.fa.fa-angle-left 
+            //-         span Back to search
+            //- span Add a Shared Place
+.spacer30
+.spacer30
+.spacer30
+.row.hidden-sm.hidden-xs
+  .col-md-offset-2.col-md-1
+    .circle
+      .h1.formHeader 1
+  .col-md-2
+    .horizontalLine
+  .col-md-1
+    .circle
+      .h1.formHeader.grey 2
+  .col-md-2
+    .horizontalLine
+  .col-md-1
+    .circle
+      .h1.formHeader.grey 3
+.spacer30
+.row
+  .col-sm-12.col-md-11.npColSm
+    h1.formHeader.formHeaderColor Final details
+.spacer30
+.row
+  .col-sm-12.col-md-10.col-lg-offset-1.npColSm.mobileAddEdit
+    alert(ng-repeat="alert in alerts", type="{{ alert.type }}", close="closeAlert($index)") 
+    | {{ alert.msg }}
+.row
+  .col-sm-10.col-sm-offset-1.npColSm
+    form.form-horizontal(ng-submit='updateAndFinishPropertyById()', name='listingForm', role='form')
+      .row(data-flow-init='{target: "/profile/api/uploadToShared", testChunks:false, propertyId: $root.property._id }', data-flow-files-submitted='$flow.upload()', data-flow-file-success='$file.msg = $message')
+
+    
+        .form-group
+          label.control-label.col-sm-3(for='firstName') Profile photo:
+            span.manditory *
+          .col-sm-8.npColSm
+                .row
+                  .last
+                    .progress(ng-show='$flow.isUploading()')
+                      .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 45%')
+                        span.sr-only Uploading..
+                .row
+                    div.gallery-box.ng-scope(ng-repeat='file in existingProfileImages')
+                      div.thumbnail
+                        img(ng-src='{{ file }}')
+                      div.btn-group
+                        a.btn.btn-xs.btn-danger(ng-click='removeExistingProfilePictures(file)')
+                          | Remove
+                    div.gallery-box.ng-scope(ng-repeat='file in $flow.files')
+                      div.thumbnail(ng-show='$flow.files.length')
+                        img(flow-img='file')
+                      div.btn-group
+                        a.btn.btn-xs.btn-danger(ng-click='deletePropertyPictures(file)')
+                          | Remove
+                .row
+                    span.btn.btn-default.upload(data-flow-btn='')
+                      | Add profile photo
+        .form-group
+          label.control-label.col-sm-3(for='description') Personal Description
+          .col-sm-8.npColSm
+            textarea.form-control.longMobileForm-control.align-left(type='textarea', data-ng-model='apartmate.personalDescription', placeholder='Tell us a bit about yourself', name='description')
+        .form-group
+          label.control-label.col-sm-3(for='firstName') First name
+            span.manditory *
+          .col-sm-8.npColSm
+            input.form-control.longMobileForm-control(type='text', data-ng-model='apartmate.name', placeholder='', name='firstName', required='required')
+        .form-group
+          label.control-label.col-sm-3(for='landlordType') I am the...
+            span.manditory *
+          .col-sm-8.npColSm
+            .btn-group(dropdown='')
+              button.btn.btn-primary.dropdown-toggle.longMobileForm-control(type='button', data-ng-model='property.landlordType', dropdown-toggle='', ng-disabled='disabled', required='required')
+                | {{ property.landlordType }}
+                span.caret
+              ul.dropdown-menu.npColSm(role='menu')
+                li
+                  a(ui-sref='.' ng-click="onLandlordTypeSelect('Landlord')") Landlord
+                li
+                  a(ui-sref='.' ng-click="onLandlordTypeSelect('Property manager')") Property manager
+                li
+                  a(ui-sref='.' ng-click="onLandlordTypeSelect('Real estate agent')") Real estate agent
+                li
+                  a(ui-sref='.' ng-click="onLandlordTypeSelect('Current tenant')") Current tenant
+
+        .form-group
+          label.control-label.col-sm-3(for='landlordEmail') Email
+          .col-sm-8.npColSm
+            input.form-control.longMobileForm-control(type='email', data-ng-model='apartmate.emailAddress', placeholder='', name='emailAddress', editable=false, ng-disabled='true', required='required')
+        //- form-group
+          label.control-label.col-sm-3(for='linkedInVerification') LinkedIn
+          .col-sm-8.npColSm(ng-show="!apartmate.linkedInVerified")
+            a(href='#' ng-click="verifyLinkedIn()") Connect to verify
+          .col-sm-8.npColSm(ng-show="apartmate.linkedInVerified")
+            img(ng-src="/img/profile/verified.png").
+
+        .form-group
+          .col-sm-offset-3.col-sm-5
+            button.btn.btn-form(type='submit', data-ng-disabled='listingForm.$invalid || ($flow.files.length == 0 && existingProfileImages.length == 0) || $flow.isUploading()') Finish
+hr

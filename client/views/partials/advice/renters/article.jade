@@ -1,0 +1,26 @@
+
+
+.left-column
+    .sharing-widgets 
+      a.ff(ui-sref="." ng-click="fbShare()")
+        i.fa.fa-facebook
+      a.tw(ng-href="https://twitter.com/intent/tweet?url={{url}}&hashtags=apartmate,roommate&text=Intersting%20article%20I%20found%20on%20Apartmate&original_referer={{url}}")
+        i.fa.fa-twitter
+      //- a.gg(ui-sref="." onclick="window.open('https://plus.google.com/share?url={{url}}\','name','width=600,height=400')")
+      //-   i.fa.fa-google-plus
+      //- a.pn(ui-sref=".")
+      //-   i.fa.fa-pinterest-p
+      a.em(ng-href="mailto:?subject=Very%20interesting%20article%20I%20found%20on%20Apartmate&body=Check%20out%20this%20article%20{{url}}" target="_blank")
+        i.fa.fa-envelope
+    h1.article-title(ng-bind-html='renderHtml(articlesRenters[indexRenters].title)')
+    br
+    img.article-img(ng-show="articlesRenters[indexRenters].custom_fields.show_image == '1'" ng-src="{{articlesRenters[indexRenters].thumbnail}}")
+    br
+    br
+    div(ng-bind-html='renderHtml(articlesRenters[indexRenters].content)')
+    br
+    br
+    br
+    p.backToTop(ng-click="backToTop()")
+      i.fa.fa-chevron-up 
+      span Back to Top

@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /category/
+Disallow: /how-it-works/
+Disallow: /listings/
+Disallow: /my_profile/
+Disallow: /search/
+Disallow: /favorites/
+Disallow: /shared_part1/
+Disallow: /shared_part2/
+Disallow: /shared_part3/
+Disallow: /property_listing/
+Disallow: /property/
+Disallow: /favorite_property/
+Disallow: /roommateProfile_part1/
+Disallow: /roommateProfile_part2/
+Disallow: /about/
+Disallow: /404/
+

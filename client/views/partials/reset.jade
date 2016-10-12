@@ -1,0 +1,13 @@
+h1 Reset
+p Almost there, type in an easy to remember (but hard to guess) password. 
+
+hr
+form.form-horizontal(ng-submit="resetPassword()", name="resetPasswordForm", role="form")
+    .form-group
+        label.control-label.col-sm-2(for="password") Password
+        .col-sm-10
+            input.form-control(type="password", data-ng-model="password", placeholder="Password", name="password", required, autofocus)
+    .form-group
+        .col-sm-offset-2.col-sm-10
+            button.btn.btn-default(type="submit", data-ng-disabled="resetPasswordForm.$invalid") Update Password
+hr

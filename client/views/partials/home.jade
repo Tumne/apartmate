@@ -1,0 +1,117 @@
+#bg.row
+  .col-sm-12
+    .row.homeHeader
+      .col-sm-offset-1.col-sm-10.col-md-offset-3.col-md-6
+        h1 Find rental apartments and roommates you love coming home to
+    .row
+      .col-md-offset-3.col-md-2.span6.buttonContainer
+        button.btn.btn-default.start-btn(type='button', ng-click="startSearch()") Start Searching
+        //- button.btn.btn-default.start-btn(type='button', ng-click="postPropertyToFB()") Start Searching
+
+
+#advertiseSearch
+  .row 
+    .col-md-offset-3.col-md-4.span6.buttonContainer
+      //- img.headerImage(ng-src="/img/advertiseSearch.png")
+      .headerImage
+
+  .row
+    .col-md-offset-3.col-md-4.span6.buttonContainer
+      p Apartmate connects people who are looking for a place to live with people who are offering a place for rent. Apartmate is a one-stop website designed for everyone and is FREE to use.
+
+  .row
+    .col-sm-12.col-md-4.buttonContainer
+      .listingTypesHeader
+        //- img(ng-src="/img/keys.png")
+        .keysImage
+        .entireHeader 
+          h3 Entire Place
+          p Search for your very own place. Whether you’re looking for a rental apartment on your own, as a couple, with friends, or with family, Apartmate is for you.  
+    .col-sm-12.col-md-4.buttonContainer
+      .listingTypesHeader
+        //- img(ng-src="/img/door_yellow.png")
+        .doorsImage
+        .sharedHeader 
+          h3 Shared Place
+          p Search for a private bedroom in a property that is shared with other people. If you like the companionship of living with others or simply want to save some cash, Apartmate is for you.
+    .col-sm-12.col-md-4.buttonContainer
+      .listingTypesHeader
+        //- img(ng-src="/img/hand.png")
+        .handImage
+        .partnerHeader 
+          h3 Roommates
+          p Search for like-minded apartment seekers with a view to teaming up to find an entire apartment. If you’d like to live with others but can’t find  exactly what you’re looking for, Apartmate is for you.
+#socialProof.row
+  .col-md-offset-3.col-md-6.socialProofLogos
+
+#events
+  #lightBlue
+    .row 
+      .col-sm-offset-3.col-sm-6.col-md-offset-3.col-md-6.buttonContainer
+        .roommmateMessages
+          h2 Roommate Mixers
+          p Apartmate pub nights are for people who are looking for somewhere to live or someone to live with.
+          p Meet lots of potential roommates in the time it would normally take to meet one in a relaxed, safe, social setting.
+          span(ng-show="event.dateFuture")
+            a.btn.btn-default.start-btn(ng-href='{{event.link}}', target='_blank') Tickets
+            h3 {{event.date}}
+            h3 {{event.time}}
+            a(href='{{event.link}}', target='_blank') 
+              h3 {{event.address}}
+          span(ng-show="!event.dateFuture")
+            h3 Next Roommate Mixer
+            h3 To be announced soon!
+
+
+  #darkBlue
+    .row 
+      .col-sm-12.col-md-offset-3.col-md-6.buttonContainer
+        h2 How It Works
+    .row 
+      .col-xs-offset-2.col-xs-8.col-sm-offset-4.col-sm-4.col-md-offset-3.col-md-2.buttonContainer.howItWorksImg
+        //- .subHeaderCentered
+          //- img(ng-src="/img/stickers.png")
+        .stickerImage
+      .col-xs-12.col-sm-12.col-md-4
+        .howItWorksMessage
+          p On arrival, those who are looking for a room receive a red sticker. Those who have a room to offer receive a blue sticker. 
+    .row 
+      .col-xs-offset-2.col-xs-8.col-sm-offset-4.col-sm-4.col-md-offset-3.col-md-2.buttonContainer.howItWorksImg
+        //- .subHeaderCentered
+          //- img(ng-src="/img/drink.png")
+        .drinkImage
+      .col-xs-12.col-sm-12.col-md-4
+        .howItWorksMessage
+          p Then grab a drink, strike up a few conversations and see if there is someone you might like to live with.  
+    .row 
+      .col-sm-offset-3.col-sm-6.col-md-offset-3.col-md-6.buttonContainer
+        h3 Next Roommate Mixer
+        span(ng-show="event.dateFuture")
+          h4 {{event.date}}
+          a.btn.btn-default.start-btn(ng-href='{{event.link}}', target='_blank') Tickets
+        span(ng-show="!event.dateFuture")
+          h4 To be announced soon
+
+.footer.custom-footer
+  .row.termsPrivacy.row-centered 
+    .col-xs-11.col-sm-11.col-md-11.col-centered 
+      p 
+        a(ui-sref='public.nav.about.main') About
+        a(ui-sref='public.nav.about.blog') Blog
+        //- a(href='/faq') FAQ
+        //- a(href='/contact') Contact
+        a(ui-sref='public.nav.about.tos') Terms
+        a(ui-sref='public.nav.about.privacy') Privacy 
+      .socialIcons
+        .twitter(ng-click="socialClick('twitter')")
+        .fb(ng-click="socialClick('fb')")
+        a.mail(href="mailto:info@apartmate.ca" target="_blank")
+      br
+      .logo_color_sm
+      p 20 Camden Street, Toronto, M5V 1V1 
+      p info@apartmate.ca
+      br
+      
+      p &copy; 2015 Apartmate Inc.
+
+

@@ -1,0 +1,126 @@
+.spacer30
+.spacer30
+.row.subtitle
+  .col-xs-12.col-sm-12.col-md-12.no-padding
+    .breadCrumbTrail
+      .backButton.breadCrumbLeft
+        i.fa.fa-angle-left 
+        a(ng-click="backToRoommateListings()") 
+          span Back to Roommates
+.spacer30
+.spacer30
+.spacer30
+.row
+  .col-xs-12.col-sm-12.col-md-offset-2.col-md-8
+    .profileContainer
+      .row
+        .col-xs-12.col-sm-4.col-md-4.profileLeftCol
+          .row.profilePictureBox
+            .col-xs-12.col-md-12.propertyProfileImage.profileResize.roommatePadding
+              img(ng-src="{{ apartmate.src }}", width='100%', height='100%')
+              h3.align-left(ng-show="apartmate.firstName != '' && apartmate.ageGroup != '' ") {{ apartmate.firstName }}, {{apartmate.ageGroup}}
+              h4.align-left(ng-show="apartmate.lifestyle != '' ") {{apartmate.lifestyle}}
+          .spacer30
+          .row.verifiedHeader
+            col-xs-12.col-md-12
+              h3 Verified
+          .row.verifiedPanel
+            .col-xs-12.col-md-12(ng-show="apartmate.facebookVerified")
+              .row.emailVerified
+                .col-xs-12.col-md-2.npCol.verifiedIcon
+                  img(ng-src="/img/profile/verified.png")
+                .col-xs-12.col-md-10.npCol.verifiedNote
+                  h4 Facebook
+                  p Verified
+            .col-xs-12.col-md-12(ng-show="apartmate.linkedInVerified")
+              .row.emailVerified(ng-show="apartmate.linkedInVerified")
+                .col-xs-12.col-md-2.npCol.verifiedIcon
+                  img(ng-src="/img/profile/verified.png")
+                .col-xs-12.col-md-10.npCol.verifiedNote
+                  h4 LinkedIn
+                  p Verified
+
+        .col-xs-12.col-sm-8.col-md-8.profileRightCol
+          .row.propertyDescHeader
+            col-sm-12.col-md-12
+              h3 Description
+          .row.propertyDescPanel
+            .col-sm-12.col-md-12
+              p {{ apartmate.description }}
+          .spacer30
+          .row.propertyContactHeader(ng-show="apartmate.questionsResults != undefined && apartmate.questionsResults.length != 0 && userQuestions.length != 0")
+            col-sm-12.col-md-12
+              h3 Match Percentage
+          .row.propertyContactPanel(ng-show="apartmate.questionsResults != undefined && apartmate.questionsResults.length != 0 && userQuestions.length != 0")
+            .col-md-6.no-padding
+              .propertyPercentStat
+                h1 
+                  span(ng-show="apartmate.percent != 0") {{apartmate.percent}}
+                  span %
+                h5 Match
+            .col-md-6.no-padding
+              .propertyPercentLink.percentButton.btn.btn-headerPrimary(ng-click="toggleAnswers()")
+                span(ng-show="!showQuestions") Compare Answers
+                span(ng-show="showQuestions") Collapse Answers
+            .col-md-12(ng-show="apartmate.questionsResults.length != 0 && showQuestions")
+              .row.propertyCompareAnswers
+                .col-md-12.answerBorder(ng-repeat="answer in questionsListing")
+                  h3 {{answer.question}}
+                  .row
+                    .col-md-2.no-padding
+                      .answerThumbnail
+                        img(ng-src="{{ apartmate.src }}", width='100%', height='100%')
+                    .col-md-10.no-padding
+                      //- h4 Going out with friends
+                      h4 {{roommateQuestions[$index].result}}
+                  .row
+                    .col-md-2.no-padding
+                      .answerThumbnail
+                        img(ng-src="{{ user.src}}", width='100%', height='100%')
+                    .col-md-10.no-padding
+                      h4 {{userQuestions[$index].result}}
+                .col-md-12.no-padding
+                  .border-bottom
+
+          .spacer30(ng-show="apartmate.questionsResults != undefined && apartmate.questionsResults.length != 0")
+          .row.propertyContactHeader
+            col-sm-12.col-md-12
+              h3 Contact
+          .row.propertyContactPanel
+            .col-sm-6.col-sm-offset-3.emailButton.emailAdjust(ng-show="(apartmate.emailAddress && apartmate.emailAddress.length > 3 )", ng-click="onEmailClick()", ng-class="{ 'active': emailMessage != 'Email'} ")
+              p {{ emailMessage }}
+            .row.facebookShare
+              .col-xs-12(ng-click="fbShare()")
+                span Share on 
+                  span.facebookFont facebook 
+
+
+
+
+.spacer30
+.spacer30
+.spacer30
+
+.footer.custom-footer      
+  .row.termsPrivacy.row-centered 
+    .col-xs-11.col-sm-11.col-md-11.col-centered 
+        //- img(ng-src='/img/logo_color_sm.png')
+        p 
+          a(ui-sref='public.nav.about.main') About
+          a(ui-sref='public.nav.about.blog') Blog
+          //- a(href='/faq') FAQ
+          //- a(href='/contact') Contact
+          a(ui-sref='public.nav.about.tos') Terms
+          a(ui-sref='public.nav.about.privacy') Privacy 
+        .socialIcons
+          .twitter(ng-click="socialClick('twitter')")
+          .fb(ng-click="socialClick('fb')")
+          a.mail(href="mailto:info@apartmate.ca" target="_blank")
+        br
+        .logo_color_sm
+        p 20 Camden Street, Toronto, M5V 1V1 
+        p info@apartmate.ca
+        br
+        
+        p &copy; 2015 Apartmate Inc.
+

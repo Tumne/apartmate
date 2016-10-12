@@ -1,0 +1,179 @@
+
+.row 
+  .col-xs-12.col-sm-12.col-md-12.no-padding
+    .spacer30
+    .spacer30
+
+    .row.subtitle
+      .col-xs-12.col-sm-12.col-md-12
+        .breadCrumbTrail
+          .backButton 
+            i.fa.fa-angle-left 
+            a(href='/search') 
+              span Back to Search
+    .spacer30
+    .spacer30
+    .row
+      .col-xs-12.col-sm-12.col-md-offset-2.col-md-6.offset-listColumn
+        .listingColumn
+          h3.mobilePropertyTitle {{ property.title | characters:76 :false }}
+
+          .row.listing-custom
+            .col-xs-4.col-md-3.no-padding
+              .propertyThumbnail
+                img(ng-src="{{ property.thumb }}", width='100%', height='100%')
+            .col-xs-8.col-md-9.property-details
+              h4 ${{property.rentAmount}}
+              h4 
+                | {{ property.name }}
+                span(ng-show="property.propertyType != 'Entire'") , {{property.ageGroup}}
+              h4 {{property.lifestyle}}
+              h4(ng-show="property.propertyType == 'Entire'") {{property.landlordType}}
+          .row.property-dealbreakers
+            .col-xs-2.col-sm-2.col-md-2
+              .tagGroup(ng-show="{{ property.bedrooms != '' }}")
+                .tagImage
+                  img(ng-src="/img/tagsIcon_bed.png") 
+                .tagTitle
+                  span(ng-show="property.bedrooms != 'Studio/Bachelor'") {{ property.bedrooms | limitTo: 1}} Bed 
+                  span(ng-show="property.bedrooms == 'Studio/Bachelor'") Studio
+            .col-xs-2.col-sm-2.col-md-2(ng-show="{{ property.bathrooms != '' }}")
+              .tagGroup
+                .tagImage 
+                  img(ng-src="/img/tagsIcon_bath.png")
+                .tagTitle
+                  | {{ property.bathrooms | limitTo: 1 }} bath
+            .col-xs-2.col-sm-2.col-md-2(ng-show="property.petsWelcome !== undefined && property.petsWelcome.length != 0 && property.petsWelcome[0].name != 'No' ")
+              .tagGroup
+                .tagImage 
+                  img(ng-src="/img/tagsIcon_pets.png")
+                .tagTitle
+                  span(ng-show="property.petsWelcome[0].name == 'Yes' " )
+                    | Pets ok
+                  span(ng-show="property.petsWelcome[0].name != 'Yes' " )
+                    | {{ property.petsWelcome[0].name }}
+            .col-xs-2.col-sm-2.col-md-2(ng-show="property.LGBTWelcome !== undefined && property.LGBTWelcome.length != 0 && property.LGBTWelcome[0].name != 'No' ")
+              .tagGroup
+                .tagImage 
+                  img(ng-src="/img/tagsIcon_LGBT.png")
+                .tagTitle
+                  | LGBT ok
+            .col-xs-2.col-sm-2.col-md-2(ng-show="property.couplesWelcome !== undefined && property.couplesWelcome.length != 0 && property.couplesWelcome[0].name != 'No' ")
+              .tagGroup
+                .tagImage 
+                  img(ng-src="/img/tagsIcon_couple.png")
+                .tagTitle
+                  | Couples ok 
+          .row.imageGallery
+            .col-md-12.propertyImg
+              .propertyImage(ng-click="clickThrough()")
+                img(ng-src="{{ selectedPropertyImage }}", width='646px', height='460px')
+          .row.imageThumbGallery
+            .col-lg-2.col-md-2.col-sm-6.col-xs-6.imgThumbFrame(ng-repeat="image in property.addedImages", ng-click='')
+              .imageThumb(ng-click="changeSelectedImage(image)")
+                img(ng-src='{{ image.url }}', width='95px', height='72px')
+          .row.listingHeader
+            .col-md-2.col-sm-12
+              h4 Amenities
+            .col-md-9.col-sm-12
+              .amenities.row
+                .col-xs-6.col-md-6(ng-repeat="amenity in property.utlitiesIncluded")
+                  | {{amenity.name}}
+                .col-xs-6.col-md-6(ng-repeat="amenity in property.featuresIncluded")
+                  | {{amenity.name}}
+          .row.propertyDescription
+            .col-md-2.col-sm-12
+              h4 Description
+            .col-md-9.col-sm-12
+              p {{ property.description }}
+
+          .row.propertyMap
+            .col-md-12.col-sm-12
+              leaflet.propertyDetailMap(defaults='defaults', center='toronto', tiles="tiles", markers="markers", height='370px', width='600px')
+          .row.borderPlaceholder
+          #answers.anchor
+          .row.propertyCompareAnswers(ng-show="property.questionsResults.length != 0 && userQuestions.length != 0")
+            .col-md-12
+              h4.compareAnswerH4 Compare Answers
+            .col-md-12.answerBorder(ng-repeat="answer in questionsListing")
+              h3 {{answer.question}}
+              .row
+                .col-xs-3.col-md-2.no-padding
+                  .answerThumbnail
+                    img(ng-src="{{ property.thumb }}", width='100%', height='100%')
+                .col-xs-9.col-md-10.no-padding
+                  //- h4 Going out with friends
+                  h4 {{roommateQuestions[$index].result}}
+              .row
+                .col-xs-3.col-md-2.no-padding
+                  .answerThumbnail
+                    img(ng-src="{{ user.src}}", width='100%', height='100%')
+                .col-xs-9.col-md-10.no-padding
+                  h4 {{userQuestions[$index].result}}
+            .col-md-12.no-padding
+              .border-bottom
+          
+      .col-xs-12.col-sm-4.col-md-4.offset-listingSideBar
+        .listingSideBar
+          h3 ${{ property.rentAmount }} / month
+          p Available {{ property.availabilityDate | date:'MMM d' }}
+          p(ng-show="property.daysAgo != 1 && property.daysAgo !=0" ) Listed {{ property.daysAgo }} days ago
+          p(ng-show="property.daysAgo == 1" ) Listed yesterday 
+          p(ng-show="property.daysAgo == 0" ) Listed today 
+
+          .row.emailAndPhone
+            .col-md-12.emailButton(ng-show="(property.email && property.email.length > 3 )", ng-click="onEmailClick()", ng-class="{ 'active': emailMessage != 'Email'} ")
+              p {{ emailMessage }}
+          .row.favorites
+            .col-md-12.favoriteButton(ng-click="toggleFavorite(property)" ng-class="{'favoritedOnButton' : property.favoritedByThisUser }")
+              i.fa(ng-class="property.favoritedByThisUser ? 'fa-heart favoritedOnText ':'fa-heart-o'" )
+              span {{property.favoritedByThisUser ? 'Saved to Favorites' : 'Save to Favorites'}}
+          .row.facebookShare
+            .col-md-12(ng-click="fbShare()")
+              span Share on 
+                span.facebookFont facebook
+        .listingSideBar(ng-show="property.questionsResults.length != 0 && userQuestions.length != 0")
+          .row.percentCustom(ng-click="scrollToAnswers()")
+            .propertyPercentStat
+              .percentText
+                h1 
+                  span(ng-show="property.percent != 0 || property.questionsResults.length > 0") {{property.percent}}
+                  span %
+                h5 Match
+
+            .propertyPercentLink
+              | Compare Answers
+
+        .listingSideBar.ng-cloak(ng-show="property.addedProfileImages[0].url != '' && property.addedProfileImages")
+          .row.propertyProfileImage
+            img(ng-src="{{ property.thumb }}", width='100%', height='100%')
+            h3.align-left 
+              | {{property.name}}
+              span(ng-show="property.propertyType != 'Entire'") , {{property.ageGroup}}
+            h4.align-left(ng-show="property.propertyType != 'Entire'") {{property.lifestyle}}
+            h4.align-left(ng-show="property.propertyType == 'Entire'") {{property.landlordType}}
+
+
+    .footer.custom-footer      
+      .row.termsPrivacy.row-centered 
+        .col-xs-11.col-sm-11.col-md-11.col-centered 
+            //- img(ng-src='/img/logo_color_sm.png')
+            p 
+              a(ui-sref='public.nav.about.main') About
+              a(ui-sref='public.nav.about.blog') Blog
+              //- a(href='/faq') FAQ
+              //- a(href='/contact') Contact
+              a(ui-sref='public.nav.about.tos') Terms
+              a(ui-sref='public.nav.about.privacy') Privacy 
+            .socialIcons
+              .twitter(ng-click="socialClick('twitter')")
+              .fb(ng-click="socialClick('fb')")
+              a.mail(href="mailto:info@apartmate.ca" target="_blank")
+            br
+            .logo_color_sm
+            p 20 Camden Street, Toronto, M5V 1V1 
+            p info@apartmate.ca
+            br
+            
+            p &copy; 2015 Apartmate Inc.
+

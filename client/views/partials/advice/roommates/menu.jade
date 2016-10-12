@@ -1,0 +1,28 @@
+.spacer30
+.spacer30
+.spacer30
+.spacer30
+.row.advice
+  .col-xs-9.col-sm-9.col-md-8.no-padding
+    div
+      ui-view(autoscroll='false')
+
+  .col-xs-3.col-sm-3.col-md-3.right-column
+    //- ul
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article1") Conversations for Potential Roommates
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article7") Use our How to rent in Canada infographic
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article2") Types of lease agreements
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article3") Resolving conflicts
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article4") What you need to apply for a rental apartment in Canada
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article5") Basement Apartments
+    //-   li(ui-sref-active="active")
+    //-     a(ui-sref="public.nav.advice.roommates.article6") Roommate questionnaire
+    ul
+      li(ng-repeat="article in articlesRoommates")
+        a(ui-sref="public.nav.advice.roommates.article({slug: articlesRoommates[$index].slug})" ng-click="changeIndex($index)" ng-bind-html='renderHtml(article.title)')

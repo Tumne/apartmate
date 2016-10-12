@@ -1,0 +1,14 @@
+.row.mobileBrowse
+  .col-sm-12
+    .masonry.js-masonry.pointer(data-masonry-options='{ "columnWidth": 300px, "itemSelector": ".item" }')
+      .item(ng-repeat='property in properties', ng-click="onEditPropertySelect(property)")
+        .imgContainer
+          img(ng-src='{{ editImageLink }}', width='316px', height='200px', ng-click="onEditPropertySelect(property)")
+        .propertyPriceBgEdit
+        .propertyPrice
+          .sign $
+          h3 {{ property.price }} 
+        .propertyTitle {{ property.title | characters:36 :false}}
+        .propertyStat
+
+    

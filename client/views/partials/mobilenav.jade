@@ -1,0 +1,174 @@
+#mobileNav
+  .row.mobileHeader.navbar.navbar-inverse.navbar-fixed-top.portrait
+    
+    .col-xs-5.col-sm-3
+          .navbar-header
+            //- button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navigationbar')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar              
+            button.navbar-toggle(ng-click="slidemenuToggle()")
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+
+
+          #navigationbar.collapse-navbar.collapse(ng-class="myClass" style="width: 185px;")
+            ul.nav.navbar-nav
+              li.active(data-access-level='accessLevels.public', active-nav)
+                a(ui-sref='public.nav.home', ng-click="click()") Home
+              li.active(data-access-level='accessLevels.public', active-nav)
+                a(ui-sref='public.nav.search', ng-click="click()") Search
+              li.active(data-access-level='accessLevels.public', active-nav)
+                a(ui-sref='public.nav.events', ng-click="click()") Events
+              //- li.active(data-access-level='accessLevels.public', active-nav)
+              //-   a(href='/about') About
+              li.active(data-access-level='accessLevels.public', active-nav)
+                a(ui-sref='public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})' ng-click="resetRoommatesIndex()") Advice
+              li.active(data-access-level='accessLevels.public', active-nav)
+                a(ui-sref='public.nav.about.blog', ng-click="click()") Blog
+              li.active(data-access-level='accessLevels.user', active-nav)
+                a(href='/favorites', ng-click="click()") Favourites
+              li.active(data-access-level='accessLevels.user', active-nav)
+                a(href='/listings', ng-click="click()") My Listings
+              li.active(data-access-level='accessLevels.anon', active-nav)
+                 a(ng-click='openLogin("lg", "created")' ) Log in
+              li.active(data-access-level='accessLevels.anon', active-nav)
+                 a(ng-click='openLogin("lg", "new")') Sign up
+              li.active(data-access-level='accessLevels.public', active-nav)
+                 a(ng-click="addSharedPlace()") Room Offered
+              li.active(data-access-level='accessLevels.public', active-nav)
+                 a(ng-click="addEntirePlace()") Apartment Offered
+              li.active(data-access-level='accessLevels.public', active-nav  ng-show="!user.apartmateListingCreated")
+                 a(ng-click="addRoommateProfile()") Room Wanted
+              li.active(data-access-level='accessLevels.user', active-nav)
+                 a(data-ng-click="logout()")
+                    | Log out
+    .col-xs-3.col-sm-3.col-md-2
+      .aparmateMiniLogo(ui-sref='public.nav.home') 
+    .col-xs-4.col-sm-3.col-md-2
+      .filterIcon(ng-click='openFilter("sm", "new")')
+  nav.navbar.navbar-default.navbar-fixed-top.landscape
+      .row
+          .col-xs-2.brand-button(ng-class="{'brand-mobile-adjust': user.emailAddress != ''}")
+            .aparmateMiniLogo(ui-sref='public.nav.home') 
+
+          .col-xs-10
+            ul.nav.navbar-nav.navbar-right.navbar-custom(ng-class="{'navbar-mobile-adjust': user.emailAddress != ''}")
+                li(data-access-level='accessLevels.user', active-nav)
+                    a(href='/search') Search
+                li(data-access-level='accessLevels.user', active-nav)
+                    a(href='/events') Events
+                //- li(data-access-level='accessLevels.user', active-nav)
+                //-     a(href='/about') About
+                li(data-access-level='accessLevels.user', activ-nav)
+                    a(ui-sref='public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})' ng-click="resetRoommatesIndex()") Advice
+                li(data-access-level='accessLevels.user', active-nav)
+                  a(ui-sref='public.nav.about.blog', ng-click="click()") Blog
+                .btn-group.header-btn-group.user-btn-group(dropdown='', is-open='', data-access-level='accessLevels.user')
+        
+                    button.btn.btn-headerPrimary.dropdown-toggle(type='button', dropdown-toggle='', ng-disabled='disabled')
+                      | Post
+                      span.caret
+                    ul.dropdown-menu.userDropdownMenu2(role='menu')
+                        li
+                            a(href='' ng-click="addSharedPlace()") Room Offered
+                        li
+                            a(href='' ng-click="addEntirePlace()") Apartment Offered
+                        li.divider(role='separator' ng-show="!user.apartmateListingCreated")
+                        li(ng-show="!user.apartmateListingCreated")
+                            a(href='' ng-click="addRoommateProfile()") Room Wanted
+
+                li(data-access-level='accessLevels.anon', active-nav)
+                    a(ui-sref='public.nav.search') Search
+
+                li(data-access-level='accessLevels.anon', active-nav)
+                    a(ui-sref='public.nav.events') Events
+
+                //- li(data-access-level='accessLevels.anon', active-nav)
+                //-     a(href='/about') About
+                li(data-access-level='accessLevels.anon', active-nav)
+                    a(ui-sref='public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})' ng-click="resetRoommatesIndex()") Advice
+                li(data-access-level='accessLevels.anon', active-nav)
+                  a(ui-sref='public.nav.about.blog', ng-click="click()") Blog
+                li(data-access-level='accessLevels.anon', active-nav)
+                    a.pointer(ng-click='openLogin("lg", "created")' ) Log in
+
+                li(data-access-level='accessLevels.anon', active-nav)
+                    a.pointer(ng-click='openLogin("lg", "new")') Sign up
+
+                .btn-group.header-btn-group(dropdown='', is-open='', data-access-level='accessLevels.anon')
+        
+        
+                    button.btn.btn-headerPrimary.dropdown-toggle.mobile-post(type='button', dropdown-toggle='', ng-disabled='disabled')
+                      | Post
+                      span.caret
+                    ul.dropdown-menu.userDropdownMenu2(role='menu')
+                        li
+                            a(href='' ng-click="addSharedPlace()") Room Offered
+                        li
+                            a(href='' ng-click="addEntirePlace()") Apartment Offered
+                        li.divider(role='separator' ng-show="!user.apartmateListingCreated")
+                        li(ng-show="!user.apartmateListingCreated")
+                            a(href='' ng-click="addRoommateProfile()") Room Wanted
+                
+                div#userInfo.pull-userMenu(data-access-level='accessLevels.user')
+                    span.dropdown(dropdown on-toggle="toggled(open)")
+                        a.dropdown-toggle.userMenu(dropdown-toggle)
+                            img.profileCircle(ng-src='{{user.src}}', width='44px', height='44px', src='/img/profile/placeholder.png') 
+                            p {{ user.username }} 
+                                i.fa.fa-chevron-down.padding-left
+
+                        ul.dropdown-menu.userDropdownMenu.userAdjust
+                            //- li(ng-show="apartmateListingCreated")
+                            li(ng-show="user.profileCreated")
+                                //- a(href="", data-ng-click="myRoommateProfile()")
+                                a(href="/my_profile")
+                                    | My Profile
+                            li
+                                a(href="/listings")
+                                    | My Listings
+                            li
+                                //- a(href="", data-ng-click="viewFavourites()")
+                                a(href="/favorites")
+                                    | Favourites
+                            li
+                                a(href="", data-ng-click="logout()")
+                                    | Log out
+    .pagesSlideMobile(pageslide='', ps-open='slidemenuChecked' ps-side="left" ps-speed="0.25")
+      #demo-right
+        ul.nav.navbar-nav
+          li.active(data-access-level='accessLevels.public', active-nav )
+            a(ui-sref='public.nav.home' ng-click='slidemenuToggle()') Home
+          li.active(data-access-level='accessLevels.public', active-nav)
+            a(ui-sref='public.nav.search' ng-click='slidemenuToggle()') Search
+          li.active(data-access-level='accessLevels.public', active-nav)
+            a(ui-sref='public.nav.events' ng-click='slidemenuToggle()') Events
+          //- li.active(data-access-level='accessLevels.public', active-nav)
+          //-   a(href='/about') About
+          li.active(data-access-level='accessLevels.public', active-nav)
+            a(ui-sref='public.nav.advice.roommates.article({slug: articlesRoommates[0].slug})' ng-click="resetRoommatesIndexMobile()") Advice
+          li.active(data-access-level='accessLevels.public', active-nav)
+            a(ui-sref='public.nav.about.blog',  ng-click='slidemenuToggle()') Blog
+          li.active(data-access-level='accessLevels.user', active-nav)
+            a(href='/favorites',  ng-click='slidemenuToggle()') Favourites
+          li.active(data-access-level='accessLevels.user', active-nav)
+            a(href='/listings',  ng-click='slidemenuToggle()') My Listings
+          li.active(data-access-level='accessLevels.anon', active-nav)
+             a(ng-click='openLoginMobile()' ) Log in
+          li.active(data-access-level='accessLevels.anon', active-nav)
+             a(ng-click='openSignupMobile()') Sign up
+          li.active(data-access-level='accessLevels.public', active-nav)
+             a(ng-click="addSharedPlaceMobile()") Room Offered
+          li.active(data-access-level='accessLevels.public', active-nav)
+             a(ng-click="addEntirePlaceMobile()") Apartment Offered
+          li.active(data-access-level='accessLevels.public', active-nav  ng-show="!user.apartmateListingCreated")
+             a(ng-click="addRoommateProfileMobile()" ) Room Wanted
+          li.active(data-access-level='accessLevels.user', active-nav)
+             a(data-ng-click="logoutMobile()")
+                | Log out
+  div(ui-view)
+
+
+

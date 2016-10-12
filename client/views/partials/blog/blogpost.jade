@@ -1,0 +1,42 @@
+.spacer30
+.row.blog
+  .col-md-8.col-md-offset-2.blogFrame
+    div
+      h2
+        a(ng-bind-html='renderHtml(post.title)')
+      p.date {{post.date |  toSec | date:'MMMM d, y' }}
+      .blogImgFrame
+        .imageDiv
+          img(ng-src="{{post.thumbnail}}")
+        .row
+          .col-xs-12.col-sm-8.col-sm-offset-2.status 
+            .row.blogPostInfo 
+              a.ff(ui-sref="." ng-click="fbShare(post.title, post.thumbnail, post.excerpt)")
+                i.fa.fa-facebook
+              a.tw(ng-href="https://twitter.com/intent/tweet?url={{url}}&hashtags=apartmate,roommate&text=Intersting%20article%20I%20found%20on%20Apartmate&original_referer={{url}}")
+                i.fa.fa-twitter
+              a.em(ng-href="mailto:?subject=Very%20interesting%20article%20I%20found%20on%20Apartmate&body=Check%20out%20this%20article%20{{url}}" target="_blank")
+                i.fa.fa-envelope
+      div(ng-bind-html='renderHtml(post.content)')
+
+.footer.custom-footer
+  .row.termsPrivacy.row-centered 
+    .col-xs-11.col-sm-11.col-md-11.col-centered 
+      p 
+        a(ui-sref='public.nav.about.main') About
+        a(ui-sref='public.nav.about.blog') Blog
+        //- a(href='/faq') FAQ
+        //- a(href='/contact') Contact
+        a(ui-sref='public.nav.about.tos') Terms
+        a(ui-sref='public.nav.about.privacy') Privacy 
+      .socialIcons
+        .twitter(ng-click="socialClick('twitter')")
+        .fb(ng-click="socialClick('fb')")
+        a.mail(href="mailto:info@apartmate.ca" target="_blank")
+      br
+      .logo_color_sm
+      p 20 Camden Street, Toronto, M5V 1V1 
+      p info@apartmate.ca
+      br
+      
+      p &copy; 2015 Apartmate Inc.

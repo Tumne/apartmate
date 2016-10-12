@@ -1,0 +1,13 @@
+/* Sample @font-face declarations. */
+
+@font-face {
+    font-family: 'TorontoSubwayRegular';
+    src: url('toronto_subway_regular-web.eot');
+    src: url('toronto_subway_regular-web.eot?#iefix') format('embedded-opentype'),
+         url('toronto_subway_regular-web.woff') format('woff'),
+         url('toronto_subway_regular-web.ttf') format('truetype'),
+         url('toronto_subway_regular-web.svg#TorontoSubwayRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
